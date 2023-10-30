@@ -1,7 +1,0 @@
-REM  *****  BASIC  *****
-
-Sub CreateKiln
-
-	MsgBox("Create Kiln", MB_OK)
-
-End Sub

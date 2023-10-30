@@ -1,0 +1,99 @@
+REM  *****  BASIC  *****
+
+Function FindItensListHeaderStartCell() As Object
+	
+	buttonLimparAddr = GetButtonLocationByName("limparLista")
+	buttonCell = GetCellObjectByName(buttonLimparAddr)
+	previousCell = GetCellSameRowPreviousColumn(buttonCell)
+	If (IsInNamedRange(previousCell, listaItensTituloNamedRange)) Then
+		previousCell = GetFirstCellObjFromNamedRange(listaItensTituloNamedRange)
+	EndIf
+
+	FindItensListHeaderStartCell = GetCellNextRowSameColumn(previousCell)
+	
+End Function
+
+Function SetListRowCellsStyles(row As Integer)
+
+	firstCellHeaderList = GetFirstCellObjFromNamedRange(listaItensHeaderNamedRange)
+	lastCellHeaderList = GetLastCellObjFromNamedRange(listaItensHeaderNamedRange)
+
+	startColumn = GetCellColumnIndex(firstCellHeaderList)
+	endColumn = GetCellColumnIndex(lastCellHeaderList)
+	
+	For column = startColumn To endColumn
+		cell = GetCellObjectByIndex(row, column)
+		cell.CellBackColor = RGB(107, 121, 137)	
+	next column
+	
+	headerRow = GetCellRowIndex(firstCellHeaderList)
+	
+	column = startColumn
+	While (column <= endColumn)
+		cell = GetCellObjectByIndex(row, column)
+
+		headerCell = GetCellObjectByIndex(headerRow, column)
+
+		nextHeaderCell = GetCellSameRowNextColumn(headerCell)		
+		nextHeaderColumn = GetCellColumnIndex(nextHeaderCell)
+
+		numberOfCellsToMerge = nextHeaderColumn - column - 1
+
+		sheet = GetCurrentSheet()
+		
+		If (numberOfCellsToMerge > 0 And headerCell.GetString() <> headerLableQtd And headerCell.GetString() <> headerLableDimensao) Then
+			rangeToMerge = sheet.GetCellRangeByPosition(column, row, (column + numberOfCellsToMerge), row)
+			rangeToMerge.merge(True)
+		EndIf
+		
+		column = nextHeaderColumn
+	WEnd
+
+End Function
+
+Function SetItemsValues(insertData, row, startColumn)
+	
+	cell = GetCellObjectByIndex(row, startColumn)
+	For i = 0 To UBound(insertData)
+		MsgBox(insertData(i))
+		MsgBox(cell.AbsoluteName)
+		cell.SetString(insertData(i))
+		cell = GetCellSameRowNextColumn(cell)
+	Next i
+
+End Function
+
+
+Function InsertInListAtStart(insertData As Object)
+
+	firstCellHeaderList = GetFirstCellObjFromNamedRange(listaItensHeaderNamedRange)
+	lastCellHeaderList = GetLastCellObjFromNamedRange(listaItensHeaderNamedRange)
+	
+	cellReference = GetCellNextRowSameColumn(firstCellHeaderList)
+	
+	cellRowIndex = GetCellRowIndex(cellReference)
+	firstCellColumnIndex = GetCellColumnIndex(firstCellHeaderList)
+	lastCellColumnIndex = GetCellColumnIndex(lastCellHeaderList)
+	
+	
+	
+	InsertCellAbove(cellRowIndex, cellRowIndex, firstCellColumnIndex, lastCellColumnIndex)
+
+	newRow = cellRowIndex
+
+	SetListRowCellsStyles(newRow)
+	SetItemsValues(insertData, newRow, firstCellColumnIndex)
+
+
+'	MsgBox(insertData(0))
+'	MsgBox(insertData(1))
+'	MsgBox(insertData(2))
+'	MsgBox(insertData(3))
+'	MsgBox(insertData(4))
+
+
+End Function
+
+Sub Main
+
+End Sub

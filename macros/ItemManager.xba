@@ -1,0 +1,199 @@
+REM  *****  BASIC  *****
+
+Function GetFirstInputCell(cell As Object) As Object
+	If (cell.GetString() <> "Tipo:") Then
+		MsgBox("Erro! Esperado célula para preenchimento de dados.")
+		Stop
+	EndIf
+	
+	cellInput = GetCellSameRowNextColumn(cell)
+	GetFirstInputCell = cellInput
+	
+End Function
+
+Function CleanInputs(cellInput)
+	'Clean Tipo Input
+	cellInput.SetString("")
+
+	'Clean Descrição Input
+	cellInput = GetCellNextRowSameColumn(cellInput)
+	cellInput.SetString("")
+
+	'Clean Altura Input
+	cellInput = GetCellNextRowSameColumn(cellInput)
+	cellInput.SetString("")
+
+	'Clean Largura Input
+	cellInput = GetCellNextRowSameColumn(cellInput)
+	cellInput.SetString("")
+	
+	'Clean Comprimento Input
+	cellInput = GetCellNextRowSameColumn(cellInput)
+	cellInput.SetString("")
+
+End Function
+
+Function SetInputLables(cellInput As Object, two2DMeasures As Boolean)
+	'Set Tipo Lable
+	cellInput.SetString("Tipo:")
+
+	'Clean Descrição Input
+	cellInput = GetCellNextRowSameColumn(cellInput)
+	cellInput.SetString("Descrição:")
+
+	'Clean Altura Input
+	cellInput = GetCellNextRowSameColumn(cellInput)
+	cellInput.SetString("Altura (cm):")
+
+	'Clean Largura Input
+	cellInput = GetCellNextRowSameColumn(cellInput)
+	cellInput.SetString("Largura (cm):")
+	
+	'Clean Comprimento Input
+	cellInput = GetCellNextRowSameColumn(cellInput)
+	cellInput.SetString("")
+	If (two2DMeasures) Then
+		cellInput.SetString("Comp. (cm):")
+	Endif
+
+End Function
+
+
+Function GetTipoCellFromSameLine(cell As Object) As Object
+
+	row = GetCellRowIndex(cell)
+	column = GetCellColumnIndex(cell)
+	
+	While (column >= 0 And Not IsInNamedRange(cell, tipoNamedRange))
+		column = column - 1
+		cell = GetCellObjectByIndex(row, column)
+	WEnd
+	If (column < 0) Then
+		MsgBox("O parêmetro 'cell' tem que estar na mesma linha da célula mesclada com nome 'mergedTipo'")
+	EndIf
+	
+	GetTipoCellFromSameLine = GetFirstCellObjFromNamedRange(tipoNamedRange)
+	
+End Function
+
+
+Function GetTipoCellFromSameColumn(cell As Object) As Object
+
+	row = GetCellRowIndex(cell)
+	column = GetCellColumnIndex(cell)
+	
+	While (row >= 0 And Not IsInNamedRange(cell, tipoNamedRange))
+		row = row - 1
+		cell = GetCellObjectByIndex(row, column)
+	WEnd
+	If (row < 0) Then
+		MsgBox("O parêmetro 'cell' tem que estar na mesma linha da célula mesclada com nome 'mergedTipo'")
+	EndIf
+	
+	GetTipoCellFromSameColumn = GetFirstCellObjFromNamedRange(tipoNamedRange)
+	
+End Function
+
+
+Function ReadyInputsForAdd(button As Object, itemType As String, tow2DMeasures As Boolean)
+
+	cellBellow = GetCellBellowButton(button)
+	cellBellow = GetTipoCellFromSameLine(cellBellow)
+	
+	SetInputLables(cellBellow, HasTwo2DMeasures(itemType))
+	
+	cellInput = GetFirstInputCell(cellBellow)
+	CleanInputs(cellInput)
+	
+	cellInput.SetString(itemType)
+
+End Function
+
+
+Function CircleSelected(button As Object)
+	ReadyInputsForAdd(button, "Círculo")
+End Function
+
+
+Function SquareSelected(button As Object)
+	ReadyInputsForAdd(button, "Quadrado")
+End Function
+
+
+Function RectangleSelected(button As Object)
+	ReadyInputsForAdd(button, "Retângulo")
+End Function
+
+
+Function TriangleSelected(button As Object)
+	ReadyInputsForAdd(button, "Triângulo")
+End Function
+
+Function ReadItemInputData(cellLableTipo As Object) As Object
+	numberInputs = 3
+
+	inputCell = GetCellSameRowNextColumn(cellLableTipo)
+	inputCellToClean = inputCell
+	itemType = inputCell.GetString()
+	
+	inputCell = GetCellNextRowSameColumn(inputCell)
+	itemDescription = inputCell.GetString()
+	If (itemDescription = "") Then
+		MsgBox("Todos os campos são obrigatórios")
+		Stop
+	EndIf
+
+	inputCell = GetCellNextRowSameColumn(inputCell)
+	itemHeight = inputCell.GetString()
+	If (itemHeight = "") Then
+		MsgBox("Todos os campos são obrigatórios")
+		Stop
+	EndIf
+
+	
+	inputCell = GetCellNextRowSameColumn(inputCell)
+	itemWidth = inputCell.GetString()
+	If (itemWidth = "") Then
+		MsgBox("Todos os campos são obrigatórios")
+		Stop
+	EndIf
+
+	two2DMeasures = HasTwo2DMeasures(itemType)
+	
+	If (two2DMeasures) Then
+
+		inputCell = GetCellNextRowSameColumn(inputCell)
+		itemLength = inputCell.GetString()
+		If (itemLength = "") Then
+			MsgBox("Todos os campos são obrigatórios")
+		Stop
+	EndIf
+
+		numberInputs = 4
+	EndIf
+
+	Dim data(numberInputs) As String
+	
+	data(0) = itemType
+	data(1) = itemDescription
+	data(2) = itemHeight
+	data(3) = itemWidth
+	If (two2DMeasures) Then
+		data(4) = itemLength
+	EndIf
+	CleanInputs(inputCellToClean)
+	ReadItemInputData = data
+End Function
+
+
+Function AddItem(button As Object)
+	buttonCellAddr = GetButtonLocation(button)
+	buttonCell = GetCellObjectByName(buttonCellAddr)
+	cellAbove = GetCellPreviousRowSameColumn(buttonCell)
+	
+	cellLableTipo = GetTipoCellFromSameColumn(cellAbove)
+	inputData = ReadItemInputData(cellLableTipo)
+	
+	InsertInListAtStart(inputData)
+
+End Function
