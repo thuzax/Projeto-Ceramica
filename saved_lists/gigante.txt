@@ -1,1242 +1,542 @@
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Retângulo apapa 10 20 5 0
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Quadrado Quadrado 20 30  1
+Retângulo apapa 10 20 5 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Retângulo pao 50 30 20 1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asd 30 30  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1
+Círculo asdasdad 10 15  1

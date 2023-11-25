@@ -1,20 +1,20 @@
 Retângulo pao 50 30 20 2
-Retângulo pao 50 30 20 0
-Retângulo pao 50 30 20 0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asd 30 30  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Círculo asdasdad 10 15  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
-Quadrado Quadrado 20 30  0
+Retângulo pao 50 30 20 2
+Retângulo pao 50 30 20 2
+Círculo asd 30 30  2
+Círculo asd 30 30  2
+Círculo asd 30 30  2
+Círculo asd 30 30  2
+Círculo asd 30 30  2
+Círculo asd 30 30  2
+Círculo asd 30 30  2
+Círculo asdasdad 10 15  2
+Círculo asdasdad 10 15  2
+Círculo asdasdad 10 15  2
+Círculo asdasdad 10 15  2
+Quadrado Quadrado 20 30  2
+Quadrado Quadrado 20 30  2
+Quadrado Quadrado 20 30  2
+Quadrado Quadrado 20 30  2
+Quadrado Quadrado 20 30  2
 Quadrado Quadrado 20 30  3

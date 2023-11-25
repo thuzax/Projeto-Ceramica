@@ -1,3 +1,3 @@
-Retângulo pao 50 30 20 2
-Retângulo pao 50 30 20 0
+Triângulo pao 5 15  5
+Quadrado pao 10 10  1
 Retângulo pao 50 30 20 3

@@ -1,0 +1,21 @@
+20
+0 3 1 17 10 description
+0 3 1 32 36 description
+0 3 1 12 10 description
+0 1 1 27 22 50 description
+0 2 1 23 48 description
+0 2 1 15 13 description
+0 2 1 30 12 description
+0 3 1 14 39 description
+0 1 1 13 37 39 description
+0 2 1 27 18 description
+0 3 1 18 23 description
+0 1 1 37 42 49 description
+0 3 1 15 19 description
+0 2 1 12 38 description
+0 1 1 21 33 38 description
+0 1 1 10 32 11 description
+0 1 1 23 42 5 description
+0 2 1 45 32 description
+0 1 1 48 33 17 description
+0 2 1 31 43 description

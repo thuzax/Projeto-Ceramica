@@ -1,0 +1,61 @@
+60
+0 3 1 5 9 description
+0 2 1 10 39 description
+0 3 1 5 30 description
+0 1 1 38 49 15 description
+0 2 1 21 19 description
+0 1 1 17 21 5 description
+0 3 1 22 24 description
+0 2 1 36 17 description
+0 1 1 39 45 50 description
+0 2 1 24 12 description
+0 3 1 18 46 description
+0 3 1 7 12 description
+0 1 1 19 32 46 description
+0 2 1 11 14 description
+0 1 1 40 48 20 description
+0 1 1 25 46 47 description
+0 3 1 22 43 description
+0 2 1 18 37 description
+0 2 1 5 33 description
+0 2 1 50 18 description
+0 1 1 49 18 49 description
+0 3 1 12 52 description
+0 3 1 11 32 description
+0 1 1 45 11 31 description
+0 1 1 23 43 33 description
+0 2 1 9 29 description
+0 1 1 27 10 37 description
+0 1 1 42 10 17 description
+0 1 1 19 5 23 description
+0 2 1 32 50 description
+0 1 1 48 26 16 description
+0 3 1 16 25 description
+0 1 1 21 40 25 description
+0 1 1 14 27 18 description
+0 3 1 15 20 description
+0 2 1 7 6 description
+0 2 1 25 48 description
+0 3 1 15 9 description
+0 2 1 14 8 description
+0 2 1 6 28 description
+0 1 1 25 50 42 description
+0 1 1 49 36 51 description
+0 2 1 22 24 description
+0 3 1 10 19 description
+0 2 1 54 15 description
+0 3 1 17 50 description
+0 3 1 6 6 description
+0 2 1 50 22 description
+0 3 1 17 50 description
+0 1 1 33 15 11 description
+0 3 1 13 49 description
+0 1 1 26 10 11 description
+0 3 1 14 47 description
+0 1 1 7 44 43 description
+0 2 1 46 48 description
+0 2 1 30 14 description
+0 3 1 23 35 description
+0 3 1 16 34 description
+0 3 1 13 23 description
+0 2 1 23 30 description
