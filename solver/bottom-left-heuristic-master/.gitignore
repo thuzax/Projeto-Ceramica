@@ -32,5 +32,4 @@ parser
 main
 *.d
 solution.*
-items.txt
-kiln.txt
+kiln_very_high.txt

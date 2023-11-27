@@ -71,6 +71,8 @@ void exec_command_line(const char* command) {
 
 
 void convert_tex_solution_to_pdf(const char* solution_file_name, const char* program_root_dir) {
+	cout << program_root_dir << endl;
+	
 	char command[256] = "\0";
 	strcat(command, "pdflatex");
 	strcat(command, " ");
@@ -81,6 +83,7 @@ void convert_tex_solution_to_pdf(const char* solution_file_name, const char* pro
 	strcat(command, program_root_dir);
 	strcat(command, " ");
 	strcat(command, solution_file_name);
+
 	exec_command_line(command);
 
 	strcpy(command, "\0");
@@ -314,10 +317,9 @@ int main(int argc, char *argv[]) {
 
 	filesystem::path p = argv[0];
 	filesystem::path exec_path = p.parent_path();
-	filesystem::path program_root_dir = exec_path.parent_path();
-
 	exec_path.append("bottom-left-heuristic-master");
-
+	filesystem::path program_solver_dir = exec_path.parent_path();
+	
 	if (idOS == UNIX) {
 		exec_path.append("main");
 	} 
@@ -331,7 +333,7 @@ int main(int argc, char *argv[]) {
 		solution_file_name
 	);
 
-	convert_tex_solution_to_pdf(solution_file_name, program_root_dir.string().c_str());
+	convert_tex_solution_to_pdf(solution_file_name, program_solver_dir.string().c_str());
 
 	remove_solver_input_file(solver_input_name);
 

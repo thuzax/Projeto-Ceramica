@@ -33,8 +33,8 @@ main
 solve
 *.d
 solution.*
-items.txt
-kiln.txt
+./solver/bottom-left-heuristic-master/items.txt
+./solver/bottom-left-heuristic-master/kiln_very_high.txt
 
 #lockers
 .~lock.*
