@@ -29,7 +29,6 @@
 
 .DS_Store
 parser
-main
 *.d
 solution.*
 kiln_very_high.txt
