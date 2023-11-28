@@ -1,0 +1,4 @@
+Triângulo chaleira12cm 15 12  100
+Retângulo tauba 2 15 10 0
+Círculo panela 30 20  0
+Quadrado Porta_copo 2 5  0
