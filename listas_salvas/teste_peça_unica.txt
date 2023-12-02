@@ -1,5 +1,5 @@
-Triângulo bulinho 10 8  30
-Retângulo pao 20 15 20 30
-Círculo asd 20 20  30
+Triângulo bulinho 10 8  0
+Retângulo pao 20 15 20 0
+Círculo asd 20 20  0
 Círculo asdasdad 15 20  30
 Quadrado Quadrado 30 20  30

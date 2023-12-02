@@ -36,11 +36,15 @@ kiln *initKiln(string filename) {
 
 	file >> numberOfDifferentHeights;
 
-	for (int i=0; i< numberOfDifferentHeights ; i++) {
-		file >> aux;
-		newKiln->differentHeights.push_back(aux);
+	if (numberOfDifferentHeights == 0) {
+		newKiln->differentHeights.push_back(newKiln->height);
+	} 
+	else {
+		for (int i=0; i< numberOfDifferentHeights; i++) {
+			file >> aux;
+			newKiln->differentHeights.push_back(aux);
+		}
 	}
-
 	file.close();
 
 	return newKiln;

@@ -1,0 +1,8 @@
+Triângulo Testando_8 30 15  10
+Retângulo Testando_7 5 10 10 20
+Quadrado Testando_6 15 10  0
+Círculo Testando_5 15 15  10
+Triângulo Testando_4 20 30  30
+Retângulo Testando_3 20 30 20 30
+Quadrado Testando_2 20 30  30
+Círculo Testando_1 20 20  30
