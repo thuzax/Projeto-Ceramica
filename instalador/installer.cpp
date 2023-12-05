@@ -57,7 +57,7 @@ int exec_command_line(const char* command) {
 }
 
 
-int remove_by_abs_path_command_line(const char* absolute_path) {
+int remove_by_abs_path_command_line_linux(const char* absolute_path) {
     filesystem::path file_path = absolute_path;
     if (filesystem::exists(file_path)) {
         if (filesystem::is_directory(file_path)) {
