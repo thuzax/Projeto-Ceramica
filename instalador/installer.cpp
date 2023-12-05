@@ -7,7 +7,7 @@
 
 enum {WINDOWS, LINUX};
 int idOS;
-char install_location[512] = "\0";
+char install_location_c_string[512] = "\0";
 
 bool installed_pdflatex = false;
 
@@ -15,20 +15,20 @@ using namespace std;
 
 void define_OS_data() {
     #ifdef __WIN32
-        strcat(install_location, getenv("HOMEDRIVE"));
-        strcat(install_location, getenv("HOMEPATH"));
+        strcat(install_location_c_string, getenv("HOMEDRIVE"));
+        strcat(install_location_c_string, getenv("HOMEPATH"));
         idOS = WINDOWS;
     #endif
 
     #ifdef _WIN64
-        strcat(install_location, getenv("HOMEDRIVE"));
-        strcat(install_location, getenv("HOMEPATH"));
+        strcat(install_location_c_string, getenv("HOMEDRIVE"));
+        strcat(install_location_c_string, getenv("HOMEPATH"));
         idOS = WINDOWS;
     #endif
 
     #ifdef __linux__
-        strcat(install_location, getenv("HOME"));
-        strcat(install_location, "/Documentos");
+        strcat(install_location_c_string, getenv("HOME"));
+        strcat(install_location_c_string, "/Documentos");
         idOS = LINUX;
     #endif
 }
@@ -56,48 +56,59 @@ int exec_command_line(const char* command) {
     
 }
 
+
+int remove_by_abs_path_command_line(const char* absolute_path) {
+    filesystem::path file_path = absolute_path;
+    if (filesystem::exists(file_path)) {
+        if (filesystem::is_directory(file_path)) {
+            cout << "Removendo diretório " << absolute_path << endl;
+            cout << "Digite a senha de administrador se necessário." << endl;
+            char remove_command[512];
+            strcpy(remove_command, "sudo");
+            strcat(remove_command, " ");
+            strcat(remove_command, "rm");
+            strcat(remove_command, " ");
+            strcat(remove_command, "-R");
+            strcat(remove_command, " ");
+            strcat(remove_command, file_path.c_str());
+            return exec_command_line(remove_command);
+        }
+        else {
+            char remove_command[512];
+            strcpy(remove_command, "rm");
+            strcat(remove_command, " ");
+            strcat(remove_command, file_path.c_str());
+            return exec_command_line(remove_command);
+
+        }
+
+    }
+    cout << "Arquivo " << absolute_path << " não encontrado." << endl;
+    return 0;
+}
+
 void abort_instalation(bool exclude_project = true) {
-    filesystem::path zip_file = install_location;
+    filesystem::path zip_file = install_location_c_string;
     zip_file.append("master.zip");
 
     cout << "Removendo arquivos criados até o momento..." << endl;
 
     if (filesystem::exists(zip_file)) {
-        char remove_command[512];
-        strcpy(remove_command, "rm");
-        strcat(remove_command, " ");
-        strcat(remove_command, zip_file.c_str());
-        exec_command_line(remove_command);
+        remove_by_abs_path_command_line(zip_file.c_str());
     }
 
-    filesystem::path unzip_local = install_location;
+    filesystem::path unzip_local = install_location_c_string;
     unzip_local.append("tmp");
 
     if (filesystem::exists(unzip_local)) {
-        char remove_command[512];
-        strcpy(remove_command, "sudo");
-        strcat(remove_command, " ");
-        strcat(remove_command, "rm");
-        strcat(remove_command, " ");
-        strcat(remove_command, "-R");
-        strcat(remove_command, " ");
-        strcat(remove_command, unzip_local.c_str());
-        exec_command_line(remove_command);
+        remove_by_abs_path_command_line(unzip_local.c_str());
     }
 
-    filesystem::path new_project_path = install_location;
+    filesystem::path new_project_path = install_location_c_string;
     new_project_path.append("Projeto-Ceramica");
 
     if (filesystem::exists(new_project_path) and exclude_project) {
-        char remove_command[512];
-        strcpy(remove_command, "sudo");
-        strcat(remove_command, " ");
-        strcat(remove_command, "rm");
-        strcat(remove_command, " ");
-        strcat(remove_command, "-R");
-        strcat(remove_command, " ");
-        strcat(remove_command, new_project_path.c_str());
-        exec_command_line(remove_command);
+        remove_by_abs_path_command_line(new_project_path.c_str());
     }
 
     exit(0);
@@ -116,7 +127,7 @@ char* get_download_command_linux(char* command){
     strcat(command, " ");
 
     strcat(command, "--directory-prefix=");
-    strcat(command, install_location);
+    strcat(command, install_location_c_string);
 
     return command;
 }
@@ -145,7 +156,7 @@ void install_unzip() {
         char command[512] = "sudo apt -y install unzip";
         int exec_status = exec_command_line(command);
         if (exec_status != 0) {
-            cout << "Erro! Senhas inválidas. Abortando instalação." << endl;
+            cout << "Erro! Abortando instalação." << endl;
             abort_instalation();
         }
     }
@@ -153,24 +164,30 @@ void install_unzip() {
 
 void unzip_program() {
     char command[512];
-    filesystem::path unzip_local = install_location;
+    filesystem::path unzip_local = install_location_c_string;
     unzip_local.append("tmp");
-    filesystem::path zip_file = install_location;
+    filesystem::path zip_file = install_location_c_string;
     zip_file.append("master.zip");
+    
     strcpy(command, "unzip -o -d");
     strcat(command, " ");
     strcat(command, unzip_local.c_str());
     strcat(command, " ");
     strcat(command, zip_file.c_str());
 
-    exec_command_line(command);
+    int exec_status = exec_command_line(command);
+    if (exec_status != 0) {
+        cout << "Erro na extração de arquivos!" << endl;
+        abort_instalation();
+        exit(1);
+    }
 
     filesystem::path project_directory_path;
     for (const auto & file_name : filesystem::directory_iterator(unzip_local)) {
         project_directory_path = file_name.path();
     }
     
-    filesystem::path new_project_path = install_location;
+    filesystem::path new_project_path = install_location_c_string;
     new_project_path.append("Projeto-Ceramica");
 
     if (filesystem::exists(new_project_path)) {
@@ -187,15 +204,7 @@ void unzip_program() {
 
         cout << "Digite a senha de administrador se necessário:" << endl;
 
-        char remove_command[512];
-        strcpy(remove_command, "sudo");
-        strcat(remove_command, " ");
-        strcat(remove_command, "rm");
-        strcat(remove_command, " ");
-        strcat(remove_command, "-R");
-        strcat(remove_command, " ");
-        strcat(remove_command, new_project_path.c_str());
-        int exec_status = exec_command_line(remove_command);
+        exec_status = remove_by_abs_path_command_line(new_project_path.c_str());
         if (exec_status != 0) {
             cout << "Erro durante a remoção de projeto já existente!" << endl;
             abort_instalation();
@@ -210,25 +219,24 @@ void unzip_program() {
     strcat(rename_command, " ");
     strcat(rename_command, new_project_path.c_str());
 
-    exec_command_line(rename_command);
+    exec_status = exec_command_line(rename_command);
+    if (exec_status != 0) {
+        cout << "Erro no renomeamento do arquivo." << endl;
+        exit(1);
 
-    char remove_command[512];
+    }
 
-    strcpy(remove_command, "sudo");
-    strcat(remove_command, " ");
-    strcat(remove_command, "rm");
-    strcat(remove_command, " ");
-    strcat(remove_command, "-R");
-    strcat(remove_command, " ");
-    strcat(remove_command, unzip_local.c_str());
+    exec_status = remove_by_abs_path_command_line(unzip_local.c_str());
+    if (exec_status != 0) {
+        cout << "Erro na remoção de pasta temporária." << endl;
+        exit(1);
+    }
 
-    exec_command_line(remove_command);
-
-    strcpy(remove_command, "rm");
-    strcat(remove_command, " ");
-    strcat(remove_command, zip_file.c_str());
-
-    exec_command_line(remove_command);
+    exec_status = remove_by_abs_path_command_line(zip_file.c_str());
+    if (exec_status != 0) {
+        cout << "Erro na remoção do arquivo zip baixado." << endl;
+        exit(1);
+    }
 }
 
 
@@ -284,6 +292,70 @@ void install_pdflatex() {
     }
 }
 
+void clean_project() {
+    filesystem::path installed_dir = install_location_c_string;
+
+    installed_dir.append("Projeto-Ceramica");
+    int exec_status;
+    filesystem::path to_remove = installed_dir.c_str();
+
+
+    to_remove.append("images");
+    exec_status = remove_by_abs_path_command_line(to_remove.c_str());
+    if (exec_status != 0) {
+        cout << "Erro ao tentar remover " << to_remove.c_str();
+    }
+
+    to_remove = installed_dir.c_str();
+    to_remove.append("listas_salvas");
+    exec_status = remove_by_abs_path_command_line(to_remove.c_str());
+    if (exec_status != 0) {
+        cout << "Erro ao tentar remover " << to_remove.c_str();
+    }
+
+    to_remove = installed_dir.c_str();
+    to_remove.append("solucoes_salvas");
+    exec_status = remove_by_abs_path_command_line(to_remove.c_str());
+    if (exec_status != 0) {
+        cout << "Erro ao tentar remover " << to_remove.c_str();
+    }
+
+    to_remove = installed_dir.c_str();
+    to_remove.append("docs");
+    exec_status = remove_by_abs_path_command_line(to_remove.c_str());
+    if (exec_status != 0) {
+        cout << "Erro ao tentar remover " << to_remove.c_str();
+    }
+
+    to_remove = installed_dir.c_str();
+    to_remove.append(".git");
+    exec_status = remove_by_abs_path_command_line(to_remove.c_str());
+    if (exec_status != 0) {
+        cout << "Erro ao tentar remover " << to_remove.c_str();
+    }
+
+    to_remove = installed_dir.c_str();
+    to_remove.append(".gitignore");
+    exec_status = remove_by_abs_path_command_line(to_remove.c_str());
+    if (exec_status != 0) {
+        cout << "Erro ao tentar remover " << to_remove.c_str();
+    }
+
+    to_remove = installed_dir.c_str();
+    to_remove.append(".vscode");
+    exec_status = remove_by_abs_path_command_line(to_remove.c_str());
+    if (exec_status != 0) {
+        cout << "Erro ao tentar remover " << to_remove.c_str();
+    }
+
+    to_remove = installed_dir.c_str();
+    to_remove.append("instalador");
+    exec_status = remove_by_abs_path_command_line(to_remove.c_str());
+    if (exec_status != 0) {
+        cout << "Erro ao tentar remover " << to_remove.c_str();
+    }
+}
+
 void install() {
     download_zip();
     if (idOS == LINUX) {
@@ -292,8 +364,11 @@ void install() {
             install_unzip();
         }
     }
+    cout << endl << endl << endl;
     unzip_program();
+    cout << endl << endl << endl;
     install_pdflatex();
+    clean_project();
 }
 
 int main() {
