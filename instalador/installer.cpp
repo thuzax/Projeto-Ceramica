@@ -28,7 +28,7 @@ void define_OS_data() {
 
     #ifdef __linux__
         strcat(install_location_c_string, getenv("HOME"));
-        strcat(install_location_c_string, "/Documentos");
+        // strcat(install_location_c_string, "/Documentos");
         idOS = LINUX;
     #endif
 }
@@ -122,7 +122,7 @@ char* get_download_command_linux(char* command){
     strcat(command, "wget");
     strcat(command, " ");
 
-    char download_link[] = "'https://github.com/thuzax/Projeto-Ceramica/archive/master.zip'";
+    char download_link[] = "'https://github.com/thuzax/Projeto-Ceramica-Dev/archive/master.zip'";
     strcat(command, download_link);
     strcat(command, " ");
 
@@ -359,6 +359,7 @@ void clean_project() {
 void install() {
     download_zip();
     if (idOS == LINUX) {
+        cout << endl << endl << endl;
         int exec_status = exec_command_line("unzip --help");
         if (exec_status != 0) {
             install_unzip();
@@ -368,7 +369,9 @@ void install() {
     unzip_program();
     cout << endl << endl << endl;
     install_pdflatex();
+    cout << endl << endl << endl;
     clean_project();
+    cout << endl << endl << endl;
 }
 
 int main() {
