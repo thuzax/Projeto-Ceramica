@@ -12,6 +12,7 @@ char install_location_c_string[512] = "\0";
 
 bool pdflatex_already_installed = true;
 bool unzip_already_installed = true;
+bool project_already_existed = true;
 
 #ifndef __has_include
   static_assert(false, "__has_include not supported");
@@ -163,9 +164,10 @@ void abort_instalation(bool exclude_project = true) {
     fs::path new_project_path = install_location_c_string;
     new_project_path.append("Projeto-Ceramica");
 
-    if (fs::exists(new_project_path) and exclude_project) {
-        remove_by_abs_path_command_line_linux(new_project_path.c_str());
+    if (fs::exists(new_project_path) and not project_already_existed) {
+         remove_by_abs_path_command_line_linux(new_project_path.c_str());
     }
+    
     if (not pdflatex_already_installed) {
         int exec_status = exec_command_line("pdflatex --version");
         if (exec_status == 0) {
@@ -263,24 +265,28 @@ void unzip_program() {
     new_project_path.append("Projeto-Ceramica");
 
     if (fs::exists(new_project_path)) {
-        cout << "Já existe uma cópia do do projeto instalada. ";
-        cout << "Continuar a instalação irá remover a instalação antiga e todos os arquivos relacionados. ";
-        cout << "Deseja continuar? [S/n]  ";
-        string answer;
-        getline(cin, answer);
+        cout << "================================================================================" << endl;
+        cout << "Já existe uma instalação deste projeto. Abortando..." << endl;
+        cout << "================================================================================" << endl;
+        abort_instalation();
+        // cout << "Já existe uma cópia do do projeto instalada. ";
+        // cout << "Continuar a instalação irá remover a instalação antiga e todos os arquivos relacionados. ";
+        // cout << "Deseja continuar? [S/n]  ";
+        // string answer;
+        // getline(cin, answer);
 
-        if (answer == "n" or answer == "N") {
-            cout << "Abortando operação." << endl;
-            abort_instalation(false);
-        }
+        // if (answer == "n" or answer == "N") {
+        //     cout << "Abortando operação." << endl;
+        //     abort_instalation(false);
+        // }
 
-        cout << "Digite a senha de administrador se necessário:" << endl;
+        // cout << "Digite a senha de administrador se necessário:" << endl;
 
-        exec_status = remove_by_abs_path_command_line_linux(new_project_path.c_str());
-        if (exec_status != 0) {
-            cout << "Erro durante a remoção de projeto já existente!" << endl;
-            abort_instalation();
-        }
+        // exec_status = remove_by_abs_path_command_line_linux(new_project_path.c_str());
+        // if (exec_status != 0) {
+        //     cout << "Erro durante a remoção de projeto já existente!" << endl;
+        //     abort_instalation();
+        // }
 
     }
 
@@ -432,7 +438,69 @@ void clean_project() {
     }
 }
 
+bool libreoffice7_is_installed() {
+    FILE *fpipe;
+	char line[8192];
+	fpipe = (FILE*) popen("sudo libreoffice --version","r");
+	// If fpipe is NULL
+	if (fpipe == nullptr) {  
+		perror("Problems with pipe");
+		exit(1);
+	}
+    int i = 0;
+    int end = -1;
+    while (fgets(line, sizeof(line), fpipe)) {
+        if (i == 0) {
+            // char teste[20] = "\0";
+            // strncpy(teste, line, 19);
+            char teste[14] = "\0";
+            strncpy(teste, line, 13);
+            // if (strcmp(teste, "LibreOffice 7.3.7.2") == 0) {
+            if (strcmp(teste, "LibreOffice 7") == 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    return false;
+}
+
+
+void install_libreoffice() {
+    cout << "Verificando a instalação do LibreOffice 7." << endl;
+    cout << "Digite a senha de administrador se necessário." << endl;
+    if (not libreoffice7_is_installed()) {
+        cout << "LibreOffice 7 é necessário para a execução deste programa." << endl;
+        cout << "Abortando instalação" << endl;
+        abort_instalation();
+        // if (idOS == LINUX) {
+        //     char command[] = "sudo add-apt-repository ppa:libreoffice/ppa";
+        //     int exec_status = exec_command_line(command);
+        //     if (exec_status != 0) {
+        //         cout << "Erro de instalação do LibreOffice 7" << endl;
+        //     }
+        // }
+    }
+}
+
+void set_project_already_exists() {
+    fs::path installed_dir = install_location_c_string;
+    installed_dir.append("Projeto-Ceramica");
+
+    if (fs::exists(installed_dir)) {
+        project_already_existed = true;
+    }
+    else {
+        project_already_existed = false;
+    }
+}
+
 void install() {
+    set_project_already_exists();
+    install_libreoffice();
+
     cout << "==================================================================" << endl;
     cout << "Caso não estejam instalados, será necessário os pacotes: " << endl;
     cout << "  - unzip para descompactar o arquivo com o código fonte;" << endl;
