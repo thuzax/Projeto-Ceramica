@@ -5,8 +5,9 @@
 #include <fstream>
 #include <filesystem>
 
-enum {WINDOWS, LINUX};
+enum {WINDOWS, WINDOWS32, WINDOWS64, LINUX};
 int idOS;
+int osName;
 char install_location_c_string[512] = "\0";
 
 
@@ -33,15 +34,21 @@ using namespace std;
 
 void define_OS_data() {
     #ifdef __WIN32
-        // strcat(install_location_c_string, getenv("HOMEDRIVE"));
-        strcat(install_location_c_string, getenv("HOMEPATH"));
+        if (strcmp(install_location_c_string, "\0") == 0) {
+            strcat(install_location_c_string, getenv("HOMEDRIVE"));
+            strcat(install_location_c_string, getenv("HOMEPATH"));
+        }
         idOS = WINDOWS;
+        osName = WINDOWS32;
     #endif
 
     #ifdef _WIN64
-        // strcat(install_location_c_string, getenv("HOMEDRIVE"));
-        strcat(install_location_c_string, getenv("HOMEPATH"));
+        if (strcmp(install_location_c_string, "\0") == 0) {
+            strcat(install_location_c_string, getenv("HOMEDRIVE"));
+            strcat(install_location_c_string, getenv("HOMEPATH"));
+        }
         idOS = WINDOWS;
+        osName = WINDOWS64;
     #endif
 
     #ifdef __linux__
@@ -200,7 +207,7 @@ void abort_instalation(bool exclude_project = true) {
 
 }
 
-char* get_download_command_linux(char* command){
+void get_download_command_linux(char* command){
     cout << "Baixando arquivos..." << endl;
     strcpy(command, "\0");
     
@@ -213,18 +220,18 @@ char* get_download_command_linux(char* command){
 
     strcat(command, "--directory-prefix=");
     strcat(command, install_location_c_string);
-
-    return command;
 }
 
-char* get_download_command_windows(char* command){
-    // todo
-    strcpy(command, "\0");
-    return command;
+void get_download_command_windows(char* command){
+    fs::path dest_dir = install_location_c_string;
+    strcpy(command, "curl https://github.com/thuzax/Projeto-Ceramica-Dev/archive/refs/heads/main.zip -L -o ");
+    strcat(command, install_location_c_string);
+    strcat(command, "main.zip");
+    strcat(command, "'");
 }
 
 
-char* get_download_command(char* command){
+void get_download_command(char* command){
     if (idOS == LINUX) {
         return get_download_command_linux(command);
     }
@@ -232,7 +239,6 @@ char* get_download_command(char* command){
         return get_download_command_windows(command);
     }
     strcpy(command, "\0");
-    return command;
 }
 
 void install_unzip() {
@@ -583,8 +589,6 @@ void set_project_already_exists() {
 }
 
 void install_linux() {
-    set_project_already_exists();
-
     cout << "==================================================================" << endl;
     cout << "Caso não estejam instalados, será necessário os pacotes: " << endl;
     cout << "  - unzip para descompactar o arquivo com o código fonte;" << endl;
@@ -618,37 +622,47 @@ void install_linux() {
 void ask_install_permission_windows() {
     char message[128];
     strcpy(message, "\0");
-    strcat(message, "E necessario instalar os seguintes programas:");
+    strcat(message, "E necessario ter instalado o programa");
     strcat(message, "  ");
     strcat(message, "miktex.");
     strcat(message, " ");
-    strcat(message, "Voce permite a instalacao?");
+    strcat(message, "Voce permite que ele seja instalado caso ele nao esteja presente no seu computador?");
     
     int result = msg_box_YN_windows(message);
 
     if (result != IDYES) {
         cout << "Abortando instalacao" << endl;
-        msg_box_info_windows("A instalacao sera abortada");
+        msg_box_info_windows("A instalacao sera abortada", "Cancelado");
         abort_instalation();
     }
 }
 
 
 void install_windows() {
-    set_project_already_exists();
     ask_install_permission_windows();
     install_pdflatex();
+    download_zip();
 }
 
 void install() {
     verify_libreoffice_installed();
+    set_project_already_exists();
+
     if (idOS == LINUX) {
+        if (project_already_existed) {
+            cout << "Uma instalação deste projeto já existe. Cancelando..." << endl;
+            abort_instalation();
+        }
         install_linux();
-        cour << "Instalação finalizada" << endl;
+        cout << "Instalação finalizada" << endl;
     }
     else if (idOS == WINDOWS) {
+        if (project_already_existed) {
+            msg_box_info_windows("Uma instalação deste projeto já existe. Cancelando...", "Cancelando instalacao");
+            abort_instalation();
+        }
         install_windows();
-        msg_box_info_windows("Instalacao concluida", "Fim");
+        msg_box_info_windows("Instalação finalizada", "Fim");
     }
 }
 
@@ -659,7 +673,11 @@ int main() {
         cout << "Iniciando instalação..." << endl;
     }
     else if(idOS == WINDOWS) {
-        cout << "Iniciando instalacao..." << endl;
+        if (osName == WINDOWS64) {
+            SetConsoleOutputCP(CP_UTF8);
+        }
+
+        cout << "Iniciando instalaçao..." << endl;
     }
     else {
         cout << "Sistema Operacional imcompatível." << endl;
