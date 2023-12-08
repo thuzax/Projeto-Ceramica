@@ -37,6 +37,9 @@ void define_OS_data() {
         if (strcmp(install_location_c_string, "\0") == 0) {
             strcat(install_location_c_string, getenv("HOMEDRIVE"));
             strcat(install_location_c_string, getenv("HOMEPATH"));
+            fs::path install_dir = install_location_c_string;
+            install_dir.append("Documents");
+            strcpy(install_location_c_string, install_dir.string().c_str());
         }
         idOS = WINDOWS;
         osName = WINDOWS32;
@@ -46,6 +49,9 @@ void define_OS_data() {
         if (strcmp(install_location_c_string, "\0") == 0) {
             strcat(install_location_c_string, getenv("HOMEDRIVE"));
             strcat(install_location_c_string, getenv("HOMEPATH"));
+            fs::path install_dir = install_location_c_string;
+            install_dir.append("Documents");
+            strcpy(install_location_c_string, install_dir.string().c_str());
         }
         idOS = WINDOWS;
         osName = WINDOWS64;
@@ -79,23 +85,39 @@ int exec_command_line(const char* command, bool show_output = false) {
         }
     }
 
-	
 	return pclose(fpipe);
     
 }
 
 
-void DisplayConfirmSaveAsMessageBox() {
+void wchar_message_box_text_to_char(char* converted_text, const wchar_t* text) {
+    wcstombs(converted_text, text, 2048);
 }
 
 // IDYES == 6; IDNO == 7
-int msg_box_YN_windows(const char* message, const char* title = "Confirme") {
-    return MessageBox(0, message, title, MB_YESNO);
+int msg_box_YN_windows(const wchar_t* message_wchar, const wchar_t* title_wchar) {
+    char message[2048];
+    wchar_message_box_text_to_char(message, message_wchar);
+    char title[2048];
+    wchar_message_box_text_to_char(title, title_wchar);
+    return MessageBox(0, message, title, MB_ICONQUESTION | MB_YESNO | MB_SETFOREGROUND | MB_SYSTEMMODAL);
 }
 
 
-void msg_box_info_windows(const char* message, const char* title = "Informacao") {
-    MessageBox(0, message, title, MB_OK );
+void msg_box_info_windows(const wchar_t* message_wchar, const wchar_t* title_wchar) {
+    char message[2048];
+    wchar_message_box_text_to_char(message, message_wchar);
+    char title[2048];
+    wchar_message_box_text_to_char(title, title_wchar);
+    MessageBox(0, message, title, MB_ICONINFORMATION | MB_OK | MB_SETFOREGROUND | MB_SYSTEMMODAL);
+}
+
+void msg_box_error_windows(const wchar_t* message_wchar, const wchar_t* title_wchar) {
+    char message[2048];
+    wchar_message_box_text_to_char(message, message_wchar);
+    char title[2048];
+    wchar_message_box_text_to_char(title, title_wchar);
+    MessageBox(0, message, title, MB_ICONERROR | MB_OK | MB_SETFOREGROUND | MB_SYSTEMMODAL);
 }
 
 
@@ -103,31 +125,66 @@ int remove_by_abs_path_command_line_linux(const char* absolute_path) {
     fs::path file_path = absolute_path;
     if (fs::exists(file_path)) {
         if (fs::is_directory(file_path)) {
-            if (idOS == LINUX) {
-                cout << "Removendo diretório " << absolute_path << endl;
-                cout << "Digite a senha de administrador se necessário." << endl;
-                char remove_command[512];
-                strcpy(remove_command, "sudo");
-                strcat(remove_command, " ");
-                strcat(remove_command, "rm");
-                strcat(remove_command, " ");
-                strcat(remove_command, "-R");
-                strcat(remove_command, " ");
-                strcat(remove_command, file_path.string().c_str());
-                return exec_command_line(remove_command);
-            }
+            cout << "Removendo diretório " << absolute_path << endl;
+            cout << "Digite a senha de administrador se necessário." << endl;
+            char remove_command[512];
+            strcpy(remove_command, "sudo");
+            strcat(remove_command, " ");
+            strcat(remove_command, "rm");
+            strcat(remove_command, " ");
+            strcat(remove_command, "-R");
+            strcat(remove_command, " ");
+            strcat(remove_command, file_path.string().c_str());
+            return exec_command_line(remove_command);
         }
         else {
-            if (idOS == LINUX) {
-                char remove_command[512];
-                strcpy(remove_command, "rm");
-                strcat(remove_command, " ");
-                strcat(remove_command, file_path.string().c_str());
-                return exec_command_line(remove_command);
-            }
+            char remove_command[512];
+            strcpy(remove_command, "rm");
+            strcat(remove_command, " ");
+            strcat(remove_command, file_path.string().c_str());
+            return exec_command_line(remove_command);
         }
     }
     cout << "Arquivo " << absolute_path << " não encontrado." << endl;
+    return 0;
+}
+
+
+int remove_by_abs_path_command_line_windows(const char* absolute_path) {
+    fs::path file_path = absolute_path;
+    if (fs::exists(file_path)) {
+        if (fs::is_directory(file_path)) {
+            char remove_command[512];
+            strcpy(remove_command, "rmdir");
+            strcat(remove_command, " ");
+            strcat(remove_command, file_path.string().c_str());
+            strcat(remove_command, " ");
+            strcat(remove_command, "/s /q");
+            return exec_command_line(remove_command, true);
+        }
+        else {
+            char remove_command[512];
+            strcpy(remove_command, "del");
+            strcat(remove_command, " ");
+            strcat(remove_command, file_path.string().c_str());
+            return exec_command_line(remove_command, true);
+        }
+    }
+    cout << "Arquivo " << absolute_path << "não encontrado" << endl;
+    return 0;
+}
+
+int remove_by_abs_path_command_line(const char* absolute_path) {
+    fs::path file_path = absolute_path;
+    if (fs::exists(file_path)) {
+        if (idOS == LINUX) {
+            return remove_by_abs_path_command_line_linux(absolute_path);
+        }
+        else if (idOS == WINDOWS) {
+            return remove_by_abs_path_command_line_windows(absolute_path);
+        }
+    }
+    cout << "Arquivo " << absolute_path << "não encontrado" << endl;
     return 0;
 }
 
@@ -149,7 +206,42 @@ void remove_pdflatex() {
         strcat(command, "texlive-latex-extra");
         exec_command_line(command);
     }
+    else if (idOS == WINDOWS) {
+        char command[256];
+        
+        strcpy(command, "rmdir /S /Q \"%PROGRAMFILES%\\MiKTeX\"");
+        exec_command_line(command, true);
+
+        strcpy(command, "rmdir /S /Q \"%PROGRAMFILES(x86)%\\MiKTeX\"");
+        exec_command_line(command, true);
+
+        strcpy(command, "rmdir /S /Q \"%PROGRAMDATA%\\MiKTeX\"");
+        exec_command_line(command, true);
+
+        strcpy(command, "rmdir /S /Q \"%APPDATA%\\MiKTeX\"");
+        exec_command_line(command, true);
+
+        strcpy(command, "rmdir /S /Q \"%LOCALAPPDATA%\\MiKTeX\"");
+        exec_command_line(command, true);
+
+        strcpy(command, "rmdir /S /Q \"%LOCALAPPDATA%\\Programs\\MiKTeX\"");
+        exec_command_line(command, true);
+
+        strcpy(command, "rmdir /S /Q \"%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\MiKTeX\"");
+        exec_command_line(command, true);
+
+        strcpy(command, "rmdir /S /Q \"%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\MiKTeX\"");
+        exec_command_line(command, true);
+
+        strcpy(command, "reg delete HKCU\\Software\\MiKTeX.org /f");
+        exec_command_line(command, true);
+
+        strcpy(command, "reg delete HKLM\\SOFTWARE\\MiKTeX.org /f");
+        exec_command_line(command, true);
+
+    }
 }
+
 
 void remove_unzip() {
     cout << "==================================================================" << endl;
@@ -172,36 +264,43 @@ void abort_instalation(bool exclude_project = true) {
     cout << "Removendo arquivos criados até o momento..." << endl;
 
     if (fs::exists(zip_file)) {
-        remove_by_abs_path_command_line_linux(zip_file.string().c_str());
+        remove_by_abs_path_command_line(zip_file.string().c_str());
     }
 
     fs::path unzip_local = install_location_c_string;
     unzip_local.append("tmp");
 
     if (fs::exists(unzip_local)) {
-        remove_by_abs_path_command_line_linux(unzip_local.string().c_str());
+        remove_by_abs_path_command_line(unzip_local.string().c_str());
     }
 
     fs::path new_project_path = install_location_c_string;
     new_project_path.append("Projeto-Ceramica");
 
     if (fs::exists(new_project_path) and not project_already_existed) {
-         remove_by_abs_path_command_line_linux(new_project_path.string().c_str());
+         remove_by_abs_path_command_line(new_project_path.string().c_str());
     }
     
-    if (not pdflatex_already_installed) {
-        int exec_status = exec_command_line("pdflatex --version");
-        if (exec_status == 0) {
-            remove_pdflatex();
+    if (idOS == LINUX) {
+        if (not pdflatex_already_installed) {
+            int exec_status = exec_command_line("pdflatex --version");
+            if (exec_status == 0) {
+                remove_pdflatex();
+            }
         }
-    }
 
-    if (not unzip_already_installed) {
-        int exec_status = exec_command_line("unzip --help");
-        if (exec_status == 0) {
-            remove_unzip();
+        if (not unzip_already_installed) {
+            int exec_status = exec_command_line("unzip --help");
+            if (exec_status == 0) {
+                remove_unzip();
+            }
         }
     }
+    else if (idOS == WINDOWS) {
+        if (not pdflatex_already_installed) {
+        }
+    }
+    
 
     exit(0);
 
@@ -225,9 +324,8 @@ void get_download_command_linux(char* command){
 void get_download_command_windows(char* command){
     fs::path dest_dir = install_location_c_string;
     strcpy(command, "curl https://github.com/thuzax/Projeto-Ceramica-Dev/archive/refs/heads/main.zip -L -o ");
-    strcat(command, install_location_c_string);
-    strcat(command, "main.zip");
-    strcat(command, "'");
+    dest_dir.append("main.zip");
+    strcat(command, dest_dir.string().c_str());
 }
 
 
@@ -256,7 +354,7 @@ void install_unzip() {
     }
 }
 
-void unzip_program() {
+void unzip_program_linux() {
     char command[512];
     fs::path unzip_local = install_location_c_string;
     unzip_local.append("tmp");
@@ -296,7 +394,7 @@ void unzip_program() {
         // getline(cin, answer);
 
         // if (answer == "n" or answer == "N") {
-        //     cout << "Abortando operação." << endl;
+            // cout << "Abortando operação." << endl;
         //     abort_instalation(false);
         // }
 
@@ -304,7 +402,7 @@ void unzip_program() {
 
         // exec_status = remove_by_abs_path_command_line_linux(new_project_path.string().c_str());
         // if (exec_status != 0) {
-        //     cout << "Erro durante a remoção de projeto já existente!" << endl;
+            // cout << "Erro durante a remoção de projeto já existente!" << endl;
         //     abort_instalation();
         // }
 
@@ -324,16 +422,125 @@ void unzip_program() {
 
     }
 
-    exec_status = remove_by_abs_path_command_line_linux(unzip_local.string().c_str());
+    exec_status = remove_by_abs_path_command_line(unzip_local.string().c_str());
     if (exec_status != 0) {
         cout << "Erro na remoção de pasta temporária." << endl;
         exit(1);
     }
 
-    exec_status = remove_by_abs_path_command_line_linux(zip_file.string().c_str());
+    exec_status = remove_by_abs_path_command_line(zip_file.string().c_str());
     if (exec_status != 0) {
         cout << "Erro na remoção do arquivo zip baixado." << endl;
         exit(1);
+    }
+}
+
+void unzip_program_windows() {
+    fs::path unzip_local = install_location_c_string;
+    unzip_local.append("tmp");
+    
+    if (not fs::exists(unzip_local)) {
+        char command[512];
+        strcpy(command, "mkdir");
+        strcat(command, " ");
+        strcat(command, unzip_local.string().c_str());
+        int exec_status;
+        exec_status = exec_command_line(command, true);
+        if (exec_status != 0) {
+            cout << "Erro na extração do arquivo" << endl;
+            wchar_t message[128];
+            wcscpy(message, L"Erro na extração do arquivo. Abortando instalação.");
+            wchar_t title[128];
+            wcscpy(title, L"Instalação cancelada.");
+            msg_box_error_windows(message, title);
+            abort_instalation();
+        }
+    }
+    
+    
+    fs::path zip_file = install_location_c_string;
+    zip_file.append("main.zip");
+
+    char command[512];
+    strcpy(command, "tar -xf");
+    strcat(command, " ");
+    strcat(command, zip_file.string().c_str());
+    strcat(command, " ");
+    strcat(command, "-C");
+    strcat(command, " ");
+    strcat(command, unzip_local.string().c_str());
+
+    int exec_status;
+    exec_status = exec_command_line(command, true);
+    if (exec_status != 0) {
+        cout << "Erro na extração do arquivo" << endl;
+        wchar_t message[128];
+        wcscpy(message, L"Erro na extração do arquivo. Abortando instalação.");
+        wchar_t title[128];
+        wcscpy(title, L"Instalação cancelada.");
+        msg_box_error_windows(message, title);
+        abort_instalation();
+    }
+
+
+    fs::path project_directory_path;
+    for (const auto & file_name : fs::directory_iterator(unzip_local)) {
+        project_directory_path = file_name.path();
+    }
+
+    fs::path new_project_path = install_location_c_string;
+    new_project_path.append("Projeto-Ceramica");
+
+    strcpy(command, "xcopy");
+    strcat(command, " ");
+    strcat(command, project_directory_path.string().c_str());
+    strcat(command, " ");
+    strcat(command, new_project_path.string().c_str());
+    strcat(command, " ");
+    strcat(command, "/s /h /e /k /f /y /i");
+    exec_status = exec_command_line(command, true);
+    if (exec_status != 0) {
+        cout << "Erro na extração do arquivo" << endl;
+        wchar_t message[128];
+        wcscpy(message, L"Erro na extração do arquivo. Abortando instalação.");
+        wchar_t title[128];
+        wcscpy(title, L"Instalação cancelada.");
+        msg_box_error_windows(message, title);
+        abort_instalation();
+    }
+
+   
+    exec_status = remove_by_abs_path_command_line(unzip_local.string().c_str());
+    if (exec_status != 0) {
+        cout << "Erro na extração do arquivo" << endl;
+        wchar_t message[128];
+        wcscpy(message, L"Erro na extração do arquivo. Abortando instalação.");
+        wchar_t title[128];
+        wcscpy(title, L"Instalação cancelada.");
+        msg_box_error_windows(message, title);
+        abort_instalation();
+    }
+
+    exec_status = remove_by_abs_path_command_line(zip_file.string().c_str());
+    if (exec_status != 0) {
+        cout << "Erro na extração do arquivo" << endl;
+        wchar_t message[128];
+        wcscpy(message, L"Erro na extração do arquivo. Abortando instalação.");
+        wchar_t title[128];
+        wcscpy(title, L"Instalação cancelada.");
+        msg_box_error_windows(message, title);
+        abort_instalation();
+    }
+
+}
+
+
+void unzip_program() {
+    if (idOS == LINUX) {
+        unzip_program_linux();
+    }
+    else if (idOS == WINDOWS) {
+        unzip_program_windows();
     }
 }
 
@@ -341,12 +548,20 @@ void unzip_program() {
 void download_zip() {
     char command[1024];
     get_download_command(command);
-    int execution_status = exec_command_line(command);
+    int execution_status = exec_command_line(command, true);
 
     if (execution_status != 0) {
         cout << "Erro durante o download do projeto. Abortando instalação."  << endl;
+        if (idOS == WINDOWS) {
+            wchar_t message[128];
+            wcscpy(message, L"Erro durante o download do projeto. Abortando instalação.");
+            wchar_t title[128];
+            wcscpy(title, L"Instalação cancelada.");
+            msg_box_error_windows(message, title);
+        }
         abort_instalation();
     }
+    cout << command << endl;
 }
 
 void login_as_admin_linux() {
@@ -357,7 +572,7 @@ void login_as_admin_linux() {
 
 
 void install_pdflatex_linux() {
-    cout << endl << endl;
+    // cout << endl << endl;
     cout << "==================================================================" << endl;
     cout << "Instalando pacotes texlive-latex-base, texlive-fonts-recommended, texlive-fonts-extra e texlive-latex-extra. Aguarde..." << endl;
     cout << "(Digite a senha de administrador se necessário)" << endl;
@@ -378,6 +593,8 @@ void install_pdflatex_linux() {
         cout << "Erro na instalação do pdflatex." << endl;
         abort_instalation();
     }
+
+    cout << "Instalação do pdflatex concluída." << endl;
 }
 
 
@@ -385,54 +602,123 @@ void install_miktex() {
     char command[128];
     int exec_status;
 
-    strcpy(command, "curl -LO https://miktex.org/download/win/miktexsetup-x64.zip");
-    exec_status = exec_command_line(command);
+    cout << "Iniciando instalação do MikTex." << endl;
+
+    fs::path miktexsetup_local_path = install_location_c_string;
+
+
+    fs::path miktexsetup_zip_path = install_location_c_string;
+    miktexsetup_zip_path.append("miktexsetup-x64.zip");
+    strcpy(command, "curl https://miktex.org/download/win/miktexsetup-x64.zip -L -o ");
+    strcat(command, miktexsetup_zip_path.string().c_str());
+    
+
+    exec_status = exec_command_line(command, true);
     if (exec_status != 0) {
-        msg_box_info_windows("Erro ao instalar o miktex. Abortando operacoes...", "Erro de instalacao");
+        wchar_t message[128];
+        wcscpy(message, L"Erro ao instalar o MikTex: não foi possível baixar o miktexsetup-x64.zip. Abortando operações...");
+        wchar_t title[128];
+        wcscpy(title, L"Cancelando Instalação");
+        msg_box_error_windows(message, title);
         abort_instalation();
     }
 
-    strcpy(command, "miktexsetup_standalone --verbose --local-package-repository=C:\\temp\\miktex --package-set=basic download");
-    exec_status = exec_command_line(command);
+    strcpy(command, "tar -xf");
+    strcat(command, " ");
+    strcat(command, miktexsetup_zip_path.string().c_str());
+    strcat(command, " ");
+    strcat(command, "-C");
+    strcat(command, " ");
+    strcat(command, miktexsetup_local_path.string().c_str());
+    exec_status = exec_command_line(command, true);
     if (exec_status != 0) {
-        msg_box_info_windows("Erro ao instalar o miktex. Abortando operacoes...", "Erro de instalacao");
+        wchar_t message[128];
+        wcscpy(message, L"Erro ao instalar o MikTex: não foi possível descompactar o arquivo. Abortando operações...");
+        wchar_t title[128];
+        wcscpy(title, L"Cancelando Instalação");
+        msg_box_error_windows(message, title);
         abort_instalation();
     }
 
-    strcpy(command, "miktexsetup_standalone --verbose --package-set=basic install");
-    exec_status = exec_command_line(command);
+
+    fs::path miktexsetup_standalone_path = install_location_c_string;
+    miktexsetup_standalone_path.append("miktexsetup_standalone.exe");
+
+    strcpy(command, miktexsetup_standalone_path.string().c_str());
+    strcat(command, " --quiet --local-package-repository=C:\\temp\\miktex --package-set=basic download");
+    exec_status = exec_command_line(command, true);
+    if (exec_status != 0) {
+        wchar_t message[128];
+        wcscpy(message, L"Erro ao instalar o MikTex: não foi possível baixar pacotes para instalação. Abortando operações...");
+        wchar_t title[128];
+        wcscpy(title, L"Cancelando Instalação");
+        msg_box_error_windows(message, title);
+        abort_instalation();
+    }
+
+    strcpy(command, miktexsetup_standalone_path.string().c_str());
+    strcat(command, " --quiet --package-set=basic install");
+    exec_status = exec_command_line(command, true);
 
     if (exec_status != 0) {
-        msg_box_info_windows("Erro ao instalar o miktex. Abortando operacoes...", "Erro de instalacao");
+        wchar_t message[128];
+        wcscpy(message, L"Erro ao instalar o MikTex: não foi possível finalizar a instalação. Abortando operações...");
+        wchar_t title[128];
+        wcscpy(title, L"Cancelando Instalação");
+        msg_box_error_windows(message, title);
         abort_instalation();
     }
 
     strcpy(command, "set PATH=%PATH%;C:\\Program Files\\MiKTeX\\miktex\\bin\\x64");
-    exec_status = exec_command_line(command);
+    exec_status = exec_command_line(command, true);
 
     if (exec_status != 0) {
-        msg_box_info_windows("Erro ao instalar o miktex. Abortando operacoes...", "Erro de instalacao");
+        wchar_t message[128];
+        wcscpy(message, L"Erro ao instalar o MikTex: não foi possível alterar as variáveis de caminho. Abortando operações...");
+        wchar_t title[128];
+        wcscpy(title, L"Cancelando Instalação");
+        msg_box_error_windows(message, title);
         abort_instalation();
     }
 
 
 
+
+    cout << "Verificando se a instalação foi concluída corretamente." << endl;
+    strcpy(command, "pdflatex --version");
+    exec_status = exec_command_line(command, true);
+    if (exec_status != 0) {
+        wchar_t message[128];
+        wcscpy(message, L"Erro ao instalar o MikTex: pdflatex não encontrado. Abortando operações...");
+        wchar_t title[128];
+        wcscpy(title, L"Cancelando Instalação");
+        msg_box_error_windows(message, title);
+        abort_instalation();
+    }
+
+    cout << "OK!" << endl;
+
+    remove_by_abs_path_command_line(miktexsetup_zip_path.string().c_str());
+    remove_by_abs_path_command_line(miktexsetup_standalone_path.string().c_str());
+
     // UNINSTALL MIKTEX
-    // rmdir /S /Q "%PROGRAMFILES%\MiKTeX 2.9"
-    // rmdir /S /Q "%PROGRAMFILES(x86)%\MiKTeX 2.9"
+    // rmdir /S /Q "%PROGRAMFILES%\MiKTeX"
+    // rmdir /S /Q "%PROGRAMFILES(x86)%\MiKTeX"
     // rmdir /S /Q "%PROGRAMDATA%\MiKTeX"
     // rmdir /S /Q "%APPDATA%\MiKTeX"
     // rmdir /S /Q "%LOCALAPPDATA%\MiKTeX"
-    // rmdir /S /Q "%LOCALAPPDATA%\Programs\MiKTeX 2.9"
-    // rmdir /S /Q "%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\MiKTeX 2.9"
-    // rmdir /S /Q "%APPDATA%\Microsoft\Windows\Start Menu\Programs\MiKTeX 2.9"
-    // reg delete HKCU\Software\MiKTeX.org
-    // reg delete HKLM\SOFTWARE\MiKTeX.org
+    // rmdir /S /Q "%LOCALAPPDATA%\Programs\MiKTeX"
+    // rmdir /S /Q "%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\MiKTeX"
+    // rmdir /S /Q "%APPDATA%\Microsoft\Windows\Start Menu\Programs\MiKTeX"
+    // reg delete HKCU\Software\MiKTeX.org /f
+    // reg delete HKLM\SOFTWARE\MiKTeX.org /f
 }
 
 
 void install_pdflatex() {
+    cout << "AQUI" << endl;
     if (idOS == LINUX) {
+        cout << "Verificando a instalação do pdflatex..." << endl;
         int exec_status = exec_command_line("pdflatex --version");
         if (exec_status != 0) {
             pdflatex_already_installed = false;
@@ -440,6 +726,7 @@ void install_pdflatex() {
         }
     }
     else if (idOS == WINDOWS) {
+        cout << "Verificando a instalação do MikTex/pdflatex..." << endl;
         int exec_status = exec_command_line("pdflatex --version");
         if (exec_status != 0) {
             pdflatex_already_installed = false;
@@ -458,59 +745,60 @@ void clean_project() {
 
 
     to_remove.append("images");
-    exec_status = remove_by_abs_path_command_line_linux(to_remove.string().c_str());
+    exec_status = remove_by_abs_path_command_line(to_remove.string().c_str());
     if (exec_status != 0) {
         cout << "Erro ao tentar remover " << to_remove.string().c_str();
     }
 
     to_remove = installed_dir.string().c_str();
     to_remove.append("listas_salvas");
-    exec_status = remove_by_abs_path_command_line_linux(to_remove.string().c_str());
+    exec_status = remove_by_abs_path_command_line(to_remove.string().c_str());
     if (exec_status != 0) {
         cout << "Erro ao tentar remover " << to_remove.string().c_str();
     }
 
     to_remove = installed_dir.string().c_str();
     to_remove.append("solucoes_salvas");
-    exec_status = remove_by_abs_path_command_line_linux(to_remove.string().c_str());
+    exec_status = remove_by_abs_path_command_line(to_remove.string().c_str());
     if (exec_status != 0) {
         cout << "Erro ao tentar remover " << to_remove.string().c_str();
     }
 
     to_remove = installed_dir.string().c_str();
     to_remove.append("docs");
-    exec_status = remove_by_abs_path_command_line_linux(to_remove.string().c_str());
+    exec_status = remove_by_abs_path_command_line(to_remove.string().c_str());
     if (exec_status != 0) {
         cout << "Erro ao tentar remover " << to_remove.string().c_str();
     }
 
     to_remove = installed_dir.string().c_str();
     to_remove.append(".git");
-    exec_status = remove_by_abs_path_command_line_linux(to_remove.string().c_str());
+    exec_status = remove_by_abs_path_command_line(to_remove.string().c_str());
     if (exec_status != 0) {
         cout << "Erro ao tentar remover " << to_remove.string().c_str();
     }
 
     to_remove = installed_dir.string().c_str();
     to_remove.append(".gitignore");
-    exec_status = remove_by_abs_path_command_line_linux(to_remove.string().c_str());
+    exec_status = remove_by_abs_path_command_line(to_remove.string().c_str());
     if (exec_status != 0) {
         cout << "Erro ao tentar remover " << to_remove.string().c_str();
     }
 
     to_remove = installed_dir.string().c_str();
     to_remove.append(".vscode");
-    exec_status = remove_by_abs_path_command_line_linux(to_remove.string().c_str());
+    exec_status = remove_by_abs_path_command_line(to_remove.string().c_str());
     if (exec_status != 0) {
         cout << "Erro ao tentar remover " << to_remove.string().c_str();
     }
 
     to_remove = installed_dir.string().c_str();
     to_remove.append("instalador");
-    exec_status = remove_by_abs_path_command_line_linux(to_remove.string().c_str());
+    exec_status = remove_by_abs_path_command_line(to_remove.string().c_str());
     if (exec_status != 0) {
         cout << "Erro ao tentar remover " << to_remove.string().c_str();
     }
+
 }
 
 
@@ -557,9 +845,9 @@ bool libreoffice7_is_installed_windows() {
 
 
 void verify_libreoffice_installed() {
+    cout << "Verificando a instalação do LibreOffice 7." << endl;
+    cout << "Digite a senha de administrador se necessário." << endl;
     if (idOS == LINUX){
-        cout << "Verificando a instalação do LibreOffice 7." << endl;
-        cout << "Digite a senha de administrador se necessário." << endl;
         if (not libreoffice7_is_installed_linux()) {
             cout << "LibreOffice 7 é necessário para a execução deste programa." << endl;
             cout << "Abortando instalação" << endl;
@@ -567,10 +855,15 @@ void verify_libreoffice_installed() {
         }
     }
     else if(idOS == WINDOWS) {
-        cout << "Verificando a instalacao do LibreOffice 7." << endl;
+        cout << "Verificando a instalação do LibreOffice 7." << endl;
         if (not libreoffice7_is_installed_windows()) {
-            cout << "LibreOffice 7 e necessario para a execucao deste programa." << endl;
+            cout << "LibreOffice 7 e necessário para a execução deste programa." << endl;
             cout << "Abortando instalacao" << endl;
+            wchar_t message[128];
+            wcscpy(message, L"LibreOffice 7 e necessário para a execução deste programa.");
+            wchar_t title[128];
+            wcscpy(title, L"Cancelando instalação");
+            msg_box_error_windows(message, title);
             abort_instalation();
         }
     }
@@ -617,24 +910,35 @@ void install_linux() {
     cout << endl << endl << endl;
     clean_project();
     cout << endl << endl << endl;
+
 }
 
-void ask_install_permission_windows() {
-    char message[128];
-    strcpy(message, "\0");
-    strcat(message, "E necessario ter instalado o programa");
-    strcat(message, "  ");
-    strcat(message, "miktex.");
-    strcat(message, " ");
-    strcat(message, "Voce permite que ele seja instalado caso ele nao esteja presente no seu computador?");
-    
-    int result = msg_box_YN_windows(message);
 
+void ask_install_permission_windows() {
+    wchar_t message[2048];
+    wcscpy(message, L"\0");
+    wcscat(message, L"É necessário ter instalado o programa");
+    wcscat(message, L"  ");
+    wcscat(message, L"pdflatex para a geração de pdfs contendo a solução.");
+    wcscat(message, L" ");
+    wcscat(message, L"Caso ele não esteja em seu computador será necessário instalar o programa MikTex.");
+    wcscat(message, L" ");
+    wcscat(message, L"Você permite a instalação?");
+    
+    wchar_t title[128];
+    wcscpy(title, L"Permitir instalação");
+
+    int result = msg_box_YN_windows(message, title);
     if (result != IDYES) {
-        cout << "Abortando instalacao" << endl;
-        msg_box_info_windows("A instalacao sera abortada", "Cancelado");
+        cout << "Abortando instalação" << endl;
+        wchar_t message_error[128];
+        wcscpy(message_error, L"A instalação será abortada.");
+        wchar_t title_error[128];
+        wcscpy(title_error, L"Instalação cancelada.");
+        msg_box_error_windows(message_error, title_error);
         abort_instalation();
     }
+
 }
 
 
@@ -642,9 +946,14 @@ void install_windows() {
     ask_install_permission_windows();
     install_pdflatex();
     download_zip();
+    unzip_program();
+    clean_project();
+    remove_pdflatex();
+
 }
 
 void install() {
+
     verify_libreoffice_installed();
     set_project_already_exists();
 
@@ -658,11 +967,19 @@ void install() {
     }
     else if (idOS == WINDOWS) {
         if (project_already_existed) {
-            msg_box_info_windows("Uma instalação deste projeto já existe. Cancelando...", "Cancelando instalacao");
+            wchar_t message[128];
+            wcscpy(message, L"Uma instalação deste projeto já existe. Cancelando...");
+            wchar_t title[128];
+            wcscpy(title, L"Cancelando instalação");
+            msg_box_error_windows(message, title);
             abort_instalation();
         }
         install_windows();
-        msg_box_info_windows("Instalação finalizada", "Fim");
+        wchar_t message[128];
+        wcscpy(message, L"Instalação finalizada");
+        wchar_t title[128];
+        wcscpy(title, L"Fim");
+        msg_box_info_windows(message, title);
     }
 }
 
@@ -677,7 +994,7 @@ int main() {
             SetConsoleOutputCP(CP_UTF8);
         }
 
-        cout << "Iniciando instalaçao..." << endl;
+        cout << "Iniciando instalação..." << endl;
     }
     else {
         cout << "Sistema Operacional imcompatível." << endl;

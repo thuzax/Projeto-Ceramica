@@ -21,7 +21,7 @@ main : $(OBJECTS)
 
 # Automatic object-header dependences
 
-makefiles = $(OBJECTS:%.o=%.d) 
+# makefiles = $(OBJECTS:%.o=%.d) 
 
 include $(makefiles)
 
