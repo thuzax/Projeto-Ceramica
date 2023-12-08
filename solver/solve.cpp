@@ -16,11 +16,7 @@ using namespace std;
 
 enum {WINDOWS, UNIX};
 
-#ifdef __WIN32
-	int idOS = WINDOWS;
-#endif
-
-#ifdef _WIN64
+#ifdef __WIN32 || _WIN64
 	int idOS = WINDOWS;
 #endif
 

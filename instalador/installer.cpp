@@ -32,6 +32,7 @@ bool project_already_existed = true;
 
 using namespace std;
 
+
 void define_OS_data() {
     #ifdef __WIN32
         if (strcmp(install_location_c_string, "\0") == 0) {
@@ -123,27 +124,25 @@ void msg_box_error_windows(const wchar_t* message_wchar, const wchar_t* title_wc
 
 int remove_by_abs_path_command_line_linux(const char* absolute_path) {
     fs::path file_path = absolute_path;
-    if (fs::exists(file_path)) {
-        if (fs::is_directory(file_path)) {
-            cout << "Removendo diretório " << absolute_path << endl;
-            cout << "Digite a senha de administrador se necessário." << endl;
-            char remove_command[512];
-            strcpy(remove_command, "sudo");
-            strcat(remove_command, " ");
-            strcat(remove_command, "rm");
-            strcat(remove_command, " ");
-            strcat(remove_command, "-R");
-            strcat(remove_command, " ");
-            strcat(remove_command, file_path.string().c_str());
-            return exec_command_line(remove_command);
-        }
-        else {
-            char remove_command[512];
-            strcpy(remove_command, "rm");
-            strcat(remove_command, " ");
-            strcat(remove_command, file_path.string().c_str());
-            return exec_command_line(remove_command);
-        }
+    if (fs::is_directory(file_path)) {
+        cout << "Removendo diretório " << absolute_path << endl;
+        cout << "Digite a senha de administrador se necessário." << endl;
+        char remove_command[512];
+        strcpy(remove_command, "sudo");
+        strcat(remove_command, " ");
+        strcat(remove_command, "rm");
+        strcat(remove_command, " ");
+        strcat(remove_command, "-R");
+        strcat(remove_command, " ");
+        strcat(remove_command, file_path.string().c_str());
+        return exec_command_line(remove_command);
+    }
+    else {
+        char remove_command[512];
+        strcpy(remove_command, "rm");
+        strcat(remove_command, " ");
+        strcat(remove_command, file_path.string().c_str());
+        return exec_command_line(remove_command);
     }
     cout << "Arquivo " << absolute_path << " não encontrado." << endl;
     return 0;
@@ -152,23 +151,21 @@ int remove_by_abs_path_command_line_linux(const char* absolute_path) {
 
 int remove_by_abs_path_command_line_windows(const char* absolute_path) {
     fs::path file_path = absolute_path;
-    if (fs::exists(file_path)) {
-        if (fs::is_directory(file_path)) {
-            char remove_command[512];
-            strcpy(remove_command, "rmdir");
-            strcat(remove_command, " ");
-            strcat(remove_command, file_path.string().c_str());
-            strcat(remove_command, " ");
-            strcat(remove_command, "/s /q");
-            return exec_command_line(remove_command, true);
-        }
-        else {
-            char remove_command[512];
-            strcpy(remove_command, "del");
-            strcat(remove_command, " ");
-            strcat(remove_command, file_path.string().c_str());
-            return exec_command_line(remove_command, true);
-        }
+    if (fs::is_directory(file_path)) {
+        char remove_command[512];
+        strcpy(remove_command, "rmdir");
+        strcat(remove_command, " ");
+        strcat(remove_command, file_path.string().c_str());
+        strcat(remove_command, " ");
+        strcat(remove_command, "/s /q");
+        return exec_command_line(remove_command, true);
+    }
+    else {
+        char remove_command[512];
+        strcpy(remove_command, "del");
+        strcat(remove_command, " ");
+        strcat(remove_command, file_path.string().c_str());
+        return exec_command_line(remove_command, true);
     }
     cout << "Arquivo " << absolute_path << "não encontrado" << endl;
     return 0;
@@ -281,14 +278,14 @@ void abort_instalation(bool exclude_project = true) {
          remove_by_abs_path_command_line(new_project_path.string().c_str());
     }
     
-    if (idOS == LINUX) {
-        if (not pdflatex_already_installed) {
-            int exec_status = exec_command_line("pdflatex --version");
-            if (exec_status == 0) {
-                remove_pdflatex();
-            }
+    if (not pdflatex_already_installed) {
+        int exec_status = exec_command_line("pdflatex --version");
+        if (exec_status == 0) {
+            remove_pdflatex();
         }
-
+    }
+    
+    if (idOS == LINUX) {
         if (not unzip_already_installed) {
             int exec_status = exec_command_line("unzip --help");
             if (exec_status == 0) {
@@ -296,14 +293,7 @@ void abort_instalation(bool exclude_project = true) {
             }
         }
     }
-    else if (idOS == WINDOWS) {
-        if (not pdflatex_already_installed) {
-        }
-    }
-    
-
     exit(0);
-
 }
 
 void get_download_command_linux(char* command){
@@ -567,7 +557,7 @@ void download_zip() {
 void login_as_admin_linux() {
     char command[512];
     strcpy(command, "sudo su");
-    // exec_command_line(command);
+    exec_command_line(command);
 }
 
 
@@ -716,7 +706,6 @@ void install_miktex() {
 
 
 void install_pdflatex() {
-    cout << "AQUI" << endl;
     if (idOS == LINUX) {
         cout << "Verificando a instalação do pdflatex..." << endl;
         int exec_status = exec_command_line("pdflatex --version");
@@ -902,13 +891,21 @@ void install_linux() {
         unzip_already_installed = false;
         install_unzip();
     }
+    cout << "==================================================================" << endl;
     install_pdflatex();
+    cout << "==================================================================" << endl;
     cout << endl << endl << endl;
+    cout << "==================================================================" << endl;
     download_zip();
+    cout << "==================================================================" << endl;
     cout << endl << endl << endl;
+    cout << "==================================================================" << endl;
     unzip_program();
+    cout << "==================================================================" << endl;
     cout << endl << endl << endl;
+    cout << "==================================================================" << endl;
     clean_project();
+    cout << "==================================================================" << endl;
     cout << endl << endl << endl;
 
 }
@@ -941,19 +938,110 @@ void ask_install_permission_windows() {
 
 }
 
+void create_desktop_shortcut_windows() {
+    // mklink /H C:\Users\ahscruz\Desktop\teste.ods "C:\Users\ahscruz\Documents\Projeto-Ceramica\forno.ods"
+    fs::path file_forno_path = install_location_c_string;
+    file_forno_path.append("Projeto-Ceramica");
+    file_forno_path.append("forno.ods");
+    char user_path_string[128];
+    strcpy(user_path_string, getenv("HOMEDRIVE"));
+    strcat(user_path_string, getenv("HOMEPATH"));
+    fs::path shortcut_path = user_path_string;
+    shortcut_path.append("Desktop");
+    shortcut_path.append("forno.ods");
 
-void install_windows() {
-    ask_install_permission_windows();
-    install_pdflatex();
-    download_zip();
-    unzip_program();
-    clean_project();
-    remove_pdflatex();
+    if (fs::exists(shortcut_path)) {
+        int answer = msg_box_YN_windows(L"Já existe um arquivo com o nome da aplicação em sua Área de Trabalho. Deseja sobrescrevê-lo?", L"Sobrescrever arquivo de mesmo nome?");
+        if (answer == IDYES) {
+            remove_by_abs_path_command_line(shortcut_path.string().c_str());
+        }
+        else {
+            answer = msg_box_YN_windows(L"Deseja continuar a instalção sem criar o atalho?", L"Continuar sem criar atalho?");
+            if (answer != IDYES) {
+                cout << "Abortando instalação." << endl;
+                msg_box_error_windows(L"Abortando instalação. Os arquivos e programas intalados serão removidos.", L"Cancelando instalação");
+                abort_instalation();
+            }
+            return;
+        }
+    }
+
+    char command[256];
+    strcpy(command, "mklink");
+    strcat(command, " ");
+    strcat(command, "/H");
+    strcat(command, " ");
+    strcat(command, shortcut_path.string().c_str());
+    strcat(command, " ");
+    strcat(command, file_forno_path.string().c_str());
+    
+    int exec_status = exec_command_line(command);
+    if (exec_status != 0) {
+        cout << "Erro na ciração do atalho" << endl;
+        int answer = msg_box_YN_windows(L"Ocorreu um erro na criação do atalho para o arquivo forno.ods. Deseja continuar a instação?", L"Erro na instalação");
+        if (answer != IDYES) {
+            cout << "Abortando instalação." << endl;
+            msg_box_error_windows(L"Abortando instalação. Os arquivos e programas intalados serão removidos.", L"Cancelando instalação");
+            abort_instalation();
+        }
+        cout << "Prosseguindo com a instalação" << endl;
+    }
 
 }
 
-void install() {
 
+void install_windows() {
+    cout << "==================================================================" << endl;
+    ask_install_permission_windows();
+    cout << "==================================================================" << endl;
+    cout << endl << endl << endl;
+    cout << "==================================================================" << endl;
+    install_pdflatex();
+    cout << "==================================================================" << endl;
+    cout << endl << endl << endl;
+    download_zip();
+    cout << "==================================================================" << endl;
+    unzip_program();
+    cout << "==================================================================" << endl;
+    cout << endl << endl << endl;
+    cout << "==================================================================" << endl;
+    create_desktop_shortcut_windows();
+    cout << "==================================================================" << endl;
+    cout << endl << endl << endl;
+    cout << "==================================================================" << endl;
+    clean_project();
+    cout << "==================================================================" << endl;
+    cout << endl << endl << endl;
+    cout << "==================================================================" << endl;
+}
+
+void verify_admin() {
+    if (idOS == LINUX) {
+        login_as_admin_linux();
+    }
+    else if (idOS == WINDOWS) {
+        // int result = exec_command_line("mkdir \"C:\\Program Files (x86)\\teste\"", true);
+        // if(result != 0) {
+        //     cout << "Abortando execução" << endl;
+        //     msg_box_error_windows(L"É necessário executar este programa como administrador!", L"Permissão necessária.");
+        //     abort_instalation();
+        //     exit(0);
+        // }
+        // else {
+        //     remove_by_abs_path_command_line("\"C:\\Program Files (x86)\\teste\"");
+        // }
+    }
+}
+
+void logout_as_admin() {
+    if (idOS == LINUX) {
+        exec_command_line("exit");
+    }
+}
+
+
+void install() {
+    verify_admin();
     verify_libreoffice_installed();
     set_project_already_exists();
 
@@ -981,6 +1069,8 @@ void install() {
         wcscpy(title, L"Fim");
         msg_box_info_windows(message, title);
     }
+    
+    logout_as_admin();
 }
 
 int main() {
