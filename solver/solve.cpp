@@ -26,6 +26,22 @@ enum {WINDOWS, UNIX};
 
 
 
+#ifndef __has_include
+  static_assert(false, "__has_include not supported");
+#else
+    #if __cplusplus >= 201703L && __has_include(<filesystem>)
+    #include <filesystem>
+    namespace fs = std::filesystem;
+    #elif __has_include(<experimental/filesystem>)
+        #include <experimental/filesystem>
+        namespace fs = std::experimental::filesystem;
+    #elif __has_include(<boost/filesystem.hpp>)
+        #include <boost/filesystem.hpp>
+        namespace fs = boost::filesystem;
+    #endif
+#endif
+
+
 enum {SQUARE, RECTANGLE, TRIANGLE, CIRCLE};
 
 const char* lable_circle = "Círculo";
@@ -34,6 +50,8 @@ const char* lable_rectangle = "Retângulo";
 const char* lable_triangle = "Triângulo";
 
 const char* solver_input_name = "solver_input.txt";
+fs::path solver_input_path = "solver_input.txt";
+
 
 struct Piece {
 	int piece_type;
@@ -49,7 +67,7 @@ void exec_command_line(const char* command) {
 
 	cout << endl << command << endl;
 
-	char line[256];
+	char line[2048];
 
 	fpipe = (FILE*) popen(command,"r");
 	// If fpipe is NULL
@@ -69,7 +87,7 @@ void exec_command_line(const char* command) {
 void convert_tex_solution_to_pdf(const char* solution_file_name, const char* program_root_dir) {
 	cout << program_root_dir << endl;
 	
-	char command[256] = "\0";
+	char command[1024] = "\0";
 	strcat(command, "pdflatex");
 	strcat(command, " ");
 	strcat(command, "--interaction=batchmode");
@@ -81,71 +99,97 @@ void convert_tex_solution_to_pdf(const char* solution_file_name, const char* pro
 	strcat(command, solution_file_name);
 
 	exec_command_line(command);
-
-	strcpy(command, "\0");
 	
-	filesystem::path dir = program_root_dir;
+	fs::path sol_pdf = solution_file_name;
+
+	cout << sol_pdf.string() << endl;
+	cout << fs::exists(sol_pdf) << endl;
+
+	fs::path dir = program_root_dir;
 
 	dir.append("*.aux");
-	char aux_files[256];
+	char aux_files[512];
 	strcpy(aux_files, dir.string().c_str());
 	// strcat(aux_files, "*.aux");
 	
 	dir = dir.parent_path();
 	
 	dir.append("*.log");	
-	char log_files[256];
+	char log_files[512];
 	strcpy(log_files, dir.string().c_str());
 	// strcat(log_files, "*.log");
 	
 	dir = dir.parent_path();
 	
 	dir.append("*.synctex.gz");
-	char synctexgz_files[256];
+	char synctexgz_files[512];
 	strcpy(synctexgz_files, dir.string().c_str());
 	// strcat(synctexgz_files, "*.synctex.gz");
 	
 	dir = dir.parent_path();
 	
 	dir.append("*.tex");	
-	char tex_files[256];
+	char tex_files[512];
 	strcpy(tex_files, dir.string().c_str());
 	// strcat(tex_files, "*.tex");
 
 	dir = dir.parent_path();
 
-	strcat(command, "rm -f");
-	strcat(command, " ");
-	strcat(command, aux_files);
-	strcat(command, " ");
-	strcat(command, log_files);
-	strcat(command, " ");
-	strcat(command, synctexgz_files);
-	strcat(command, " ");
-	strcat(command, tex_files);
+	strcpy(command, "\0");
+	if (idOS == UNIX) {
+		strcat(command, "rm -f");
+		strcat(command, " ");
+		strcat(command, aux_files);
+		strcat(command, " ");
+		strcat(command, log_files);
+		strcat(command, " ");
+		strcat(command, synctexgz_files);
+		strcat(command, " ");
+		strcat(command, tex_files);
+	}
+	else if (idOS == WINDOWS) {
+		// rmdir /S /Q "diretorio"
+		// del "arquivo"
+		strcat(command, "del ");
+		strcat(command, " ");
+		strcat(command, aux_files);
+		strcat(command, " ");
+		strcat(command, log_files);
+		strcat(command, " ");
+		strcat(command, synctexgz_files);
+		strcat(command, " ");
+		strcat(command, tex_files);
+	}
 
 	exec_command_line(command);
 }
 
 
 void exec_heuristic(const char* solver_path, const char* kiln_file_name, const char* solution_file_name) {
-	char command[256] = "\0";
+	char command[512] = "\0";
 	strcat(command, solver_path);
 	strcat(command, " ");
 	strcat(command, kiln_file_name);
 	strcat(command, " ");
-	strcat(command, solver_input_name);
+	strcat(command, solver_input_path.string().c_str());
 	strcat(command, " ");
 	strcat(command, solution_file_name);
-
+	
 	exec_command_line(command);
 }
 
 void remove_solver_input_file(const char* solver_input_name) {
-	char command[256] = "\0";
-	strcat(command, "rm -f");
-	strcat(command, " ");
-	strcat(command, solver_input_name);
+	char command[512] = "\0";
+	if (idOS == UNIX) {
+		strcat(command, "rm -f");
+		strcat(command, " ");
+		strcat(command, solver_input_name);
+	}
+	else if(idOS == WINDOWS) {
+		strcat(command, "del ");
+		strcat(command, " ");
+		strcat(command, solver_input_name);
+	}
 
 	exec_command_line(command);
 
@@ -283,8 +327,15 @@ int main(int argc, char *argv[]) {
 
 	file_pieces.close();
 
+
+	fs::path p = argv[0];
+	fs::path program_solver_dir = p.parent_path();
+
+	solver_input_path = program_solver_dir.string().c_str();
+	solver_input_path.append(solver_input_name);
+
 	ofstream file_instance;
-	file_instance.open(solver_input_name);
+	file_instance.open(solver_input_path.string().c_str());
 
 	file_instance << number_of_pieces << "\n";
 	for (int i = 0; i < (int) pieces.size(); i++) {
@@ -306,15 +357,14 @@ int main(int argc, char *argv[]) {
 
 	file_instance.close();
 
+	fs::path exec_path = program_solver_dir.string().c_str();
+	exec_path.append("bottom-left-heuristic-master");
+
 	for (int i = 0; i < (int) pieces.size(); i++) {
 		Piece* piece = pieces[i];
 		destroy_piece(piece);
 	}
 
-	filesystem::path p = argv[0];
-	filesystem::path exec_path = p.parent_path();
-	exec_path.append("bottom-left-heuristic-master");
-	filesystem::path program_solver_dir = exec_path.parent_path();
 	
 	if (idOS == UNIX) {
 		exec_path.append("main");
@@ -323,6 +373,7 @@ int main(int argc, char *argv[]) {
 		exec_path.append("main.exe");
 	}
 
+	
 	exec_heuristic(
 		exec_path.string().c_str(), 
 		kiln_file_name, 
@@ -331,7 +382,7 @@ int main(int argc, char *argv[]) {
 
 	convert_tex_solution_to_pdf(solution_file_name, program_solver_dir.string().c_str());
 
-	remove_solver_input_file(solver_input_name);
+	remove_solver_input_file(solver_input_path.string().c_str());
 
 	return 0;
 }

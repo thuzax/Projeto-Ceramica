@@ -293,6 +293,15 @@ void abort_instalation(bool exclude_project = true) {
             }
         }
     }
+
+    if (idOS == WINDOWS) {
+        fs::path miktexsetup_zip_path = install_location_c_string;
+        miktexsetup_zip_path.append("miktexsetup-x64.zip");
+        remove_by_abs_path_command_line(miktexsetup_zip_path.string().c_str());
+        fs::path miktexsetup_exe = install_location_c_string;
+        miktexsetup_exe.append("miktexsetup_standalone.zip");
+        remove_by_abs_path_command_line(miktexsetup_exe.string().c_str());
+    }
     exit(0);
 }
 
@@ -551,7 +560,6 @@ void download_zip() {
         }
         abort_instalation();
     }
-    cout << command << endl;
 }
 
 void login_as_admin_linux() {
@@ -589,19 +597,17 @@ void install_pdflatex_linux() {
 
 
 void install_miktex() {
-    char command[128];
+    char command[256];
     int exec_status;
 
     cout << "Iniciando instalação do MikTex." << endl;
 
     fs::path miktexsetup_local_path = install_location_c_string;
-
-
     fs::path miktexsetup_zip_path = install_location_c_string;
     miktexsetup_zip_path.append("miktexsetup-x64.zip");
-    strcpy(command, "curl https://miktex.org/download/win/miktexsetup-x64.zip -L -o ");
-    strcat(command, miktexsetup_zip_path.string().c_str());
-    
+
+    strcpy(command, "curl https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktexsetup-5.5.0+1763023-x64.zip -L -o ");
+    strcat(command, miktexsetup_zip_path.string().c_str());;
 
     exec_status = exec_command_line(command, true);
     if (exec_status != 0) {
@@ -612,6 +618,7 @@ void install_miktex() {
         msg_box_error_windows(message, title);
         abort_instalation();
     }
+
 
     strcpy(command, "tar -xf");
     strcat(command, " ");
@@ -629,7 +636,6 @@ void install_miktex() {
         msg_box_error_windows(message, title);
         abort_instalation();
     }
-
 
     fs::path miktexsetup_standalone_path = install_location_c_string;
     miktexsetup_standalone_path.append("miktexsetup_standalone.exe");
@@ -660,6 +666,31 @@ void install_miktex() {
     }
 
     strcpy(command, "set PATH=%PATH%;C:\\Program Files\\MiKTeX\\miktex\\bin\\x64");
+    exec_status = exec_command_line(command, true);
+
+    if (exec_status != 0) {
+        wchar_t message[128];
+        wcscpy(message, L"Erro ao instalar o MikTex: não foi possível alterar as variáveis de caminho. Abortando operações...");
+        wchar_t title[128];
+        wcscpy(title, L"Cancelando Instalação");
+        msg_box_error_windows(message, title);
+        abort_instalation();
+    }
+
+    strcpy(command, "mpm --verbose --package-level=complete --update");
+    exec_status = exec_command_line(command, true);
+
+    if (exec_status != 0) {
+        wchar_t message[128];
+        wcscpy(message, L"Erro ao instalar o MikTex: não foi possível alterar as variáveis de caminho. Abortando operações...");
+        wchar_t title[128];
+        wcscpy(title, L"Cancelando Instalação");
+        msg_box_error_windows(message, title);
+        abort_instalation();
+    }
+
+
+    strcpy(command, "mpm --verbose --package-level=complete --upgrade");
     exec_status = exec_command_line(command, true);
 
     if (exec_status != 0) {
