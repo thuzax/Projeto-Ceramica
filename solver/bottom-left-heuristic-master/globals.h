@@ -4,7 +4,7 @@
 enum {WINDOWS, UNIX};
 
 void declare_globals();
-
+void destroy_globals();
 const char* string_endline();
 
 int idOS();

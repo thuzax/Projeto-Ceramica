@@ -1,161 +1,35 @@
-160
-0 2 1 15 30 Testando_8
-0 2 1 15 30 Testando_8
-0 2 1 15 30 Testando_8
-0 2 1 15 30 Testando_8
-0 2 1 15 30 Testando_8
-0 2 1 15 30 Testando_8
-0 2 1 15 30 Testando_8
-0 2 1 15 30 Testando_8
-0 2 1 15 30 Testando_8
-0 2 1 15 30 Testando_8
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 1 1 10 10 5 Testando_7
-0 3 1 8 15 Testando_5
-0 3 1 8 15 Testando_5
-0 3 1 8 15 Testando_5
-0 3 1 8 15 Testando_5
-0 3 1 8 15 Testando_5
-0 3 1 8 15 Testando_5
-0 3 1 8 15 Testando_5
-0 3 1 8 15 Testando_5
-0 3 1 8 15 Testando_5
-0 3 1 8 15 Testando_5
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 2 1 30 20 Testando_4
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 20 20 Testando_3
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 1 1 30 30 20 Testando_2
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
-0 3 1 10 20 Testando_1
+34
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 3 1 6 13 eu
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo
+0 1 1 15 15 10 alo

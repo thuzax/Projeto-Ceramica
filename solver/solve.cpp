@@ -6,7 +6,8 @@
 #include <vector>
 #include <filesystem>
 
-#include<stdio.h>
+#include <cstdio>
+#include <cstdlib>
 
 using namespace std;
 
@@ -61,25 +62,38 @@ struct Piece {
 	int amount;
 };
 
-void exec_command_line(const char* command) {
+int exec_command_line(const char* command) {
 	FILE *fpipe;
-
-	cout << endl << command << endl;
 
 	char line[2048];
 
-	fpipe = (FILE*) popen(command,"r");
+	#if defined(_WIN32) || defined(_WIN64)
+		char command_in_quotes[2048];
+		strcpy(command_in_quotes, "cmd.exe /C \"");
+		strcat(command_in_quotes, command);
+		strcat(command_in_quotes, "\"");
+		cout << endl << command << endl;
+		cout << endl << command_in_quotes << endl;
+		fpipe = (FILE*) _popen(command_in_quotes, "r");
+	#else
+		cout << endl << command << endl;
+		fpipe = (FILE*) popen(command,"r");
+	#endif
+	cout << fpipe << endl;
 	// If fpipe is NULL
-	if (fpipe == nullptr) {  
-		perror("Problems with pipe");
+	if (fpipe == NULL) {  
+        cerr << "Problems with pipe" << endl;
 		exit(1);
 	}
 
-	while (fgets(line, sizeof(line), fpipe)) {
+	while (fgets(line, sizeof(line), fpipe) != NULL) {
 		cout << line << endl;
 	}
-	
-	pclose(fpipe);
+	#if defined(_WIN32) || defined(_WIN64)
+		return _pclose(fpipe);
+	#else
+		return pclose(fpipe);
+	#endif
 }
 
 
@@ -166,16 +180,33 @@ void convert_tex_solution_to_pdf(const char* solution_file_name, const char* pro
 }
 
 
-void exec_heuristic(const char* solver_path, const char* kiln_file_name, const char* solution_file_name) {
+void exec_heuristic(const char* solver_path, const char* kiln_file_name, const char* solution_file_name) {	
 	char command[512] = "\0";
+	strcat(command, "\"");
 	strcat(command, solver_path);
+	strcat(command, "\"");
 	strcat(command, " ");
+	strcat(command, "\"");
 	strcat(command, kiln_file_name);
+	strcat(command, "\"");
 	strcat(command, " ");
+	strcat(command, "\"");
 	strcat(command, solver_input_path.string().c_str());
+	strcat(command, "\"");
 	strcat(command, " ");
+	strcat(command, "\"");
 	strcat(command, solution_file_name);
-	
+	strcat(command, "\"");
+	// strcat(command, " > logfile.log");
+
+	// strcpy(command, solver_path);
+	cout << solver_path << endl;
+	cout << kiln_file_name << endl;
+	cout << solver_input_path.string().c_str() << endl;
+	cout << solution_file_name << endl;
+
+
+
 	exec_command_line(command);
 }
 
@@ -380,6 +411,7 @@ int main(int argc, char *argv[]) {
 		exec_path.append("main.exe");
 	}
 	
+
 	exec_heuristic(
 		exec_path.string().c_str(), 
 		kiln_file_name, 

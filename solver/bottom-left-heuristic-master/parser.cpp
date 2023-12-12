@@ -367,39 +367,17 @@ void printNFP(item *items, int i, int j) {
 
 // Calculate and set the items NFPs
 void calculateNFP(item *items, int numberOfItems) {
-
 	if (!items) {
 		cout << "Error: Cannot calculate the NPF of each pair of items. Invalid pointer. \n";
 		exit(EXIT_FAILURE);
 	}
-
 	for (int i=0; i<=numberOfItems ; i++) {
-		cout << "DDDDDDDDDDDD" << "\r\n";
-		cout << items[i].id << "\r\n";
-		cout << items[i].description << "\r\n";
-		cout << items[i].type << "\r\n";
-		cout << items[i].quantity << "\r\n";
-		cout << items[i].height << "\r\n";
-		cout << items[i].radius << "\r\n";
-		cout << items[i].length << "\r\n";
-		cout << items[i].width << "\r\n";
-		cout << items[i].side << "\r\n";
-		cout << items[i].boundingBox.lu.x << "\r\n";
-		cout << items[i].boundingBox.lu.y << "\r\n";
-		cout << items[i].boundingBox.rb.x << "\r\n";
-		cout << items[i].boundingBox.rb.y << "\r\n";
-		cout << items[i].NFP.size() << "\r\n";
-		cout << items[i].area << "\r\n";
 		
 		items[i].NFP.clear();
-		// cout << endl << endl;
-		cout << "FFFFFFFFFFFF" << "\r\n";
 		items[i].NFP.resize(numberOfItems+1);
-		cout << "CCCCCCCCCCCC" << "\r\n";
 		
 		//NFP of item i and item j
-		for (int j=0; j<=numberOfItems ; j++) {			
-			cout << "AAAAAAAAAA" << "\r\n";
+		for (int j=0; j<=numberOfItems ; j++) {
 
 			// Calculate the NFP of a rectangle and a:
 			//		rectangle
@@ -801,13 +779,11 @@ void calculateNFP(item *items, int numberOfItems) {
 			//}
 
 			items[i].NFP[j].numberOfVertices = items[i].NFP[j].vertices.size();
-
 			//printNFP(items, i, j);
 			//drawNFP(items, i, j);
-			cout << "BBBBBBBBB" << "\r\n";
 		}
-		
 	}
+
 }
 
 

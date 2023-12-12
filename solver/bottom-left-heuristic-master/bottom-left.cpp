@@ -1,5 +1,6 @@
 #include "bottom-left.h"
 #include "globals.h"
+#include <string.h>
 
 using namespace std;
 
@@ -560,13 +561,19 @@ void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int num
 	file << "\\thispagestyle{empty}" << string_endline() << "\\begin{center} " << string_endline() << "\\large" << string_endline() << "\\textbf{Descrição das Peças}\\\\";
 	file << "\\vspace*{10px} " << string_endline() << " \\end{center}";
 
-	file << "\\begin{enumerate}";
+	file << "\\begin{itemize}";
 
 	for (int id = 1; id <= numberOfItems ; id++) {
-		file << "\\item " << items[id].description << "" << string_endline();
+		string outTextStr = items[id].description;
+		size_t found = outTextStr.find("_");
+		while (found != string::npos) {
+			outTextStr = outTextStr.replace(found, 1, " ");
+			found = outTextStr.find("_", found + 1);
+		}
+		file << "\\item[" << id << ".]{Peça " << outTextStr.c_str() << "}" << string_endline();
 	}
 
-	file << "\\end{enumerate}";
+	file << "\\end{itemize}";
 
 	file << string_endline() << "\\end{document}";
 

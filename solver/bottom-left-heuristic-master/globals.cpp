@@ -4,7 +4,7 @@
 
 
 int os_code;
-char* str_endline;
+char* str_endline = NULL;
 
 void declare_globals() {
     #if defined(__WIN32) || defined(_WIN64)
@@ -15,7 +15,7 @@ void declare_globals() {
 
     #ifdef __unix__
         os_code = UNIX;
-        str_endline = new char[2];
+        str_endline = new char[1];
         strcpy(str_endline, "\n");
     #endif
 
@@ -27,4 +27,10 @@ const char* string_endline() {
 
 int idOS() {
     return os_code;
+}
+
+void destroy_globals() {
+    if (str_endline != NULL) {
+        delete[] str_endline;
+    }
 }

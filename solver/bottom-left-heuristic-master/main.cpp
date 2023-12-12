@@ -4,9 +4,8 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-
 	declare_globals();
-	
+
 	// Get the input parameters
     char *kilnFile = (char *)malloc(1024 * sizeof(char));
     char *itemsFile = (char *)malloc(1024 * sizeof(char));
@@ -27,8 +26,9 @@ int main(int argc, char *argv[]) {
         strcpy(solutionFile, "solution.tex");
     }
 
+
 	// Read kiln definition file and initialize the problem kiln struct
-    cout << "\n";
+    cout << string_endline();
 	kiln *mainKiln = initKiln(kilnFile);	
 	//printKilnInformation(mainKiln);
     
@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
     //printArea(items, numberOfItems);
 
 	// Calculate the NFP for each item
-	calculateNFP(items, numberOfItems);
+	calculateNFP(items, numberOfItems);	
 
 	// Order the items by height
 	vector<int> order = generateOrder(items, numberOfItems);
@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
     free(mainKiln);
 	free(items);
 
-	delete[] string_endline();
+	destroy_globals();
 
 	return 0;
 }
