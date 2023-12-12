@@ -12,12 +12,12 @@ OBJECTS = main.o parser.o bottom-left.o
 # Binary
 
 main : $(OBJECTS)
-	g++ $^ -o $@
+	g++ -Wall -Wconversion $^ -o $@
 
 # Pattern rule for object-source dependences
 
 %.o : %.cpp 
-	g++ -I. -c $<
+	g++ -Wall -Wconversion -I. -c $<
 
 # Automatic object-header dependences
 
@@ -26,7 +26,7 @@ main : $(OBJECTS)
 include $(makefiles)
 
 %.d : %.cpp
-	g++ -I. -MM -MT '$(<:.cpp=.o) $@' $< >$@
+	g++ -Wall -Wconversion -I. -MM -MT '$(<:.cpp=.o) $@' $< >$@
 
 # Cleaning
 

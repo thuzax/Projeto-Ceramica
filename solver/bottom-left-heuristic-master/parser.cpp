@@ -373,12 +373,32 @@ void calculateNFP(item *items, int numberOfItems) {
 	}
 
 	for (int i=0; i<=numberOfItems ; i++) {
-
+		cout << "DDDDDDDDDDDD" << endl;
+		// cout << items[i].id << endl;
+		// cout << items[i].description << endl;
+		// cout << items[i].type << endl;
+		// cout << items[i].quantity << endl;
+		// cout << items[i].height << endl;
+		// cout << items[i].radius << endl;
+		// cout << items[i].length << endl;
+		// cout << items[i].width << endl;
+		// cout << items[i].side << endl;
+		// cout << items[i].boundingBox.lu.x << endl;
+		// cout << items[i].boundingBox.lu.y << endl;
+		// cout << items[i].boundingBox.rb.x << endl;
+		// cout << items[i].boundingBox.rb.y << endl;
+		// cout << items[i].NFP.size() << endl;
+		// cout << items[i].area << endl;
+		
 		items[i].NFP.clear();
+		// cout << endl << endl;
+		cout << "FFFFFFFFFFFF" << endl;
 		items[i].NFP.resize(numberOfItems+1);
+		cout << "CCCCCCCCCCCC" << endl;
 		
 		//NFP of item i and item j
 		for (int j=0; j<=numberOfItems ; j++) {			
+			cout << "AAAAAAAAAA" << endl;
 
 			// Calculate the NFP of a rectangle and a:
 			//		rectangle
@@ -484,7 +504,6 @@ void calculateNFP(item *items, int numberOfItems) {
 					items[i].NFP[j].numberOfVertices = items[i].NFP[j].vertices.size();
 
 				}
-			
 			// Calculate the NFP of a triangle and a:
 			//		rectangle
 			//		triangle
@@ -784,9 +803,9 @@ void calculateNFP(item *items, int numberOfItems) {
 
 			//printNFP(items, i, j);
 			//drawNFP(items, i, j);
-			
+			cout << "BBBBBBBBB" << endl;
 		}
-
+		
 	}
 }
 

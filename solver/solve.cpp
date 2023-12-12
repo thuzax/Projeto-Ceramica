@@ -7,9 +7,6 @@
 #include <filesystem>
 
 #include<stdio.h>
-// sudo apt install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
-// miktexsetup --package-set=basic download
-// miktexsetup install
 
 using namespace std;
 
@@ -90,13 +87,15 @@ void convert_tex_solution_to_pdf(const char* solution_file_name, const char* pro
 	char command[1024] = "\0";
 	strcat(command, "pdflatex");
 	strcat(command, " ");
-	strcat(command, "--interaction=batchmode");
-	// strcat(command, "--interaction=nonstopmode");
+	// strcat(command, "--interaction=batchmode");
+	strcat(command, "--interaction=nonstopmode");
 	strcat(command, " ");
 	strcat(command, "-output-directory=");
 	strcat(command, program_root_dir);
 	strcat(command, " ");
 	strcat(command, solution_file_name);
+
+	cout << command << endl;
 
 	exec_command_line(command);
 	
@@ -161,7 +160,7 @@ void convert_tex_solution_to_pdf(const char* solution_file_name, const char* pro
 		strcat(command, tex_files);
 	}
 
-	exec_command_line(command);
+	// exec_command_line(command);
 }
 
 
@@ -191,7 +190,7 @@ void remove_solver_input_file(const char* solver_input_name) {
 		strcat(command, solver_input_name);
 	}
 
-	exec_command_line(command);
+	// exec_command_line(command);
 
 }
 
@@ -327,7 +326,6 @@ int main(int argc, char *argv[]) {
 
 	file_pieces.close();
 
-
 	fs::path p = argv[0];
 	fs::path program_solver_dir = p.parent_path();
 
@@ -372,7 +370,6 @@ int main(int argc, char *argv[]) {
 	else if (idOS == WINDOWS) {
 		exec_path.append("main.exe");
 	}
-
 	
 	exec_heuristic(
 		exec_path.string().c_str(), 
