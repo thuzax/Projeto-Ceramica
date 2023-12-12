@@ -1,4 +1,8 @@
-#include <windows.h>
+#if defined(_WIN32) || defined(__WIN64)
+    #include <windows.h>
+#endif
+
+
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -95,6 +99,7 @@ void wchar_message_box_text_to_char(char* converted_text, const wchar_t* text) {
     wcstombs(converted_text, text, 2048);
 }
 
+#if defined(_WIN32) || defined(__WIN64)
 // IDYES == 6; IDNO == 7
 int msg_box_YN_windows(const wchar_t* message_wchar, const wchar_t* title_wchar) {
     char message[2048];
@@ -120,7 +125,7 @@ void msg_box_error_windows(const wchar_t* message_wchar, const wchar_t* title_wc
     wchar_message_box_text_to_char(title, title_wchar);
     MessageBox(0, message, title, MB_ICONERROR | MB_OK | MB_SETFOREGROUND | MB_SYSTEMMODAL);
 }
-
+#endif
 
 int remove_by_abs_path_command_line_linux(const char* absolute_path) {
     fs::path file_path = absolute_path;
@@ -451,7 +456,9 @@ void unzip_program_windows() {
             wcscpy(message, L"Erro na extração do arquivo. Abortando instalação.");
             wchar_t title[128];
             wcscpy(title, L"Instalação cancelada.");
-            msg_box_error_windows(message, title);
+            #if defined(_WIN32) || defined(__WIN64)
+                msg_box_error_windows(message, title);
+            #endif
             abort_instalation();
         }
     }
@@ -477,7 +484,9 @@ void unzip_program_windows() {
         wcscpy(message, L"Erro na extração do arquivo. Abortando instalação.");
         wchar_t title[128];
         wcscpy(title, L"Instalação cancelada.");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -504,7 +513,9 @@ void unzip_program_windows() {
         wcscpy(message, L"Erro na extração do arquivo. Abortando instalação.");
         wchar_t title[128];
         wcscpy(title, L"Instalação cancelada.");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -516,7 +527,9 @@ void unzip_program_windows() {
         wcscpy(message, L"Erro na extração do arquivo. Abortando instalação.");
         wchar_t title[128];
         wcscpy(title, L"Instalação cancelada.");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -527,7 +540,9 @@ void unzip_program_windows() {
         wcscpy(message, L"Erro na extração do arquivo. Abortando instalação.");
         wchar_t title[128];
         wcscpy(title, L"Instalação cancelada.");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -556,7 +571,9 @@ void download_zip() {
             wcscpy(message, L"Erro durante o download do projeto. Abortando instalação.");
             wchar_t title[128];
             wcscpy(title, L"Instalação cancelada.");
-            msg_box_error_windows(message, title);
+            #if defined(_WIN32) || defined(__WIN64)
+                msg_box_error_windows(message, title);
+            #endif
         }
         abort_instalation();
     }
@@ -615,7 +632,9 @@ void install_miktex() {
         wcscpy(message, L"Erro ao instalar o MikTex: não foi possível baixar o miktexsetup-x64.zip. Abortando operações...");
         wchar_t title[128];
         wcscpy(title, L"Cancelando Instalação");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -633,7 +652,9 @@ void install_miktex() {
         wcscpy(message, L"Erro ao instalar o MikTex: não foi possível descompactar o arquivo. Abortando operações...");
         wchar_t title[128];
         wcscpy(title, L"Cancelando Instalação");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -648,7 +669,9 @@ void install_miktex() {
         wcscpy(message, L"Erro ao instalar o MikTex: não foi possível baixar pacotes para instalação. Abortando operações...");
         wchar_t title[128];
         wcscpy(title, L"Cancelando Instalação");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -661,7 +684,9 @@ void install_miktex() {
         wcscpy(message, L"Erro ao instalar o MikTex: não foi possível finalizar a instalação. Abortando operações...");
         wchar_t title[128];
         wcscpy(title, L"Cancelando Instalação");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -673,7 +698,9 @@ void install_miktex() {
         wcscpy(message, L"Erro ao instalar o MikTex: não foi possível alterar as variáveis de caminho. Abortando operações...");
         wchar_t title[128];
         wcscpy(title, L"Cancelando Instalação");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -685,7 +712,9 @@ void install_miktex() {
         wcscpy(message, L"Erro ao instalar o MikTex: não foi possível alterar as variáveis de caminho. Abortando operações...");
         wchar_t title[128];
         wcscpy(title, L"Cancelando Instalação");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -698,7 +727,9 @@ void install_miktex() {
         wcscpy(message, L"Erro ao instalar o MikTex: não foi possível alterar as variáveis de caminho. Abortando operações...");
         wchar_t title[128];
         wcscpy(title, L"Cancelando Instalação");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -713,7 +744,9 @@ void install_miktex() {
         wcscpy(message, L"Erro ao instalar o MikTex: pdflatex não encontrado. Abortando operações...");
         wchar_t title[128];
         wcscpy(title, L"Cancelando Instalação");
-        msg_box_error_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
         abort_instalation();
     }
 
@@ -883,7 +916,9 @@ void verify_libreoffice_installed() {
             wcscpy(message, L"LibreOffice 7 e necessário para a execução deste programa.");
             wchar_t title[128];
             wcscpy(title, L"Cancelando instalação");
-            msg_box_error_windows(message, title);
+            #if defined(_WIN32) || defined(__WIN64)
+                msg_box_error_windows(message, title);
+            #endif
             abort_instalation();
         }
     }
@@ -956,16 +991,18 @@ void ask_install_permission_windows() {
     wchar_t title[128];
     wcscpy(title, L"Permitir instalação");
 
-    int result = msg_box_YN_windows(message, title);
-    if (result != IDYES) {
-        cout << "Abortando instalação" << endl;
-        wchar_t message_error[128];
-        wcscpy(message_error, L"A instalação será abortada.");
-        wchar_t title_error[128];
-        wcscpy(title_error, L"Instalação cancelada.");
-        msg_box_error_windows(message_error, title_error);
-        abort_instalation();
-    }
+    #if defined(_WIN32) || defined(__WIN64)
+        int result = msg_box_YN_windows(message, title);
+        if (result != IDYES) {
+            cout << "Abortando instalação" << endl;
+            wchar_t message_error[128];
+            wcscpy(message_error, L"A instalação será abortada.");
+            wchar_t title_error[128];
+            wcscpy(title_error, L"Instalação cancelada.");
+            msg_box_error_windows(message_error, title_error);
+            abort_instalation();
+        }
+    #endif
 
 }
 
@@ -982,19 +1019,23 @@ void create_desktop_shortcut_windows() {
     shortcut_path.append("forno.ods");
 
     if (fs::exists(shortcut_path)) {
-        int answer = msg_box_YN_windows(L"Já existe um arquivo com o nome da aplicação em sua Área de Trabalho. Deseja sobrescrevê-lo?", L"Sobrescrever arquivo de mesmo nome?");
-        if (answer == IDYES) {
-            remove_by_abs_path_command_line(shortcut_path.string().c_str());
-        }
-        else {
-            answer = msg_box_YN_windows(L"Deseja continuar a instalção sem criar o atalho?", L"Continuar sem criar atalho?");
-            if (answer != IDYES) {
-                cout << "Abortando instalação." << endl;
-                msg_box_error_windows(L"Abortando instalação. Os arquivos e programas intalados serão removidos.", L"Cancelando instalação");
-                abort_instalation();
+        #if defined(_WIN32) || defined(__WIN64)
+            
+            int answer = msg_box_YN_windows(L"Já existe um arquivo com o nome da aplicação em sua Área de Trabalho. Deseja sobrescrevê-lo?", L"Sobrescrever arquivo de mesmo nome?");
+            if (answer == IDYES) {
+                remove_by_abs_path_command_line(shortcut_path.string().c_str());
             }
-            return;
-        }
+            else {
+                answer = msg_box_YN_windows(L"Deseja continuar a instalção sem criar o atalho?", L"Continuar sem criar atalho?");
+                if (answer != IDYES) {
+                    cout << "Abortando instalação." << endl;
+                    msg_box_error_windows(L"Abortando instalação. Os arquivos e programas intalados serão removidos.", L"Cancelando instalação");
+                    abort_instalation();
+                }
+                return;
+            }
+
+        #endif
     }
 
     char command[256];
@@ -1009,13 +1050,15 @@ void create_desktop_shortcut_windows() {
     int exec_status = exec_command_line(command);
     if (exec_status != 0) {
         cout << "Erro na ciração do atalho" << endl;
-        int answer = msg_box_YN_windows(L"Ocorreu um erro na criação do atalho para o arquivo forno.ods. Deseja continuar a instação?", L"Erro na instalação");
-        if (answer != IDYES) {
-            cout << "Abortando instalação." << endl;
-            msg_box_error_windows(L"Abortando instalação. Os arquivos e programas intalados serão removidos.", L"Cancelando instalação");
-            abort_instalation();
-        }
-        cout << "Prosseguindo com a instalação" << endl;
+        #if defined(_WIN32) || defined(__WIN64)
+            int answer = msg_box_YN_windows(L"Ocorreu um erro na criação do atalho para o arquivo forno.ods. Deseja continuar a instação?", L"Erro na instalação");
+            if (answer != IDYES) {
+                cout << "Abortando instalação." << endl;
+                msg_box_error_windows(L"Abortando instalação. Os arquivos e programas intalados serão removidos.", L"Cancelando instalação");
+                abort_instalation();
+            }
+            cout << "Prosseguindo com a instalação" << endl;
+        #endif
     }
 
 }
@@ -1090,7 +1133,9 @@ void install() {
             wcscpy(message, L"Uma instalação deste projeto já existe. Cancelando...");
             wchar_t title[128];
             wcscpy(title, L"Cancelando instalação");
-            msg_box_error_windows(message, title);
+            #if defined(_WIN32) || defined(__WIN64)
+                msg_box_error_windows(message, title);
+            #endif
             abort_instalation();
         }
         install_windows();
@@ -1098,7 +1143,9 @@ void install() {
         wcscpy(message, L"Instalação finalizada");
         wchar_t title[128];
         wcscpy(title, L"Fim");
-        msg_box_info_windows(message, title);
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
     }
     
     logout_as_admin();
@@ -1111,9 +1158,9 @@ int main() {
         cout << "Iniciando instalação..." << endl;
     }
     else if(idOS == WINDOWS) {
-        if (osName == WINDOWS64) {
+        #if defined(__WIN64)
             SetConsoleOutputCP(CP_UTF8);
-        }
+        #endif
 
         cout << "Iniciando instalação..." << endl;
     }

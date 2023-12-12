@@ -13,16 +13,14 @@ using namespace std;
 
 enum {WINDOWS, UNIX};
 
-char* string_endline; 
-
 #if defined(__WIN32) || defined(_WIN64)
 	int idOS = WINDOWS;
-	string_endline = new char[2];
+	char* string_endline = new char[2];
 #endif
 
 #ifdef __unix__
 	int idOS = UNIX;
-	int idOS = UNIX;	string_endline = new char[1];
+	char* string_endline = new char[1];
 #endif
 
 
