@@ -1,4 +1,5 @@
 #include "parser.h"
+#include "globals.h"
 
 using namespace std;
 
@@ -8,14 +9,14 @@ kiln *initKiln(string filename) {
 	kiln *newKiln;
 	newKiln = (kiln *)malloc(sizeof(kiln));
 	if(!newKiln) {
-		cout << "Error: Internal error while allocating memory for the kiln. \n";
+		cout << "Error: Internal error while allocating memory for the kiln. " << string_endline();
 		exit(EXIT_FAILURE);
 	}
 
 	ifstream file;
 	file.open(filename.c_str(), ios::in);
 	if (!file.is_open()) {
-		cout << "Error: Cannot open file " << filename << ". Please check the file name and try again. \n";
+		cout << "Error: Cannot open file " << filename << ". Please check the file name and try again. " << string_endline();
 		exit(EXIT_FAILURE);
 	}
 
@@ -54,7 +55,7 @@ kiln *initKiln(string filename) {
 void printKilnInformation(kiln *k) {
 
 	if (!k) {
-		cout << "Error: Cannot print kiln information. Invalid pointer. \n";
+		cout << "Error: Cannot print kiln information. Invalid pointer. " << string_endline();
 		exit(EXIT_FAILURE);
 	}
 
@@ -72,7 +73,7 @@ void printKilnInformation(kiln *k) {
 void calculateAllPossibleHeights(kiln *k) {
 
 	if (!k) {
-		cout << "Error: Cannot calculate possible heights. Invalid pointer. \n";
+		cout << "Error: Cannot calculate possible heights. Invalid pointer. " << string_endline();
 		exit(EXIT_FAILURE);
 	}
 
@@ -373,32 +374,32 @@ void calculateNFP(item *items, int numberOfItems) {
 	}
 
 	for (int i=0; i<=numberOfItems ; i++) {
-		cout << "DDDDDDDDDDDD" << endl;
-		// cout << items[i].id << endl;
-		// cout << items[i].description << endl;
-		// cout << items[i].type << endl;
-		// cout << items[i].quantity << endl;
-		// cout << items[i].height << endl;
-		// cout << items[i].radius << endl;
-		// cout << items[i].length << endl;
-		// cout << items[i].width << endl;
-		// cout << items[i].side << endl;
-		// cout << items[i].boundingBox.lu.x << endl;
-		// cout << items[i].boundingBox.lu.y << endl;
-		// cout << items[i].boundingBox.rb.x << endl;
-		// cout << items[i].boundingBox.rb.y << endl;
-		// cout << items[i].NFP.size() << endl;
-		// cout << items[i].area << endl;
+		cout << "DDDDDDDDDDDD" << "\r\n";
+		cout << items[i].id << "\r\n";
+		cout << items[i].description << "\r\n";
+		cout << items[i].type << "\r\n";
+		cout << items[i].quantity << "\r\n";
+		cout << items[i].height << "\r\n";
+		cout << items[i].radius << "\r\n";
+		cout << items[i].length << "\r\n";
+		cout << items[i].width << "\r\n";
+		cout << items[i].side << "\r\n";
+		cout << items[i].boundingBox.lu.x << "\r\n";
+		cout << items[i].boundingBox.lu.y << "\r\n";
+		cout << items[i].boundingBox.rb.x << "\r\n";
+		cout << items[i].boundingBox.rb.y << "\r\n";
+		cout << items[i].NFP.size() << "\r\n";
+		cout << items[i].area << "\r\n";
 		
 		items[i].NFP.clear();
 		// cout << endl << endl;
-		cout << "FFFFFFFFFFFF" << endl;
+		cout << "FFFFFFFFFFFF" << "\r\n";
 		items[i].NFP.resize(numberOfItems+1);
-		cout << "CCCCCCCCCCCC" << endl;
+		cout << "CCCCCCCCCCCC" << "\r\n";
 		
 		//NFP of item i and item j
 		for (int j=0; j<=numberOfItems ; j++) {			
-			cout << "AAAAAAAAAA" << endl;
+			cout << "AAAAAAAAAA" << "\r\n";
 
 			// Calculate the NFP of a rectangle and a:
 			//		rectangle
@@ -803,7 +804,7 @@ void calculateNFP(item *items, int numberOfItems) {
 
 			//printNFP(items, i, j);
 			//drawNFP(items, i, j);
-			cout << "BBBBBBBBB" << endl;
+			cout << "BBBBBBBBB" << "\r\n";
 		}
 		
 	}
@@ -813,7 +814,7 @@ void calculateNFP(item *items, int numberOfItems) {
 void drawNFP(item *items, int i, int j) {
 
 	if (!items) {
-		cout << "Error: Cannot draw the NFP of pair "<< i << ", " << j << ". Invalid pointer. \n";
+		cout << "Error: Cannot draw the NFP of pair "<< i << ", " << j << ". Invalid pointer. " << string_endline();
 		exit(EXIT_FAILURE);
 	}
 
@@ -821,26 +822,26 @@ void drawNFP(item *items, int i, int j) {
 	sprintf (fileName,"NFP_%d_%d.tex",i,j);
 	ofstream file (fileName, ofstream::out);
 	
-	file << "\\documentclass{article}\n\\usepackage{tikz}\n\\begin{document}\n";
-	file << "\\begin{tikzpicture}[scale=0.3]\n\\begin{scope}[shift={(0.000, 0)}]\n";
+	file << "\\documentclass{article}" << string_endline() << "\\usepackage{tikz}"<< string_endline()  <<"\\begin{document}" << string_endline();
+	file << "\\begin{tikzpicture}[scale=0.3]" << string_endline() << "\\begin{scope}[shift={(0.000, 0)}]" << string_endline();
 
 	if (items[i].type == RECTANGLE)
-		file << "\n\\draw[black, fill=lightgray] (0,0) rectangle (" << items[i].length << ", " << items[i].width << ");";
+		file << string_endline() << "\\draw[black, fill=lightgray] (0,0) rectangle (" << items[i].length << ", " << items[i].width << ");";
 	
 	if (items[i].type == TRIANGLE)
-		file << "\n\\draw[black, fill=lightgray] (0,0) -- (" << items[i].side << ", 0) -- (" << items[i].side / (2.0) << ", "<< sqrt(3.0)/(2.0) * items[i].side << ") -- cycle;";
+		file << string_endline() << "\\draw[black, fill=lightgray] (0,0) -- (" << items[i].side << ", 0) -- (" << items[i].side / (2.0) << ", "<< sqrt(3.0)/(2.0) * items[i].side << ") -- cycle;";
 	
 	if (items[i].type == CIRCLE)
-		file << "\n\\draw[black, fill=lightgray] (0,0) circle (" << items[i].radius << ");";
+		file << string_endline() << "\\draw[black, fill=lightgray] (0,0) circle (" << items[i].radius << ");";
 
 	for (int k=0; k<items[i].NFP[j].numberOfVertices ; k++) {
-		file << "\n\\draw[fill=darkgray] (" << items[i].NFP[j].vertices[k].x << ", " << items[i].NFP[j].vertices[k].y << ") circle (10.000pt);";
+		file << string_endline() << "\\draw[fill=darkgray] (" << items[i].NFP[j].vertices[k].x << ", " << items[i].NFP[j].vertices[k].y << ") circle (10.000pt);";
 	}
 
 	
 
 
-	file << "\\end{scope}\n\\end{tikzpicture}\n\\end{document}";
+	file << "\\end{scope}" << string_endline() << "\\end{tikzpicture}" << string_endline() << "\\end{document}";
 
 	file.close();
 

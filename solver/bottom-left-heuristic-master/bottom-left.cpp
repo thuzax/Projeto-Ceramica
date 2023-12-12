@@ -1,4 +1,5 @@
 #include "bottom-left.h"
+#include "globals.h"
 
 using namespace std;
 
@@ -41,7 +42,7 @@ int d_function(coord a, coord b, coord p){
 vector<int> generateOrder(item *items, int numberOfItems) {
 
 	if (!items) {
-		cout << "Error: Cannot generate the order of the items. Invalid pointer. \n";
+		cout << "Error: Cannot generate the order of the items. Invalid pointer. " << string_endline();
 		exit(EXIT_FAILURE);
 	}
 
@@ -66,13 +67,13 @@ vector<int> generateOrder(item *items, int numberOfItems) {
 void printOrder(item *items, vector<int> order) {
 
 	if (!items) {
-		cout << "Error: Cannot print the order of the items. Invalid pointer. \n";
+		cout << "Error: Cannot print the order of the items. Invalid pointer. " << string_endline();
 		exit(EXIT_FAILURE);
 	}
 
-	cout << "Order: \n - Number of pieces: " << order.size() << "\n";
+	cout << "Order: " << string_endline() << " - Number of pieces: " << order.size() << string_endline();
 	for (int i=0 ; i< order.size() ; i++)
-		cout << "   - Item #" << order[i] << " - Height: " << items[order[i]].height << " - Area: " << items[order[i]].area << "\n";
+		cout << "   - Item #" << order[i] << " - Height: " << items[order[i]].height << " - Area: " << items[order[i]].area << string_endline();
 	
 
 }
@@ -82,7 +83,7 @@ void printOrder(item *items, vector<int> order) {
 int minimumFittingHeight(double itemHeight, kiln *k) {
 
 	if (!k) {
-		cout << "Error: Cannot calculate minimum fitting height. Invalid pointer. \n";
+		cout << "Error: Cannot calculate minimum fitting height. Invalid pointer. " << string_endline();
 		exit(EXIT_FAILURE);
 	}
 
@@ -125,11 +126,11 @@ void addSupports(solutionPool *sp, int layer, kiln *k) {
 solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 
 	if (!items) {
-		cout << "Error: Cannot solve the problem. Invalid pointer. \n";
+		cout << "Error: Cannot solve the problem. Invalid pointer. " << string_endline();
 		exit(EXIT_FAILURE);
 	}
 
-	cout << "Solving BL: \n";
+	cout << "Solving BL: " << string_endline();
 
 	//solution pool to be returned at the end of the function
 	solutionPool sp;
@@ -165,7 +166,7 @@ solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 
 	if (k->layers.empty()) {
 		//none of the pieces fit the kiln (height)
-			cout << "\n --> WARNING: none of the pieces could be allocated. <--\n\n";
+			cout << string_endline() << " --> WARNING: none of the pieces could be allocated. <--" << string_endline() << string_endline();
 			return sp;
 	}
 
@@ -183,7 +184,7 @@ solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 			
 			// if the item is taller than the layer height, go to next layer
 			if (items[order[i]].height > k->layers[current_layer].height) {
-				cout << " - Item #" << order[i] << " doesn't fit on layer #" << current_layer+1 << "\n";
+				cout << " - Item #" << order[i] << " doesn't fit on layer #" << current_layer+1 << "" << string_endline();
 				continue;
 			}
 
@@ -212,14 +213,14 @@ solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 					allocatedPieces[current_layer] += 1;
 					allocated = 1;
 
-					cout << " - Allocated piece #" << sol.id+1 << " at (" << sol.p.x << ", " << sol.p.y << ") - layer #" << current_layer + 1 << " \n";
+					cout << " - Allocated piece #" << sol.id+1 << " at (" << sol.p.x << ", " << sol.p.y << ") - layer #" << current_layer + 1 << " " << string_endline();
 
 					//update solution value
 					if ((sol.p.x + items[order[i]].boundingBox.rb.x) > sp.layerLengths[current_layer])
 						sp.layerLengths[current_layer] = sol.p.x + items[order[i]].boundingBox.rb.x;
 
 				} else
-					cout << " - Couldn't allocate first item \n";
+					cout << " - Couldn't allocate first item " << string_endline();
 	 
 			} else {
 
@@ -256,12 +257,12 @@ solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 
 				//drawStep(items, sp, pointsNFP, i);
 
-				//cout << "NFP dots for #" << order[i]+1 << ":\n";
+				//cout << "NFP dots for #" << order[i]+1 << ":" << string_endline();
 
 				//test all possible points until it find a valid one
 				for (int j=0 ; j<pointsNFP.size(); j++) {
 
-					//cout << "\n - (" << pointsNFP[j].x << ", " << pointsNFP[j].y << "): ";
+					//cout << string_endline() << " - (" << pointsNFP[j].x << ", " << pointsNFP[j].y << "): ";
 
 					// check points out of layer
 					if ((pointsNFP[j].x < 0) || (pointsNFP[j].x > k->layers[current_layer].length) || (pointsNFP[j].y < 0) || (pointsNFP[j].y > k->layers[current_layer].width)) {
@@ -299,7 +300,7 @@ solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 						allocatedPieces[current_layer] += 1;
 						allocated = 1;
 
-						cout << " - Allocated piece #" << sol.id << " at (" << sol.p.x << ", " << sol.p.y << ") - layer #" << current_layer + 1 << " \n";
+						cout << " - Allocated piece #" << sol.id << " at (" << sol.p.x << ", " << sol.p.y << ") - layer #" << current_layer + 1 << " " << string_endline();
 
 						//update solution value
 						if ((sol.p.x + items[order[i]].boundingBox.rb.x) > sp.layerLengths[current_layer])
@@ -331,9 +332,9 @@ solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 
 						//each item can expand only once
 						expanded = 1;
-						//"\n\n Expanded one layer \n\n";
+						//string_endline() << string_endline() << " Expanded one layer " << string_endline() << string_endline();
 					} else {
-						//"\n\n tried to expand but the kiln couldn't fit another layer\n\n";
+						//string_endline() << string_endline() << " tried to expand but the kiln couldn't fit another layer" << string_endline() << string_endline();
 					}	
 				}
 
@@ -344,9 +345,9 @@ solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 		if (!allocated) {
 			cout << " - Couldn't allocate piece #" << order[i]<< " ";
 			if (expanded)
-				cout << "but tried to expand. \n";
+				cout << "but tried to expand. " << string_endline();
 			else
-				cout << "and didn't try to expand. \n";	
+				cout << "and didn't try to expand. " << string_endline();	
 		}
 
 	}
@@ -357,7 +358,7 @@ solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 		total += allocatedPieces[i];
 
 	if (total < numberOfPieces) {
-		cout << "\n --> WARNING: some pieces could not be allocated. <--\n\n";
+		cout << string_endline() << " --> WARNING: some pieces could not be allocated. <--" << string_endline() << string_endline();
 	}
 
 	return sp;
@@ -406,7 +407,7 @@ int checkPastSolutions(double x, double y, int layer, solutionPool sp) {
 // Check if a solution layer is feasible after inserting an item using reference point (x,y)
 int checkSolution(item *items, int id, double x, double y, int layer, solutionPool sp) {
 
-	//cout << "\nTrying to allocate #" << id+1 << " at (" << x << ", " << y << ") \n"; 
+	//cout << string_endline() << "Trying to allocate #" << id+1 << " at (" << x << ", " << y << ") " << string_endline(); 
 	coord a, b, p;
 	p.x = x;
 	p.y = y;
@@ -421,7 +422,7 @@ int checkSolution(item *items, int id, double x, double y, int layer, solutionPo
 
 		violatedAtLeastOnce = 0;
 		
-		//cout << "\nNFP #" << sp.solutions[i].id + 1 << "\n";
+		//cout << string_endline() << "NFP #" << sp.solutions[i].id + 1 << "" << string_endline();
 
 		// for each discretized point of the item perimeter:
 		// get nfp points a and b
@@ -441,7 +442,7 @@ int checkSolution(item *items, int id, double x, double y, int layer, solutionPo
 				b.y = items[sp.solutions[i].id].NFP[id].vertices[j+1].y + sp.solutions[i].p.y;				
 			}
 
-			//cout << "d_func( (" << a.x << ", " << a.y << "), (" << b.x << ", " << b.y << ") , (" << p.x << ", " << p.y << ") ) =  " << d_function(a,b,p) << "\n";
+			//cout << "d_func( (" << a.x << ", " << a.y << "), (" << b.x << ", " << b.y << ") , (" << p.x << ", " << p.y << ") ) =  " << d_function(a,b,p) << "" << string_endline();
 			
 
 			// FALAR COM A FRAN SOBRE ISSO
@@ -454,7 +455,7 @@ int checkSolution(item *items, int id, double x, double y, int layer, solutionPo
 		}
 
 		if (!violatedAtLeastOnce) {
-			//cout << "\nFailed!\n";
+			//cout << string_endline() << "Failed!" << string_endline();
 			return 0;
 		}
 
@@ -467,14 +468,14 @@ int checkSolution(item *items, int id, double x, double y, int layer, solutionPo
 void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int numberOfItems) {
 
 	if (!items) {
-		cout << "Error: Cannot draw solutions. Invalid pointer. \n";
+		cout << "Error: Cannot draw solutions. Invalid pointer. " << string_endline();
 		exit(EXIT_FAILURE);
 	}
 
 	ofstream file (fileName, ofstream::out);
 	
-	file << "\\documentclass[a4paper,landscape]{article}\n\\usepackage{tikz}\n\\usepackage{gensymb}\n\\usepackage[utf8]{inputenc}";
-	file << "\n\\usepackage[left=1cm,top=1cm,right=1cm,bottom=1cm,verbose,nohead,nofoot]{geometry}\n\\usepackage{fix-cm}\n\\begin{document}\n\\pagenumbering{gobble}";
+	file << "\\documentclass[a4paper,landscape]{article}" << string_endline() << "\\usepackage{tikz}" << string_endline() << "\\usepackage{gensymb}" << string_endline() << "\\usepackage[utf8]{inputenc}";
+	file << string_endline() << "\\usepackage[left=1cm,top=1cm,right=1cm,bottom=1cm,verbose,nohead,nofoot]{geometry}" << string_endline() << "\\usepackage{fix-cm}" << string_endline() << "\\begin{document}" << string_endline() << "\\pagenumbering{gobble}";
 	file << "\\newcommand\\HUGE{\\fontsize{100}{120}\\selectfont}";
 
 	int layer = 0;
@@ -489,18 +490,18 @@ void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int num
 			totalVolume += k->length * k->width * k->layers[layer].height;
 		}
 
-		file << "\n\\thispagestyle{empty}";
+		file << string_endline() << "\\thispagestyle{empty}";
 
-		file << "\n\\begin{center} \n\\large\\textbf{"<< layer + 1 << "\\degree Andar}\\\\\n\\vspace*{5px} \n\\large\n\\textmd{Comprimento: " << k->layers[layer].length  << "  -  Profundidade: " <<  k->layers[layer].width  << "  -  Altura: " << k->layers[layer].height << " (cm)}\\\\ \\end{center}";
+		file << string_endline() << "\\begin{center} " << string_endline() << "\\large\\textbf{"<< layer + 1 << "\\degree Andar}\\\\" << string_endline() << "\\vspace*{5px} " << string_endline() << "\\large" << string_endline() << "\\textmd{Comprimento: " << k->layers[layer].length  << "  -  Profundidade: " <<  k->layers[layer].width  << "  -  Altura: " << k->layers[layer].height << " (cm)}\\\\ \\end{center}";
 
-		file << "\n\\centering\n\\resizebox";
+		file << string_endline() << "\\centering" << string_endline() << "\\resizebox";
 
 		if (k->layers[layer].width/ k->layers[layer].length < 0.7)
 			file << "{0.9\\textwidth}{!}{%";
 		else
 			file << "{!}{0.9\\textheight}{%";
 		
-		file << "\n\\begin{tikzpicture}";
+		file << string_endline() << "\\begin{tikzpicture}";
 		file << "\\draw[black] (0,0) rectangle (" << k->layers[layer].length << ", "<< k->layers[layer].width << ");";
 
 
@@ -526,26 +527,26 @@ void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int num
 			if (items[id].type == RECTANGLE) {
 				px = px + DISTANCE/2.0;
 				py = py + DISTANCE/2.0;
-				file << "\n\\draw[black, fill=" << color << "] (" << px << "," << py << ") rectangle (" << px + items[id].length - DISTANCE << ", " << py + items[id].width - DISTANCE << ");";
+				file << string_endline() << "\\draw[black, fill=" << color << "] (" << px << "," << py << ") rectangle (" << px + items[id].length - DISTANCE << ", " << py + items[id].width - DISTANCE << ");";
 				if (id != 0)
-					file << "\n\\draw (" << px + (items[id].length - DISTANCE)/2.0  << ", " << py + (items[id].width - DISTANCE)/2.0 << ") node {\\fontsize{100}{120}\\selectfont " <<  id << "};";
+					file << string_endline() << "\\draw (" << px + (items[id].length - DISTANCE)/2.0  << ", " << py + (items[id].width - DISTANCE)/2.0 << ") node {\\fontsize{100}{120}\\selectfont " <<  id << "};";
 			}
 		
 			else if (items[sp.solutions[i].id].type == TRIANGLE) {
 				px = px + DISTANCE/2.0;
 				py = py + DISTANCE/2.0;
-				file << "\n\\draw[black, fill=lightgray] (" << px << "," << py << ") -- (" << (items[id].side - DISTANCE) + px << ", " << py << ") -- (" << (items[id].side - DISTANCE) / (2.0) + px << ", "<< sqrt(3.0)/(2.0) * (items[id].side - DISTANCE) + py << ") -- cycle;";
-				file << "\n\\draw (" << px + (items[id].side - DISTANCE)/2.0  << ", " << py + ((sqrt(3.0)/(2.0) * (items[id].side - DISTANCE))/3.0) << ") node {\\fontsize{100}{120}\\selectfont " <<  id << "};";
+				file << string_endline() << "\\draw[black, fill=lightgray] (" << px << "," << py << ") -- (" << (items[id].side - DISTANCE) + px << ", " << py << ") -- (" << (items[id].side - DISTANCE) / (2.0) + px << ", "<< sqrt(3.0)/(2.0) * (items[id].side - DISTANCE) + py << ") -- cycle;";
+				file << string_endline() << "\\draw (" << px + (items[id].side - DISTANCE)/2.0  << ", " << py + ((sqrt(3.0)/(2.0) * (items[id].side - DISTANCE))/3.0) << ") node {\\fontsize{100}{120}\\selectfont " <<  id << "};";
 			}
 		
 			else if (items[sp.solutions[i].id].type == CIRCLE) {
-				file << "\n\\draw[black, fill=lightgray] (" << px << "," << py << ") circle (" << items[id].radius - DISTANCE/2.0 << ");";
-				file << "\n\\draw (" << px  << ", " << py << ") node {\\fontsize{100}{120}\\selectfont " <<  id << "};";
+				file << string_endline() << "\\draw[black, fill=lightgray] (" << px << "," << py << ") circle (" << items[id].radius - DISTANCE/2.0 << ");";
+				file << string_endline() << "\\draw (" << px  << ", " << py << ") node {\\fontsize{100}{120}\\selectfont " <<  id << "};";
 			}
 
 		}
 
-		file << "\\end{tikzpicture}\n}%\n";
+		file << "\\end{tikzpicture}" << string_endline() << "}%" << string_endline();
 
 
 		if (layer < k->layers.size()) {
@@ -556,28 +557,28 @@ void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int num
 
 	} while (layer < k->layers.size());
 
-	file << "\\thispagestyle{empty}\n\\begin{center} \n\\large\n\\textbf{Descrição das Peças}\\\\";
-	file << "\\vspace*{10px} \n \\end{center}";
+	file << "\\thispagestyle{empty}" << string_endline() << "\\begin{center} " << string_endline() << "\\large" << string_endline() << "\\textbf{Descrição das Peças}\\\\";
+	file << "\\vspace*{10px} " << string_endline() << " \\end{center}";
 
 	file << "\\begin{enumerate}";
 
 	for (int id = 1; id <= numberOfItems ; id++) {
-		file << "\\item " << items[id].description << "\n";
+		file << "\\item " << items[id].description << "" << string_endline();
 	}
 
 	file << "\\end{enumerate}";
 
-	file << "\n\\end{document}";
+	file << string_endline() << "\\end{document}";
 
 	file.close();
 
-	cout << "\n- Used Area: " << usedArea ;
-	cout << "\n- Total Area: " << totalArea ;
-	cout << "\n- Usage: " << usedArea/totalArea*100 << "%\n\n" ;
+	cout << string_endline() << "- Used Area: " << usedArea ;
+	cout << string_endline() << "- Total Area: " << totalArea ;
+	cout << string_endline() << "- Usage: " << usedArea/totalArea*100 << "%" << string_endline() << string_endline() ;
 
-	cout << "\n- Used Volume: " << usedVolume ;
-	cout << "\n- Total Volume: " << totalVolume ;
-	cout << "\n- Usage: " << usedVolume/totalVolume*100 << "%\n\n" ;
+	cout << string_endline() << "- Used Volume: " << usedVolume ;
+	cout << string_endline() << "- Total Volume: " << totalVolume ;
+	cout << string_endline() << "- Usage: " << usedVolume/totalVolume*100 << "%" << string_endline() << string_endline() ;
 
 
 }
@@ -585,7 +586,7 @@ void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int num
 // void drawStep(item *items, solutionPool sp, vector<coord> pointsNFP, int newItem) {
 
 // 	if (!items) {
-// 		cout << "Error: Cannot draw intermediate step. Invalid pointer. \n";
+// 		cout << "Error: Cannot draw intermediate step. Invalid pointer. " << string_endline();
 // 		exit(EXIT_FAILURE);
 // 	}
 
@@ -593,8 +594,8 @@ void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int num
 // 	sprintf (fileName,"adding_%d.tex", newItem);
 // 	ofstream file (fileName, ofstream::out);
 	
-// 	file << "\\documentclass{article}\n\\usepackage{tikz}\n\\begin{document}\n";
-// 	file << "\\begin{tikzpicture}[scale=0.5]\n\\begin{scope}[shift={(0.000, 0)}]\n";
+// 	file << "\\documentclass{article}" << string_endline() << "\\usepackage{tikz}" << string_endline() << "\\begin{document}" << string_endline();
+// 	file << "\\begin{tikzpicture}[scale=0.5]" << string_endline() << "\\begin{scope}[shift={(0.000, 0)}]" << string_endline();
 
 // 	for (int i=0 ; i<sp.solutions.size() ; i++) {
 
@@ -603,21 +604,21 @@ void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int num
 // 		double py = sp.solutions[i].p.y;
 
 // 		if (items[id].type == RECTANGLE)
-// 			file << "\n\\draw[black, fill=blue] (" << px << "," << py << ") rectangle (" << px + items[id].length << ", " << py + items[id].width << ");";
+// 			file << string_endline() << "\\draw[black, fill=blue] (" << px << "," << py << ") rectangle (" << px + items[id].length << ", " << py + items[id].width << ");";
 	
 // 		else if (items[sp.solutions[i].id].type == TRIANGLE)
-// 			file << "\n\\draw[black, fill=blue] (" << px << "," << py << ") -- (" << items[id].side + px << ", " << py << ") -- (" << items[id].side / (2.0) + px << ", "<< sqrt(3.0)/(2.0) * items[id].side + py << ") -- cycle;";
+// 			file << string_endline() << "\\draw[black, fill=blue] (" << px << "," << py << ") -- (" << items[id].side + px << ", " << py << ") -- (" << items[id].side / (2.0) + px << ", "<< sqrt(3.0)/(2.0) * items[id].side + py << ") -- cycle;";
 	
 // 		else if (items[sp.solutions[i].id].type == CIRCLE)
-// 			file << "\n\\draw[black, fill=blue] (" << px << "," << py << ") circle (" << items[id].radius << ");";
+// 			file << string_endline() << "\\draw[black, fill=blue] (" << px << "," << py << ") circle (" << items[id].radius << ");";
 
 // 	}
 
 // 	for (int i=0 ; i<pointsNFP.size() ; i++) {
-// 		file << "\n\\draw[fill=red] (" << pointsNFP[i].x << ", " << pointsNFP[i].y << ") circle (10.000pt);";
+// 		file << string_endline() << "\\draw[fill=red] (" << pointsNFP[i].x << ", " << pointsNFP[i].y << ") circle (10.000pt);";
 // 	}
 
-// 	file << "\\end{scope}\n\\end{tikzpicture}\n\\end{document}";
+// 	file << "\\end{scope}" << string_endline() << "\\end{tikzpicture}" << string_endline() << "\\end{document}";
 
 // 	file.close();
 

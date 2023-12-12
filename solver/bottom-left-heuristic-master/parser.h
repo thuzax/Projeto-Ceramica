@@ -19,6 +19,7 @@
 
 using namespace std;
 
+
 // Create a Kiln struct
 kiln *initKiln(string filename);
 void printKilnInformation(kiln *k);

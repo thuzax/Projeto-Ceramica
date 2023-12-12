@@ -13,12 +13,16 @@ using namespace std;
 
 enum {WINDOWS, UNIX};
 
-#ifdef __WIN32 || _WIN64
+char* string_endline; 
+
+#if defined(__WIN32) || defined(_WIN64)
 	int idOS = WINDOWS;
+	string_endline = new char[2];
 #endif
 
 #ifdef __unix__
 	int idOS = UNIX;
+	int idOS = UNIX;	string_endline = new char[1];
 #endif
 
 
@@ -258,6 +262,13 @@ int get_type_code(string lable) {
 
 int main(int argc, char *argv[]) {
 
+	if (idOS == WINDOWS) {
+		strcpy(string_endline, "\r\n");
+	}
+	else if (idOS == UNIX) {
+		strcpy(string_endline, "\n");
+	}
+
 	if (argc < 4) {
 		cout << "The names for the pieces input file, kiln "
 			 << "input file and solution file are needed." 
@@ -335,7 +346,7 @@ int main(int argc, char *argv[]) {
 	ofstream file_instance;
 	file_instance.open(solver_input_path.string().c_str());
 
-	file_instance << number_of_pieces << "\n";
+	file_instance << number_of_pieces << string_endline;
 	for (int i = 0; i < (int) pieces.size(); i++) {
 		Piece* piece = pieces[i];
 		for (int j = 0; j < piece->amount; j++) {
@@ -349,7 +360,7 @@ int main(int argc, char *argv[]) {
 			}
 			file_instance << piece->height << " ";
 			
-			file_instance << piece->description << "\n";
+			file_instance << piece->description << string_endline;
 		}
 	}
 
@@ -381,5 +392,7 @@ int main(int argc, char *argv[]) {
 
 	remove_solver_input_file(solver_input_path.string().c_str());
 
+
+	delete[] string_endline;
 	return 0;
 }

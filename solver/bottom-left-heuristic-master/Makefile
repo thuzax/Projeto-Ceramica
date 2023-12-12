@@ -7,7 +7,7 @@ all: main
 
 # Objects
 
-OBJECTS = main.o parser.o bottom-left.o
+OBJECTS = main.o parser.o bottom-left.o globals.o
 
 # Binary
 
@@ -23,7 +23,7 @@ main : $(OBJECTS)
 
 # makefiles = $(OBJECTS:%.o=%.d) 
 
-include $(makefiles)
+# include $(makefiles)
 
 %.d : %.cpp
 	g++ -Wall -Wconversion -I. -MM -MT '$(<:.cpp=.o) $@' $< >$@
@@ -31,7 +31,7 @@ include $(makefiles)
 # Cleaning
 
 clean:
-	rm -f *.o main
+	rm -f *.o
 	rm -f *~ \#*
 	rm -f *.d
 	rm -f solution.*

@@ -1,17 +1,19 @@
 #include "main.h"
+#include "globals.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
 
+	declare_globals();
+	
 	// Get the input parameters
-
     char *kilnFile = (char *)malloc(1024 * sizeof(char));
     char *itemsFile = (char *)malloc(1024 * sizeof(char));
     char *solutionFile = (char *)malloc(1024 * sizeof(char));
     
     if (!kilnFile || !itemsFile || !solutionFile) {
-        cout << "Error: Internal error while allocating memory for the configuration files. \n";
+        cout << "Error: Internal error while allocating memory for the configuration files. " << string_endline();
 		exit(EXIT_FAILURE);
     }
     
@@ -62,14 +64,14 @@ int main(int argc, char *argv[]) {
 	// Print Solution
 	cout << "Solution: ";
 	for (int l=0 ; l < mainKiln->layers.size() ; l++) {
-		cout << " - Layer #" << l+1 << " - Length: " << result.layerLengths[l] << "\n";
+		cout << " - Layer #" << l+1 << " - Length: " << result.layerLengths[l] << string_endline();
 		for (int i=0; i<result.solutions.size() ; i++) {
 			if (result.solutions[i].layer == l && result.solutions[i].id != 0)
-				cout << "   - Item #" << result.solutions[i].id << ": (" << result.solutions[i].p.x << ", " << result.solutions[i].p.y << ") \n";
+				cout << "   - Item #" << result.solutions[i].id << ": (" << result.solutions[i].p.x << ", " << result.solutions[i].p.y << ") " << string_endline();
 		}	
 	}
 	
-	cout << "\n";
+	cout << string_endline();
 	// Draw solution in LaTEX
 	drawSolution(items, result, mainKiln, solutionFile, numberOfItems);
 
@@ -78,6 +80,8 @@ int main(int argc, char *argv[]) {
 	free(solutionFile);
     free(mainKiln);
 	free(items);
+
+	delete[] string_endline();
 
 	return 0;
 }

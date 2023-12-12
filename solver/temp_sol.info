@@ -1,16 +1,72 @@
 
 C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver\bottom-left-heuristic-master\main.exe C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver\temp_forno.txt C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver\solver_input.txt C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver\temp_sol.tex
-
-
-DDDDDDDDDDDD
-
-FFFFFFFFFFFF
-
-CCCCCCCCCCCC
-
-AAAAAAAAAA
-
 C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver
 pdflatex --interaction=nonstopmode -output-directory=C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver\temp_sol.tex
 
 pdflatex --interaction=nonstopmode -output-directory=C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver\temp_sol.tex
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex.fmt)
+
+ restricted \write18 enabled.
+
+entering extended mode
+
+! Undefined control sequence.
+
+<*> C:\Users
+
+            \ahscruz\Documents\Projeto-Ceramica-Dev\solver\temp_sol.tex
+
+! Undefined control sequence.
+
+<*> C:\Users\ahscruz
+
+                    \Documents\Projeto-Ceramica-Dev\solver\temp_sol.tex
+
+! Undefined control sequence.
+
+<*> C:\Users\ahscruz\Documents
+
+                              \Projeto-Ceramica-Dev\solver\temp_sol.tex
+
+! Undefined control sequence.
+
+<*> C:\Users\ahscruz\Documents\Projeto
+
+                                      -Ceramica-Dev\solver\temp_sol.tex
+
+! Undefined control sequence.
+
+<*> ...scruz\Documents\Projeto-Ceramica-Dev\solver
+
+                                                  \temp_sol.tex
+
+! Undefined control sequence.
+
+<*> ...\Documents\Projeto-Ceramica-Dev\solver\temp
+
+                                                  _sol.tex
+
+! I can't find file `C:-Ceramica-Dev_sol.tex'.
+
+<*> ...ts\Projeto-Ceramica-Dev\solver\temp_sol.tex
+
+                                                  
+
+(Press Enter to retry, or Control-C to exit)
+
+Please type another input file name
+
+! Emergency stop.
+
+<*> ...ts\Projeto-Ceramica-Dev\solver\temp_sol.tex
+
+                                                  
+
+!  ==> Fatal error occurred, no output PDF file produced!
+
+Transcript written on C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver\te
+
+xput.log.
+
+C:\Users\ahscruz\Documents\Projeto-Ceramica-Dev\solver\temp_sol.tex
+0
