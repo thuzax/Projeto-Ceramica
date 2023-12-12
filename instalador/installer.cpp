@@ -77,7 +77,11 @@ int exec_command_line(const char* command, bool show_output = false) {
 
 	char line[8192];
 
-	fpipe = (FILE*) popen(command,"r");
+    #if defined(_WIN32) || defined(_WIN64)
+        fpipe = (FILE*) _popen(command,"r");
+    #else
+	    fpipe = (FILE*) popen(command,"r");
+    #endif
 	// If fpipe is NULL
 	if (fpipe == nullptr) {  
 		perror("Problems with pipe");
