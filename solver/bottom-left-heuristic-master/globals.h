@@ -3,9 +3,9 @@
 
 enum {WINDOWS, UNIX};
 
-void declare_globals();
-void destroy_globals();
-const char* string_endline();
+void declareGlobals();
+void destroyGlobals();
+const char* stringEndline();
 
 int idOS();
 

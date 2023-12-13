@@ -7,7 +7,7 @@ all: main
 
 # Objects
 
-OBJECTS = main.o parser.o bottom-left.o globals.o
+OBJECTS = main.o parser.o bottom-left.o globals.o heuristic-exec.o
 
 # Binary
 

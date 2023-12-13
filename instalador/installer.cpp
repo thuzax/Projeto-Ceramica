@@ -9,7 +9,7 @@
 #include <fstream>
 #include <filesystem>
 
-enum {WINDOWS, WINDOWS32, WINDOWS64, LINUX};
+enum {WINDOWS, WINDOWS32, WINDOWS64, LINUX, UNIX};
 int idOS;
 int osName;
 char install_location_c_string[512] = "\0";

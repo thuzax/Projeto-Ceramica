@@ -7,16 +7,16 @@ using namespace std;
 kiln *initKiln(string filename) {
 
 	kiln *newKiln;
-	newKiln = (kiln *)malloc(sizeof(kiln));
+	newKiln = new kiln;
 	if(!newKiln) {
-		cout << "Error: Internal error while allocating memory for the kiln. " << string_endline();
+		cout << "Error: Internal error while allocating memory for the kiln. " << stringEndline();
 		exit(EXIT_FAILURE);
 	}
 
 	ifstream file;
 	file.open(filename.c_str(), ios::in);
 	if (!file.is_open()) {
-		cout << "Error: Cannot open file " << filename << ". Please check the file name and try again. " << string_endline();
+		cout << "Error: Cannot open file " << filename << ". Please check the file name and try again. " << stringEndline();
 		exit(EXIT_FAILURE);
 	}
 
@@ -33,7 +33,6 @@ kiln *initKiln(string filename) {
 
 	// Read supports heights
 	int numberOfDifferentHeights;
-	double aux;
 
 	file >> numberOfDifferentHeights;
 
@@ -41,9 +40,11 @@ kiln *initKiln(string filename) {
 		newKiln->differentHeights.push_back(newKiln->height);
 	} 
 	else {
+		vector<double> teste;
 		for (int i=0; i< numberOfDifferentHeights; i++) {
+			double aux;
 			file >> aux;
-			newKiln->differentHeights.push_back(aux);
+			newKiln->differentHeights.push_back((double) aux);
 		}
 	}
 	file.close();
@@ -55,7 +56,7 @@ kiln *initKiln(string filename) {
 void printKilnInformation(kiln *k) {
 
 	if (!k) {
-		cout << "Error: Cannot print kiln information. Invalid pointer. " << string_endline();
+		cout << "Error: Cannot print kiln information. Invalid pointer. " << stringEndline();
 		exit(EXIT_FAILURE);
 	}
 
@@ -73,7 +74,7 @@ void printKilnInformation(kiln *k) {
 void calculateAllPossibleHeights(kiln *k) {
 
 	if (!k) {
-		cout << "Error: Cannot calculate possible heights. Invalid pointer. " << string_endline();
+		cout << "Error: Cannot calculate possible heights. Invalid pointer. " << stringEndline();
 		exit(EXIT_FAILURE);
 	}
 
@@ -142,7 +143,7 @@ item *initItems(string filename, int *numberOfItems) {
 		exit(EXIT_FAILURE);
 	}
 
-	item *items = (item *)malloc(((*numberOfItems)+1) * sizeof(item));
+	item *items = new item[(*numberOfItems)+1];
 	if(!items) {
 		cout << "Error: Internal error while allocating memory for the items. \n";
 		exit(EXIT_FAILURE);
@@ -790,34 +791,34 @@ void calculateNFP(item *items, int numberOfItems) {
 void drawNFP(item *items, int i, int j) {
 
 	if (!items) {
-		cout << "Error: Cannot draw the NFP of pair "<< i << ", " << j << ". Invalid pointer. " << string_endline();
+		cout << "Error: Cannot draw the NFP of pair "<< i << ", " << j << ". Invalid pointer. " << stringEndline();
 		exit(EXIT_FAILURE);
 	}
 
-	char *fileName = new char[20];
+	char *fileName = new char[1024];
 	sprintf (fileName,"NFP_%d_%d.tex",i,j);
 	ofstream file (fileName, ofstream::out);
 	
-	file << "\\documentclass{article}" << string_endline() << "\\usepackage{tikz}"<< string_endline()  <<"\\begin{document}" << string_endline();
-	file << "\\begin{tikzpicture}[scale=0.3]" << string_endline() << "\\begin{scope}[shift={(0.000, 0)}]" << string_endline();
+	file << "\\documentclass{article}" << stringEndline() << "\\usepackage{tikz}"<< stringEndline()  <<"\\begin{document}" << stringEndline();
+	file << "\\begin{tikzpicture}[scale=0.3]" << stringEndline() << "\\begin{scope}[shift={(0.000, 0)}]" << stringEndline();
 
 	if (items[i].type == RECTANGLE)
-		file << string_endline() << "\\draw[black, fill=lightgray] (0,0) rectangle (" << items[i].length << ", " << items[i].width << ");";
+		file << stringEndline() << "\\draw[black, fill=lightgray] (0,0) rectangle (" << items[i].length << ", " << items[i].width << ");";
 	
 	if (items[i].type == TRIANGLE)
-		file << string_endline() << "\\draw[black, fill=lightgray] (0,0) -- (" << items[i].side << ", 0) -- (" << items[i].side / (2.0) << ", "<< sqrt(3.0)/(2.0) * items[i].side << ") -- cycle;";
+		file << stringEndline() << "\\draw[black, fill=lightgray] (0,0) -- (" << items[i].side << ", 0) -- (" << items[i].side / (2.0) << ", "<< sqrt(3.0)/(2.0) * items[i].side << ") -- cycle;";
 	
 	if (items[i].type == CIRCLE)
-		file << string_endline() << "\\draw[black, fill=lightgray] (0,0) circle (" << items[i].radius << ");";
+		file << stringEndline() << "\\draw[black, fill=lightgray] (0,0) circle (" << items[i].radius << ");";
 
 	for (int k=0; k<items[i].NFP[j].numberOfVertices ; k++) {
-		file << string_endline() << "\\draw[fill=darkgray] (" << items[i].NFP[j].vertices[k].x << ", " << items[i].NFP[j].vertices[k].y << ") circle (10.000pt);";
+		file << stringEndline() << "\\draw[fill=darkgray] (" << items[i].NFP[j].vertices[k].x << ", " << items[i].NFP[j].vertices[k].y << ") circle (10.000pt);";
 	}
 
 	
 
 
-	file << "\\end{scope}" << string_endline() << "\\end{tikzpicture}" << string_endline() << "\\end{document}";
+	file << "\\end{scope}" << stringEndline() << "\\end{tikzpicture}" << stringEndline() << "\\end{document}";
 
 	file.close();
 

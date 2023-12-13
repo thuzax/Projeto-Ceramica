@@ -9,19 +9,21 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include "bottom-left-heuristic-master/main.h"
+// #include "bottom-left-heuristic-master/globals.h"
+
 using namespace std;
 
-
-enum {WINDOWS, UNIX};
+enum {WINDOWS_S, UNIX_S};
 
 #if defined(__WIN32) || defined(_WIN64)
-	int idOS = WINDOWS;
-	char* string_endline = new char[2];
+	int idOS_SOL = WINDOWS_S;
+	char* string_endline_SOL = new char[2];
 #endif
 
 #ifdef __unix__
-	int idOS = UNIX;
-	char* string_endline = new char[1];
+	int idOS_SOL = UNIX_S;
+	char* string_endline_SOL = new char[1];
 #endif
 
 
@@ -42,7 +44,9 @@ enum {WINDOWS, UNIX};
 #endif
 
 
-enum {SQUARE, RECTANGLE, TRIANGLE, CIRCLE};
+
+// enum {SQUARE, RECTANGLE, TRIANGLE, CIRCLE};
+enum {SQUARE};
 
 const char* lable_circle = "Círculo";
 const char* lable_square = "Quadrado";
@@ -67,27 +71,22 @@ int exec_command_line(const char* command) {
 
 	char line[2048];
 
+	cout << string_endline_SOL << command << string_endline_SOL;
 	#if defined(_WIN32) || defined(_WIN64)
-		char command_in_quotes[2048];
-		strcpy(command_in_quotes, "cmd.exe /C \"");
-		strcat(command_in_quotes, command);
-		strcat(command_in_quotes, "\"");
-		cout << endl << command << endl;
-		cout << endl << command_in_quotes << endl;
-		fpipe = (FILE*) _popen(command_in_quotes, "r");
+		fpipe = (FILE*) _popen(command, "r");
 	#else
-		cout << endl << command << endl;
+		cout << string_endline_SOL << command << string_endline_SOL;
 		fpipe = (FILE*) popen(command,"r");
 	#endif
-	cout << fpipe << endl;
+	cout << fpipe << string_endline_SOL;
 	// If fpipe is NULL
 	if (fpipe == NULL) {  
-        cerr << "Problems with pipe" << endl;
+        cerr << "Problems with pipe" << string_endline_SOL;
 		exit(1);
 	}
 
 	while (fgets(line, sizeof(line), fpipe) != NULL) {
-		cout << line << endl;
+		cout << line << string_endline_SOL;
 	}
 	#if defined(_WIN32) || defined(_WIN64)
 		return _pclose(fpipe);
@@ -98,7 +97,8 @@ int exec_command_line(const char* command) {
 
 
 void convert_tex_solution_to_pdf(const char* solution_file_name, const char* program_root_dir) {
-	cout << program_root_dir << endl;
+	cout << "Iniciando conversão para PDF" << string_endline_SOL;
+	cout << program_root_dir << string_endline_SOL;
 	
 	char command[1024] = "\0";
 	strcat(command, "pdflatex");
@@ -111,14 +111,17 @@ void convert_tex_solution_to_pdf(const char* solution_file_name, const char* pro
 	strcat(command, " ");
 	strcat(command, solution_file_name);
 
-	cout << command << endl;
+	cout << command << string_endline_SOL;
 
 	exec_command_line(command);
 	
+	
+	cout << "Apagando arquivos auxiliares para geração do PDF" << string_endline_SOL;
+
 	fs::path sol_pdf = solution_file_name;
 
-	cout << sol_pdf.string() << endl;
-	cout << fs::exists(sol_pdf) << endl;
+	cout << sol_pdf.string() << string_endline_SOL;
+	cout << fs::exists(sol_pdf) << string_endline_SOL;
 
 	fs::path dir = program_root_dir;
 
@@ -151,7 +154,7 @@ void convert_tex_solution_to_pdf(const char* solution_file_name, const char* pro
 	dir = dir.parent_path();
 
 	strcpy(command, "\0");
-	if (idOS == UNIX) {
+	if (idOS_SOL == UNIX_S) {
 		strcat(command, "rm -f");
 		strcat(command, " ");
 		strcat(command, aux_files);
@@ -162,7 +165,7 @@ void convert_tex_solution_to_pdf(const char* solution_file_name, const char* pro
 		strcat(command, " ");
 		strcat(command, tex_files);
 	}
-	else if (idOS == WINDOWS) {
+	else if (idOS_SOL == WINDOWS_S) {
 		// rmdir /S /Q "diretorio"
 		// del "arquivo"
 		strcat(command, "del ");
@@ -176,54 +179,75 @@ void convert_tex_solution_to_pdf(const char* solution_file_name, const char* pro
 		strcat(command, tex_files);
 	}
 
-	// exec_command_line(command);
+	exec_command_line(command);
+	cout << "OK" << string_endline_SOL;
 }
 
 
 void exec_heuristic(const char* solver_path, const char* kiln_file_name, const char* solution_file_name) {	
-	char command[512] = "\0";
-	strcat(command, "\"");
-	strcat(command, solver_path);
-	strcat(command, "\"");
-	strcat(command, " ");
-	strcat(command, "\"");
-	strcat(command, kiln_file_name);
-	strcat(command, "\"");
-	strcat(command, " ");
-	strcat(command, "\"");
-	strcat(command, solver_input_path.string().c_str());
-	strcat(command, "\"");
-	strcat(command, " ");
-	strcat(command, "\"");
-	strcat(command, solution_file_name);
-	strcat(command, "\"");
-	// strcat(command, " > logfile.log");
+	// char command[512] = "\0";
+	// strcat(command, solver_path);
+	// strcat(command, " ");
+	// strcat(command, kiln_file_name);
+	// strcat(command, " ");
+	// strcat(command, solver_input_path.string().c_str());
+	// strcat(command, " ");
+	// strcat(command, solution_file_name);
+	// // strcat(command, " > logfile.log");
 
 	// strcpy(command, solver_path);
-	cout << solver_path << endl;
-	cout << kiln_file_name << endl;
-	cout << solver_input_path.string().c_str() << endl;
-	cout << solution_file_name << endl;
+	// cout << solver_path << string_endline_SOL;
+	cout << "Caminhos: " << string_endline_SOL;
+	cout << kiln_file_name << string_endline_SOL;
+	cout << solver_input_path.string().c_str() << string_endline_SOL;
+	cout << solution_file_name << string_endline_SOL;
+
+	cout << "Preparando parâmetros" << string_endline_SOL;
+	
+	int argc = 4;
+
+	char** argv = new char*[argc];
+	for (int i = 0; i < argc; i++) {
+		argv[i] = new char[1024];
+	}
+
+	strcpy(argv[0], solver_path);
+	strcpy(argv[1], kiln_file_name);
+	strcpy(argv[2], solver_input_path.string().c_str());
+	strcpy(argv[3], solution_file_name);
 
 
+	cout << "Iniciando chamada de função" << string_endline_SOL;
+	executeHeuristicBottomLeft(argc, argv);
+	cout << "Solucao finalizada" << string_endline_SOL;
 
-	exec_command_line(command);
+
+	cout << "Liberando Memória usada pelos parâmetros" << string_endline_SOL;
+	for (int i = 0; i < argc; i++) {
+		delete[] argv[i];
+	}
+	delete[] argv;
+	cout << "OK" << string_endline_SOL;
+	// exec_command_line(command);
+
 }
 
 void remove_solver_input_file(const char* solver_input_name) {
+	cout << "Apagando arquivos auxiliares de execução" << string_endline_SOL;
 	char command[512] = "\0";
-	if (idOS == UNIX) {
+	if (idOS_SOL == UNIX_S) {
 		strcat(command, "rm -f");
 		strcat(command, " ");
 		strcat(command, solver_input_name);
 	}
-	else if(idOS == WINDOWS) {
+	else if(idOS_SOL == WINDOWS_S) {
 		strcat(command, "del ");
 		strcat(command, " ");
 		strcat(command, solver_input_name);
 	}
 
-	// exec_command_line(command);
+	exec_command_line(command);
+	cout << "OK" << string_endline_SOL;
 
 }
 
@@ -291,22 +315,24 @@ int get_type_code(string lable) {
 
 int main(int argc, char *argv[]) {
 
-	if (idOS == WINDOWS) {
-		strcpy(string_endline, "\r\n");
+	if (idOS_SOL == WINDOWS_S) {
+		strcpy(string_endline_SOL, "\r\n");
 	}
-	else if (idOS == UNIX) {
-		strcpy(string_endline, "\n");
+	else if (idOS_SOL == UNIX_S) {
+		strcpy(string_endline_SOL, "\n");
 	}
 
 	if (argc < 4) {
 		cout << "The names for the pieces input file, kiln "
 			 << "input file and solution file are needed." 
-			 << endl;
+			 << string_endline_SOL;
 	}
 
 	char* pieces_file_name = argv[1];
 	char* kiln_file_name = argv[2];
 	char* solution_file_name = argv[3];
+
+	cout << "Preparando arquivos de entrada para execucao" << string_endline_SOL;
 
 	ifstream file_pieces;
 
@@ -366,6 +392,10 @@ int main(int argc, char *argv[]) {
 
 	file_pieces.close();
 
+	cout << "OK" << string_endline_SOL;
+
+	cout << "Montando caminhos dos arquivos" << string_endline_SOL;
+
 	fs::path p = argv[0];
 	fs::path program_solver_dir = p.parent_path();
 
@@ -375,7 +405,7 @@ int main(int argc, char *argv[]) {
 	ofstream file_instance;
 	file_instance.open(solver_input_path.string().c_str());
 
-	file_instance << number_of_pieces << string_endline;
+	file_instance << number_of_pieces << string_endline_SOL;
 	for (int i = 0; i < (int) pieces.size(); i++) {
 		Piece* piece = pieces[i];
 		for (int j = 0; j < piece->amount; j++) {
@@ -389,7 +419,7 @@ int main(int argc, char *argv[]) {
 			}
 			file_instance << piece->height << " ";
 			
-			file_instance << piece->description << string_endline;
+			file_instance << piece->description << string_endline_SOL;
 		}
 	}
 
@@ -404,13 +434,14 @@ int main(int argc, char *argv[]) {
 	}
 
 	
-	if (idOS == UNIX) {
+	if (idOS_SOL == UNIX_S) {
 		exec_path.append("main");
 	} 
-	else if (idOS == WINDOWS) {
+	else if (idOS_SOL == WINDOWS_S) {
 		exec_path.append("main.exe");
 	}
-	
+
+	cout << "OK" << string_endline_SOL;	
 
 	exec_heuristic(
 		exec_path.string().c_str(), 
@@ -423,6 +454,6 @@ int main(int argc, char *argv[]) {
 	remove_solver_input_file(solver_input_path.string().c_str());
 
 
-	delete[] string_endline;
+	delete[] string_endline_SOL;
 	return 0;
 }

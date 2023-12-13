@@ -1,9 +1,6 @@
-#ifndef MAIN_H
+#ifndef MAIN_H_
 #define MAIN_H_
 
-#include "structure.h"
-#include "parser.h"
-#include "bottom-left.h"
-
+#include "heuristic-exec.h"
 
 #endif
