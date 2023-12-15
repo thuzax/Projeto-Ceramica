@@ -1045,7 +1045,7 @@ void create_desktop_shortcut_windows() {
     char command[256];
     strcpy(command, "mklink");
     strcat(command, " ");
-    strcat(command, "/H");
+    strcat(command, "");
     strcat(command, " ");
     strcat(command, shortcut_path.string().c_str());
     strcat(command, " ");
