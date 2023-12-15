@@ -36,17 +36,20 @@ kiln *initKiln(string filename) {
 
 	file >> numberOfDifferentHeights;
 
-	if (numberOfDifferentHeights == 0) {
-		newKiln->differentHeights.push_back(newKiln->height);
-	} 
-	else {
-		vector<double> teste;
-		for (int i=0; i< numberOfDifferentHeights; i++) {
-			double aux;
-			file >> aux;
+	vector<double> diffKilns;
+
+	for (int i=0; i < numberOfDifferentHeights; i++) {
+		double aux;
+		file >> aux;
+		if (aux > 0.0) {
 			newKiln->differentHeights.push_back((double) aux);
 		}
 	}
+
+	if (newKiln->differentHeights.size() == 0) {
+		newKiln->differentHeights.push_back(newKiln->height);
+	}
+
 	file.close();
 
 	return newKiln;
