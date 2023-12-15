@@ -1148,7 +1148,7 @@ void install() {
         wchar_t title[128];
         wcscpy(title, L"Fim");
         #if defined(_WIN32) || defined(__WIN64)
-            msg_box_error_windows(message, title);
+            msg_box_info_windows(message, title);
         #endif
     }
     
