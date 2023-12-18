@@ -585,7 +585,7 @@ void download_zip() {
 
 void login_as_admin_linux() {
     char command[512];
-    strcpy(command, "sudo su");
+    strcpy(command, "sudo ls");
     exec_command_line(command);
 }
 

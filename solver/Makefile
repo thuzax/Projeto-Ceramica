@@ -15,15 +15,14 @@ TARGET = solve
 OBJECTS = solve.o parser.o bottom-left.o globals.o heuristic-exec.o
 
 # Stack size
-STACK_SIZE_LINUX = 1073741824  # 1GB in bytes
-STACK_SIZE_WINDOWS = 1073741824  # 1GB in bytes
+STACK_SIZE = 1073741824  # 1GB in bytes
 
 # Binary
 solve: $(OBJECTS)
 ifeq ($(OS), Linux)
-	$(CXX) -Wall -Wconversion -Wl,--stack,$(STACK_SIZE_LINUX) $^ -o $@
+	$(CXX) -Wall -Wconversion -Wl,-z,stack-size=$(STACK_SIZE) $^ -o $@
 else ifeq ($(OS), Windows)
-	$(CXX) -Wall -Wconversion $^ -o $@
+	$(CXX) -Wall -Wconversion -Wl,/STACK:$(STACK_SIZE) $^ -o $@
 endif
 
 # Pattern rule for object-source dependencies
@@ -41,6 +40,7 @@ ifeq ($(OS), Linux)
 else ifeq ($(OS), Windows)
 	del *.o *~ \#* *.d solution.* *.tex adding_*.* NFP_*.*
 endif
+
 # Cleaning with removing the executable
 cleanall: clean
 ifeq ($(OS), Linux)
