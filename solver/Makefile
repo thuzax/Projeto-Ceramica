@@ -22,7 +22,7 @@ solve: $(OBJECTS)
 ifeq ($(OS), Linux)
 	$(CXX) -Wall -Wconversion -Wl,-z,stack-size=$(STACK_SIZE) $^ -o $@
 else ifeq ($(OS), Windows)
-	$(CXX) -Wall -Wconversion -Wl,/STACK:$(STACK_SIZE) $^ -o $@
+	$(CXX) -Wall -Wconversion -Wl,--stack=$(STACK_SIZE) $^ -o $@
 endif
 
 # Pattern rule for object-source dependencies
