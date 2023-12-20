@@ -1,3 +1,4 @@
+// if OS is windows, include windows.h for GUI messages
 #if defined(_WIN32) || defined(__WIN64)
     #include <windows.h>
 #endif
@@ -9,16 +10,21 @@
 #include <fstream>
 #include <filesystem>
 
+//  Enumerate OS Names
 enum {WINDOWS, WINDOWS32, WINDOWS64, LINUX, UNIX};
+// identify which type of OS is being used
 int idOS;
+// Name the OS that is being used
 int osName;
+// Instalation directory path as c string
 char install_location_c_string[512] = "\0";
 
-
+// auxliary variables to control already installed elements
 bool pdflatex_already_installed = true;
 bool unzip_already_installed = true;
 bool project_already_existed = true;
 
+// make filesystem usable with c++17 with 'fs'
 #ifndef __has_include
   static_assert(false, "__has_include not supported");
 #else
@@ -36,7 +42,7 @@ bool project_already_existed = true;
 
 using namespace std;
 
-
+// Define variables that are different in each OS
 void define_OS_data() {
     #ifdef __WIN32
         if (strcmp(install_location_c_string, "\0") == 0) {
@@ -69,7 +75,7 @@ void define_OS_data() {
     #endif
 }
 
-
+// Execute a system command
 int exec_command_line(const char* command, bool show_output = false) {
 	FILE *fpipe;
 
@@ -98,11 +104,12 @@ int exec_command_line(const char* command, bool show_output = false) {
     
 }
 
-
+// Convert wchar to char (used on windows only)
 void wchar_message_box_text_to_char(char* converted_text, const wchar_t* text) {
     wcstombs(converted_text, text, 2048);
 }
 
+// Create message boxes for windwos
 #if defined(_WIN32) || defined(__WIN64)
 // IDYES == 6; IDNO == 7
 int msg_box_YN_windows(const wchar_t* message_wchar, const wchar_t* title_wchar) {
@@ -131,6 +138,7 @@ void msg_box_error_windows(const wchar_t* message_wchar, const wchar_t* title_wc
 }
 #endif
 
+// Remove a direcotry or file using the absolute path (linux version)
 int remove_by_abs_path_command_line_linux(const char* absolute_path) {
     fs::path file_path = absolute_path;
     if (fs::is_directory(file_path)) {
@@ -157,7 +165,7 @@ int remove_by_abs_path_command_line_linux(const char* absolute_path) {
     return 0;
 }
 
-
+// Remove a direcotry or file using the absolute path (windows version)
 int remove_by_abs_path_command_line_windows(const char* absolute_path) {
     fs::path file_path = absolute_path;
     if (fs::is_directory(file_path)) {
@@ -180,6 +188,7 @@ int remove_by_abs_path_command_line_windows(const char* absolute_path) {
     return 0;
 }
 
+// Remove using abs path (call the current OS function)
 int remove_by_abs_path_command_line(const char* absolute_path) {
     fs::path file_path = absolute_path;
     if (fs::exists(file_path)) {
@@ -194,12 +203,15 @@ int remove_by_abs_path_command_line(const char* absolute_path) {
     return 0;
 }
 
+// Remove pdflatex
 void remove_pdflatex() {
-    cout << "==================================================================" << endl;
-    cout << "Desinstalando pacotes ";
-    cout << "texlive-latex-base, texlive-fonts-recommended, texlive-fonts-extra e texlive-latex-extra" << endl;
-    cout << "==================================================================" << endl;
+    
     if (idOS == LINUX) {
+        // Uses apt package manager
+        cout << "==================================================================" << endl;
+        cout << "Desinstalando pacotes ";
+        cout << "texlive-latex-base, texlive-fonts-recommended, texlive-fonts-extra e texlive-latex-extra" << endl;
+        cout << "==================================================================" << endl;
         char command[256];
         strcpy(command, "sudo apt autoremove -y");
         strcat(command, " ");
@@ -212,7 +224,9 @@ void remove_pdflatex() {
         strcat(command, "texlive-latex-extra");
         exec_command_line(command);
     }
+
     else if (idOS == WINDOWS) {
+        // Delete all directories related to miktex
         char command[256];
         
         strcpy(command, "rmdir /S /Q \"%PROGRAMFILES%\\MiKTeX\"");
@@ -248,7 +262,7 @@ void remove_pdflatex() {
     }
 }
 
-
+// Uninstall unzip (linux only)
 void remove_unzip() {
     cout << "==================================================================" << endl;
     cout << "Desinstalando pacote unzip" << endl;
@@ -262,7 +276,7 @@ void remove_unzip() {
     }
 }
 
-
+// Cancel instalation and remove installed packages/programs
 void abort_instalation(bool exclude_project = true) {
     fs::path zip_file = install_location_c_string;
     zip_file.append("master.zip");
@@ -314,6 +328,7 @@ void abort_instalation(bool exclude_project = true) {
     exit(0);
 }
 
+// Get the command line for downloading a zip on linux
 void get_download_command_linux(char* command){
     cout << "Baixando arquivos..." << endl;
     strcpy(command, "\0");
@@ -329,6 +344,7 @@ void get_download_command_linux(char* command){
     strcat(command, install_location_c_string);
 }
 
+// Get the command line for downloading a zip on windows
 void get_download_command_windows(char* command){
     fs::path dest_dir = install_location_c_string;
     strcpy(command, "curl https://github.com/thuzax/Projeto-Ceramica-Dev/archive/refs/heads/main.zip -L -o ");
@@ -336,7 +352,7 @@ void get_download_command_windows(char* command){
     strcat(command, dest_dir.string().c_str());
 }
 
-
+// Get the command line for downloading a zip according to the OS
 void get_download_command(char* command){
     if (idOS == LINUX) {
         return get_download_command_linux(command);
@@ -347,6 +363,7 @@ void get_download_command(char* command){
     strcpy(command, "\0");
 }
 
+// Install unzip (linux only)
 void install_unzip() {
     if (idOS == LINUX) {
         cout << "==================================================================" << endl;
@@ -362,6 +379,7 @@ void install_unzip() {
     }
 }
 
+// unzip program (linux only)
 void unzip_program_linux() {
     char command[512];
     fs::path unzip_local = install_location_c_string;
@@ -443,6 +461,7 @@ void unzip_program_linux() {
     }
 }
 
+// unzip program (windows only)
 void unzip_program_windows() {
     fs::path unzip_local = install_location_c_string;
     unzip_local.append("tmp");
@@ -552,7 +571,7 @@ void unzip_program_windows() {
 
 }
 
-
+// Call OS unzip function
 void unzip_program() {
     if (idOS == LINUX) {
         unzip_program_linux();
@@ -563,6 +582,7 @@ void unzip_program() {
 }
 
 
+// Download the zip containing the program
 void download_zip() {
     char command[1024];
     get_download_command(command);
@@ -583,13 +603,14 @@ void download_zip() {
     }
 }
 
+// Force logint as sudo on linux
 void login_as_admin_linux() {
     char command[512];
     strcpy(command, "sudo ls");
     exec_command_line(command);
 }
 
-
+// Install the pdflatex package on linux
 void install_pdflatex_linux() {
     // cout << endl << endl;
     cout << "==================================================================" << endl;
@@ -616,7 +637,7 @@ void install_pdflatex_linux() {
     cout << "Instalação do pdflatex concluída." << endl;
 }
 
-
+// Install miktex on windows
 void install_miktex() {
     char command[256];
     int exec_status;
@@ -772,7 +793,7 @@ void install_miktex() {
     // reg delete HKLM\SOFTWARE\MiKTeX.org /f
 }
 
-
+// Install the pdflatex command line for the current OS
 void install_pdflatex() {
     if (idOS == LINUX) {
         cout << "Verificando a instalação do pdflatex..." << endl;
@@ -792,7 +813,7 @@ void install_pdflatex() {
     }
 }
 
-
+// Remove auxiliary directories present on github
 void clean_project() {
     fs::path installed_dir = install_location_c_string;
 
@@ -858,7 +879,7 @@ void clean_project() {
 
 }
 
-
+// execute a given system command to verify if libreoffice is installed
 bool run_test_libreoffice_installed(const char* command) {
     FILE *fpipe;
 	char line[8192];
@@ -886,21 +907,21 @@ bool run_test_libreoffice_installed(const char* command) {
     return isInstalled;
 }
 
-
+// run command test to verify wheter libreoffice is on linux or not
 bool libreoffice7_is_installed_linux() {
     char command[] = "sudo libreoffice --version";
     return run_test_libreoffice_installed(command);
 
 }
 
-
+// run command test to verify wheter libreoffice is on windows or not
 bool libreoffice7_is_installed_windows() {
     char command[] = "wmic product where \"Name like '%LibreOffice 7%'\" get Name";
     return run_test_libreoffice_installed(command);
 
 }
 
-
+// check if libreoffice is installed
 void verify_libreoffice_installed() {
     cout << "Verificando a instalação do LibreOffice 7." << endl;
     cout << "Digite a senha de administrador se necessário." << endl;
@@ -928,6 +949,7 @@ void verify_libreoffice_installed() {
     }
 }
 
+// verify if the project directory is already installed
 void set_project_already_exists() {
     fs::path installed_dir = install_location_c_string;
     installed_dir.append("Projeto-Ceramica");
@@ -940,6 +962,7 @@ void set_project_already_exists() {
     }
 }
 
+// install project on linux
 void install_linux() {
     cout << "==================================================================" << endl;
     cout << "Caso não estejam instalados, será necessário os pacotes: " << endl;
@@ -980,7 +1003,7 @@ void install_linux() {
 
 }
 
-
+// Ask permission to install project on windows
 void ask_install_permission_windows() {
     wchar_t message[2048];
     wcscpy(message, L"\0");
@@ -1010,8 +1033,9 @@ void ask_install_permission_windows() {
 
 }
 
+// Create shortcut for the installed sheet on windwos
 void create_desktop_shortcut_windows() {
-    // mklink /H C:\Users\ahscruz\Desktop\teste.ods "C:\Users\ahscruz\Documents\Projeto-Ceramica\forno.ods"
+    // mklink C:\Users\ahscruz\Desktop\teste.ods "C:\Users\ahscruz\Documents\Projeto-Ceramica\forno.ods"
     fs::path file_forno_path = install_location_c_string;
     file_forno_path.append("Projeto-Ceramica");
     file_forno_path.append("forno.ods");
@@ -1068,6 +1092,7 @@ void create_desktop_shortcut_windows() {
 }
 
 
+// install project on windows
 void install_windows() {
     cout << "==================================================================" << endl;
     ask_install_permission_windows();
@@ -1093,6 +1118,7 @@ void install_windows() {
     cout << "==================================================================" << endl;
 }
 
+// verify if user is admin, if linux, log in
 void verify_admin() {
     if (idOS == LINUX) {
         login_as_admin_linux();
@@ -1111,6 +1137,7 @@ void verify_admin() {
     }
 }
 
+// exit sudo su
 void logout_as_admin() {
     if (idOS == LINUX) {
         exec_command_line("exit");
@@ -1118,6 +1145,7 @@ void logout_as_admin() {
 }
 
 
+// install the project according to the OS
 void install() {
     verify_admin();
     verify_libreoffice_installed();
@@ -1156,12 +1184,14 @@ void install() {
 }
 
 int main() {
+    // start global OS variables
     define_OS_data();
     cout << "==================================================================" << endl;
     if (idOS == LINUX) {
         cout << "Iniciando instalação..." << endl;
     }
     else if(idOS == WINDOWS) {
+        // set the console to use utf-8
         #if defined(__WIN64)
             SetConsoleOutputCP(CP_UTF8);
         #endif
@@ -1169,6 +1199,7 @@ int main() {
         cout << "Iniciando instalação..." << endl;
     }
     else {
+        // if not windows nor linux, cancel
         cout << "Sistema Operacional imcompatível." << endl;
         exit(0);
     }
