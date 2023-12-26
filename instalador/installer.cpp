@@ -75,7 +75,7 @@ void define_OS_data() {
     #endif
 }
 
-// Execute a system command
+// Execute a system command. Returns 0 if it was a success, otherwise, returns another integer
 int exec_command_line(const char* command, bool show_output = false) {
 	FILE *fpipe;
 
@@ -94,6 +94,7 @@ int exec_command_line(const char* command, bool show_output = false) {
 		exit(1);
 	}
 
+    // Execute and print output
     while (fgets(line, sizeof(line), fpipe)) {
         if (show_output) {
             cout << line << endl;
@@ -110,6 +111,8 @@ void wchar_message_box_text_to_char(char* converted_text, const wchar_t* text) {
 }
 
 // Create message boxes for windwos
+
+// Create message with 'yes' and 'no' options
 #if defined(_WIN32) || defined(__WIN64)
 // IDYES == 6; IDNO == 7
 int msg_box_YN_windows(const wchar_t* message_wchar, const wchar_t* title_wchar) {
@@ -120,7 +123,7 @@ int msg_box_YN_windows(const wchar_t* message_wchar, const wchar_t* title_wchar)
     return MessageBox(0, message, title, MB_ICONQUESTION | MB_YESNO | MB_SETFOREGROUND | MB_SYSTEMMODAL);
 }
 
-
+// Create message with info icon
 void msg_box_info_windows(const wchar_t* message_wchar, const wchar_t* title_wchar) {
     char message[2048];
     wchar_message_box_text_to_char(message, message_wchar);
@@ -129,6 +132,7 @@ void msg_box_info_windows(const wchar_t* message_wchar, const wchar_t* title_wch
     MessageBox(0, message, title, MB_ICONINFORMATION | MB_OK | MB_SETFOREGROUND | MB_SYSTEMMODAL);
 }
 
+// Create message with error icon
 void msg_box_error_windows(const wchar_t* message_wchar, const wchar_t* title_wchar) {
     char message[2048];
     wchar_message_box_text_to_char(message, message_wchar);
@@ -141,6 +145,7 @@ void msg_box_error_windows(const wchar_t* message_wchar, const wchar_t* title_wc
 // Remove a direcotry or file using the absolute path (linux version)
 int remove_by_abs_path_command_line_linux(const char* absolute_path) {
     fs::path file_path = absolute_path;
+    // If it is a directory removes with sudo rm -R
     if (fs::is_directory(file_path)) {
         cout << "Removendo diretório " << absolute_path << endl;
         cout << "Digite a senha de administrador se necessário." << endl;
@@ -155,6 +160,7 @@ int remove_by_abs_path_command_line_linux(const char* absolute_path) {
         return exec_command_line(remove_command);
     }
     else {
+        // If it is not a directory removes with rm
         char remove_command[512];
         strcpy(remove_command, "rm");
         strcat(remove_command, " ");
@@ -169,6 +175,7 @@ int remove_by_abs_path_command_line_linux(const char* absolute_path) {
 int remove_by_abs_path_command_line_windows(const char* absolute_path) {
     fs::path file_path = absolute_path;
     if (fs::is_directory(file_path)) {
+        // If it is a directory uses rmdir
         char remove_command[512];
         strcpy(remove_command, "rmdir");
         strcat(remove_command, " ");
@@ -178,6 +185,7 @@ int remove_by_abs_path_command_line_windows(const char* absolute_path) {
         return exec_command_line(remove_command, true);
     }
     else {
+        // If it is a file remove with del
         char remove_command[512];
         strcpy(remove_command, "del");
         strcat(remove_command, " ");
@@ -278,29 +286,30 @@ void remove_unzip() {
 
 // Cancel instalation and remove installed packages/programs
 void abort_instalation(bool exclude_project = true) {
-    fs::path zip_file = install_location_c_string;
-    zip_file.append("master.zip");
-
     cout << "Removendo arquivos criados até o momento..." << endl;
 
+    // Remove git zip file
+    fs::path zip_file = install_location_c_string;
+    zip_file.append("master.zip");
     if (fs::exists(zip_file)) {
         remove_by_abs_path_command_line(zip_file.string().c_str());
     }
 
+    // Remove temporary directory
     fs::path unzip_local = install_location_c_string;
     unzip_local.append("tmp");
-
     if (fs::exists(unzip_local)) {
         remove_by_abs_path_command_line(unzip_local.string().c_str());
     }
 
+    // Remove downloaded project file
     fs::path new_project_path = install_location_c_string;
     new_project_path.append("Projeto-Ceramica");
-
     if (fs::exists(new_project_path) and not project_already_existed) {
          remove_by_abs_path_command_line(new_project_path.string().c_str());
     }
     
+    // Uninstall pdflatex if it was not installed
     if (not pdflatex_already_installed) {
         int exec_status = exec_command_line("pdflatex --version");
         if (exec_status == 0) {
@@ -308,6 +317,7 @@ void abort_instalation(bool exclude_project = true) {
         }
     }
     
+    // Uninstall unzip if it is on linux and it was not installed
     if (idOS == LINUX) {
         if (not unzip_already_installed) {
             int exec_status = exec_command_line("unzip --help");
@@ -317,6 +327,7 @@ void abort_instalation(bool exclude_project = true) {
         }
     }
 
+    // Delete miktex downloaded files
     if (idOS == WINDOWS) {
         fs::path miktexsetup_zip_path = install_location_c_string;
         miktexsetup_zip_path.append("miktexsetup-x64.zip");
@@ -382,11 +393,14 @@ void install_unzip() {
 // unzip program (linux only)
 void unzip_program_linux() {
     char command[512];
+    
+    // make paths
     fs::path unzip_local = install_location_c_string;
     unzip_local.append("tmp");
     fs::path zip_file = install_location_c_string;
     zip_file.append("master.zip");
     
+    // run unzip command
     strcpy(command, "unzip -o -d");
     strcat(command, " ");
     strcat(command, unzip_local.string().c_str());
@@ -400,40 +414,25 @@ void unzip_program_linux() {
         exit(1);
     }
 
+    // get project directory path
     fs::path project_directory_path;
     for (const auto & file_name : fs::directory_iterator(unzip_local)) {
         project_directory_path = file_name.path();
     }
-    
+
+    // Construct project installation path
     fs::path new_project_path = install_location_c_string;
     new_project_path.append("Projeto-Ceramica");
 
+    // Verify if project already exists
     if (fs::exists(new_project_path)) {
         cout << "================================================================================" << endl;
         cout << "Já existe uma instalação deste projeto. Abortando..." << endl;
         cout << "================================================================================" << endl;
         abort_instalation();
-        // cout << "Já existe uma cópia do do projeto instalada. ";
-        // cout << "Continuar a instalação irá remover a instalação antiga e todos os arquivos relacionados. ";
-        // cout << "Deseja continuar? [S/n]  ";
-        // string answer;
-        // getline(cin, answer);
-
-        // if (answer == "n" or answer == "N") {
-            // cout << "Abortando operação." << endl;
-        //     abort_instalation(false);
-        // }
-
-        // cout << "Digite a senha de administrador se necessário:" << endl;
-
-        // exec_status = remove_by_abs_path_command_line_linux(new_project_path.string().c_str());
-        // if (exec_status != 0) {
-            // cout << "Erro durante a remoção de projeto já existente!" << endl;
-        //     abort_instalation();
-        // }
-
     }
 
+    // Move and rename the directory
     char rename_command[512];
     strcpy(rename_command, "mv");
     strcat(rename_command, " ");
@@ -447,13 +446,14 @@ void unzip_program_linux() {
         exit(1);
 
     }
-
+    // Remove temporary directory
     exec_status = remove_by_abs_path_command_line(unzip_local.string().c_str());
     if (exec_status != 0) {
         cout << "Erro na remoção de pasta temporária." << endl;
         exit(1);
     }
 
+    // Remove downloaded zip
     exec_status = remove_by_abs_path_command_line(zip_file.string().c_str());
     if (exec_status != 0) {
         cout << "Erro na remoção do arquivo zip baixado." << endl;
@@ -463,10 +463,12 @@ void unzip_program_linux() {
 
 // unzip program (windows only)
 void unzip_program_windows() {
+    // Create temporary destination path
     fs::path unzip_local = install_location_c_string;
     unzip_local.append("tmp");
     
     if (not fs::exists(unzip_local)) {
+        // Create temporary destination if it does not exists
         char command[512];
         strcpy(command, "mkdir");
         strcat(command, " ");
@@ -486,10 +488,11 @@ void unzip_program_windows() {
         }
     }
     
-    
+    // Create downloaded file path
     fs::path zip_file = install_location_c_string;
     zip_file.append("main.zip");
 
+    // unzip file with tar
     char command[512];
     strcpy(command, "tar -xf");
     strcat(command, " ");
@@ -514,14 +517,17 @@ void unzip_program_windows() {
     }
 
 
+    // get path to the downloaded project
     fs::path project_directory_path;
     for (const auto & file_name : fs::directory_iterator(unzip_local)) {
         project_directory_path = file_name.path();
     }
 
+    // Create the new path to the project
     fs::path new_project_path = install_location_c_string;
     new_project_path.append("Projeto-Ceramica");
 
+    // copy the project with the new name
     strcpy(command, "xcopy");
     strcat(command, " ");
     strcat(command, project_directory_path.string().c_str());
@@ -542,7 +548,7 @@ void unzip_program_windows() {
         abort_instalation();
     }
 
-   
+    // Delete the old directory
     exec_status = remove_by_abs_path_command_line(unzip_local.string().c_str());
     if (exec_status != 0) {
         cout << "Erro na extração do arquivo" << endl;
@@ -556,6 +562,7 @@ void unzip_program_windows() {
         abort_instalation();
     }
 
+    // Delete the downloaded zip
     exec_status = remove_by_abs_path_command_line(zip_file.string().c_str());
     if (exec_status != 0) {
         cout << "Erro na extração do arquivo" << endl;
@@ -606,6 +613,7 @@ void download_zip() {
 // Force logint as sudo on linux
 void login_as_admin_linux() {
     char command[512];
+    // Execute a sudo command to force login
     strcpy(command, "sudo ls");
     exec_command_line(command);
 }
@@ -644,10 +652,12 @@ void install_miktex() {
 
     cout << "Iniciando instalação do MikTex." << endl;
 
+    // Create miktex path to the zip file
     fs::path miktexsetup_local_path = install_location_c_string;
     fs::path miktexsetup_zip_path = install_location_c_string;
     miktexsetup_zip_path.append("miktexsetup-x64.zip");
 
+    // Download miktex
     strcpy(command, "curl https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktexsetup-5.5.0+1763023-x64.zip -L -o ");
     strcat(command, miktexsetup_zip_path.string().c_str());;
 
@@ -663,7 +673,7 @@ void install_miktex() {
         abort_instalation();
     }
 
-
+    // unzip miktex
     strcpy(command, "tar -xf");
     strcat(command, " ");
     strcat(command, miktexsetup_zip_path.string().c_str());
@@ -683,6 +693,7 @@ void install_miktex() {
         abort_instalation();
     }
 
+    // download packages
     fs::path miktexsetup_standalone_path = install_location_c_string;
     miktexsetup_standalone_path.append("miktexsetup_standalone.exe");
 
@@ -700,6 +711,7 @@ void install_miktex() {
         abort_instalation();
     }
 
+    // install packages
     strcpy(command, miktexsetup_standalone_path.string().c_str());
     strcat(command, " --quiet --package-set=basic install");
     exec_status = exec_command_line(command, true);
@@ -715,6 +727,7 @@ void install_miktex() {
         abort_instalation();
     }
 
+    // Add miktex to PATH
     strcpy(command, "set PATH=%PATH%;C:\\Program Files\\MiKTeX\\miktex\\bin\\x64");
     exec_status = exec_command_line(command, true);
 
@@ -729,6 +742,7 @@ void install_miktex() {
         abort_instalation();
     }
 
+    // Update miktex packages to complete version
     strcpy(command, "mpm --verbose --package-level=complete --update");
     exec_status = exec_command_line(command, true);
 
@@ -743,7 +757,7 @@ void install_miktex() {
         abort_instalation();
     }
 
-
+    // Upgrade miktex to complete version
     strcpy(command, "mpm --verbose --package-level=complete --upgrade");
     exec_status = exec_command_line(command, true);
 
@@ -758,9 +772,7 @@ void install_miktex() {
         abort_instalation();
     }
 
-
-
-
+    // Verify if pdflatex is installed
     cout << "Verificando se a instalação foi concluída corretamente." << endl;
     strcpy(command, "pdflatex --version");
     exec_status = exec_command_line(command, true);
@@ -777,10 +789,11 @@ void install_miktex() {
 
     cout << "OK!" << endl;
 
+    // Remove miktex zip and installer
     remove_by_abs_path_command_line(miktexsetup_zip_path.string().c_str());
     remove_by_abs_path_command_line(miktexsetup_standalone_path.string().c_str());
 
-    // UNINSTALL MIKTEX
+    // COMMANDS TO UNINSTALL MIKTEX
     // rmdir /S /Q "%PROGRAMFILES%\MiKTeX"
     // rmdir /S /Q "%PROGRAMFILES(x86)%\MiKTeX"
     // rmdir /S /Q "%PROGRAMDATA%\MiKTeX"
@@ -1036,16 +1049,22 @@ void ask_install_permission_windows() {
 // Create shortcut for the installed sheet on windwos
 void create_desktop_shortcut_windows() {
     // mklink C:\Users\ahscruz\Desktop\teste.ods "C:\Users\ahscruz\Documents\Projeto-Ceramica\forno.ods"
+    
+    // Construct the path to the project main file
     fs::path file_forno_path = install_location_c_string;
     file_forno_path.append("Projeto-Ceramica");
     file_forno_path.append("forno.ods");
+    
     char user_path_string[128];
     strcpy(user_path_string, getenv("HOMEDRIVE"));
     strcat(user_path_string, getenv("HOMEPATH"));
+    
+    // Construct path to the shortcut on desktop
     fs::path shortcut_path = user_path_string;
     shortcut_path.append("Desktop");
     shortcut_path.append("forno.ods");
 
+    // verify if a shortcut with same name already exists
     if (fs::exists(shortcut_path)) {
         #if defined(_WIN32) || defined(__WIN64)
             
@@ -1066,6 +1085,7 @@ void create_desktop_shortcut_windows() {
         #endif
     }
 
+    // Run the command to create the shortcut
     char command[256];
     strcpy(command, "mklink");
     strcat(command, " ");
@@ -1124,16 +1144,6 @@ void verify_admin() {
         login_as_admin_linux();
     }
     else if (idOS == WINDOWS) {
-        // int result = exec_command_line("mkdir \"C:\\Program Files (x86)\\teste\"", true);
-        // if(result != 0) {
-        //     cout << "Abortando execução" << endl;
-        //     msg_box_error_windows(L"É necessário executar este programa como administrador!", L"Permissão necessária.");
-        //     abort_instalation();
-        //     exit(0);
-        // }
-        // else {
-        //     remove_by_abs_path_command_line("\"C:\\Program Files (x86)\\teste\"");
-        // }
     }
 }
 
