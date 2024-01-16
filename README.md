@@ -2,7 +2,7 @@
 
 Este projeto foi desenvolvido com o apoio da Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP). Seu intuito de criar uma interface para o uso da heurística proposta por [Belleboni,2016](#1) para o problema de empacotamento de peças de cerâmica em fornos tridimensionais. A interface é uma planilha a ser utilizada pelo *software* [LibreOffice](#2) versão 7.
 
-O trabalho original de [Belleboni,2016](#1) teve como objetivo auxiliar a alocação de peças de cerâmica em um forno tridimensional. Nota-se que devido a característica do problema foi considerado que o forno poderia ser dividido em andares, de forma que o problema pudesse ser modelado como Nestings bidimensionais. Assim foi possível resolver o problema adaptando uma heurística *bottom-left*. A implementação da heurística se encontra [neste diretório](solver/bottom-left-heuristic-master/)
+O trabalho original de [Belleboni,2016](#1) teve como objetivo auxiliar a alocação de peças de cerâmica em um forno tridimensional. Nota-se que devido a característica do problema foi considerado que o forno poderia ser dividido em andares, de forma que o problema pudesse ser modelado como Nestings bidimensionais. Assim foi possível resolver o problema adaptando uma heurística *bottom-left*. A implementação da heurística se encontra [neste diretório](solver/bottom-left-heuristic-master/).
 
 
 # Instalação
@@ -20,7 +20,7 @@ Após o download do LibreOffice 7 é preciso dar permissão para que macros seja
 
 ### Windows
 
-Para o Sistema Operacional WINDOWS 11, faça o download do instalador contido [nesta pasta](https://github.com/thuzax/Projeto-Ceramica-Dev/blob/main/instalador/instalador_win/). Após isso execute a aplicação como administrador e a instalação será feita (clique com o botão direito no arquivo e vá na opção "Executar como administrador").
+Para o Sistema Operacional WINDOWS 11, faça o download do instalador clicando <a id="raw-url" href="https://raw.githubusercontent.com/thuzax/Projeto-Ceramica-Dev/main/instalador/instalador_win/INSTALDOR_WINDOWS_11.exe">neste link</a>. Após isso execute a aplicação como administrador e a instalação será feita (clique com o botão direito no arquivo e vá na opção "Executar como administrador").
 
 Se necessário será solicitado permissão para instalação de *softwares* que são utilizados pela aplicação. Confirme caso deseje que a instalação prossiga.
 
@@ -31,7 +31,7 @@ Uma vez finalizada a instalação é possível inicializar a aplicação ao abri
 
 ### Linux
 
-Para o Sistema Operacional UBUNTU 22 ou 23, faça o download do instalador contido [nesta pasta](https://github.com/thuzax/Projeto-Ceramica-Dev/blob/main/instalador/instalador_ubuntu/) e execute o instalador via terminal.
+Para o Sistema Operacional UBUNTU 22 ou 23, faça o download do instalador contido  <a id="raw-url" href="https://raw.githubusercontent.com/thuzax/Projeto-Ceramica-Dev/main/instalador/instalador_ubuntu/INSTALADOR_UBUNTU_22">neste link</a> e execute o instalador via terminal.
 
 Se necessário será solicitado permissão para instalação de *softwares* que são utilizados pela aplicação. Confirme caso deseje que a instalação prossiga.
 
