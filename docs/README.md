@@ -1,5 +1,7 @@
 # Para Desenvolvedores
 
+Este é um guia criado para auxiliar desenvolvedores e usuários de sistemas operacionais diferentes do Windows 11 e do Ubuntu 22.
+
 ## Requisitos
 
 - LibreOffice 7: uso da planilha

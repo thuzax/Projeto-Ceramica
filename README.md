@@ -11,7 +11,7 @@ Foi criado um instalador que realiza o download dos arquivos necessários para o
 
 ## Instalação do LibreOffice
 
-Primeiramente é necessário ter a suíte de escritódio LibreOffice 7 instalado. Caso não possua em seu sistema operacional [este guia](https://pt-br.libreoffice.org/ajuda/instrucoes-de-instalacao/) pode auxiliar na instalação. **Caso o LibreOffice 7 não esteja instalado, o download do projeto não será realizado**.
+Primeiramente é necessário ter a suíte de escritório LibreOffice 7 instalado. Caso não possua em seu sistema operacional [este guia](https://pt-br.libreoffice.org/ajuda/instrucoes-de-instalacao/) pode auxiliar na instalação. **Caso o LibreOffice 7 não esteja instalado, o download do projeto não será realizado**.
 
 Após o download do LibreOffice 7 é preciso dar permissão para que macros sejam executadas no *LibreOffice Calc*.  Abra o LibreOffice Calc e no menu superior escolha a opção "Ferramentas", em seguida "Opções...". Na nova janela, no canto esquerdo, selecione no menu com título "LibreOffice" a opção "Segurança". Aperte o botão "Segurança de macros...", escolha a opção "Baixa" e confirme apertando o botão "OK".
 
