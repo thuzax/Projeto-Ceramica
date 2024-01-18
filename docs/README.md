@@ -1,6 +1,7 @@
 # Para Desenvolvedores
 
-Este é um guia criado para auxiliar desenvolvedores e usuários de sistemas operacionais diferentes do Windows 11 e do Ubuntu 22.
+Este é um guia criado para auxiliar desenvolvedores e usuários de sistemas operacionais diferentes do Windows 11 e do Ubuntu 22. Para a instalação é necessário a compilação do código-fonte que foi desenvolvido pensando somente nos sistemas Windows e Ubuntu.
+
 
 ## Requisitos
 
