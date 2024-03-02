@@ -28,7 +28,7 @@ struct orderHeightClass{
 // Calculate the D-function between line AB and the point P
 int d_function(coord a, coord b, coord p){
 	
-	double d = (a.x - b.x) * (a.y - p.y) - (a.y - b.y) * (a.x - p.x);
+	long double d = (a.x - b.x) * (a.y - p.y) - (a.y - b.y) * (a.x - p.x);
 	if (fabs(d) < EPS)
 		return (0);
 	else if (d < 0)
@@ -81,7 +81,7 @@ void printOrder(item *items, vector<int> order) {
 
 
 // Get the minimum possible height for fitting an item in a new layer of the kiln
-int minimumFittingHeight(double itemHeight, kiln *k) {
+int minimumFittingHeight(long double itemHeight, kiln *k) {
 
 	if (!k) {
 		cout << "Error: Cannot calculate minimum fitting height. Invalid pointer. " << stringEndline();
@@ -143,7 +143,7 @@ solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 	
 	sp.layerLengths.push_back(0.0);
 
-	double cumulativeHeight = 0;
+	long double cumulativeHeight = 0;
 
 	//create first layer
 	if (numberOfPieces > 0) {
@@ -239,8 +239,8 @@ solutionPool solve(item *items, int numberOfItems, vector<int> order, kiln *k) {
 					if (sp.solutions[j].layer == current_layer) {
 
 						int id = sp.solutions[j].id;
-						double px = sp.solutions[j].p.x;
-						double py = sp.solutions[j].p.y;
+						long double px = sp.solutions[j].p.x;
+						long double py = sp.solutions[j].p.y;
 
 						pointsNFP.reserve(pointsNFP.size() + items[id].NFP[order[i]].vertices.size());
 
@@ -381,7 +381,7 @@ int checkBoundingBox(item *items, solution sol, kiln *k) {
 }
 
 // Check if an item is completely inside the the kiln
-int checkBoundingBox(item *items, int id, double x, double y, int layer, kiln *k) {
+int checkBoundingBox(item *items, int id, long double x, long double y, int layer, kiln *k) {
 
 	// check if the top-left boundingbox point is inside kiln
 	if ((items[id].boundingBox.lu.x + x < 0) || (items[id].boundingBox.lu.y + y > k->layers[layer].width))
@@ -395,7 +395,7 @@ int checkBoundingBox(item *items, int id, double x, double y, int layer, kiln *k
 }
 
 // NÃO ENTENDI ESSA
-int checkPastSolutions(double x, double y, int layer, solutionPool sp) {
+int checkPastSolutions(long double x, long double y, int layer, solutionPool sp) {
 
 	for (int i=0 ; i<sp.solutions.size() ; i++) {
 		if (sp.solutions[i].p.x == x && sp.solutions[i].p.y == y && sp.solutions[i].layer == layer)
@@ -406,7 +406,7 @@ int checkPastSolutions(double x, double y, int layer, solutionPool sp) {
 }
 
 // Check if a solution layer is feasible after inserting an item using reference point (x,y)
-int checkSolution(item *items, int id, double x, double y, int layer, solutionPool sp) {
+int checkSolution(item *items, int id, long double x, long double y, int layer, solutionPool sp) {
 
 	//cout << stringEndline() << "Trying to allocate #" << id+1 << " at (" << x << ", " << y << ") " << stringEndline(); 
 	coord a, b, p;
@@ -480,7 +480,7 @@ void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int num
 	file << "\\newcommand\\HUGE{\\fontsize{100}{120}\\selectfont}";
 
 	int layer = 0;
-	double usedArea = 0, totalArea = 0, usedVolume = 0, totalVolume = 0;
+	long double usedArea = 0, totalArea = 0, usedVolume = 0, totalVolume = 0;
 	int totalItems = 0;
 	do {
 
@@ -514,8 +514,8 @@ void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int num
 				continue;
 
 			int id = sp.solutions[i].id;
-			double px = sp.solutions[i].p.x;
-			double py = sp.solutions[i].p.y;
+			long double px = sp.solutions[i].p.x;
+			long double py = sp.solutions[i].p.y;
 
 
 			usedArea += items[id].area;
@@ -616,8 +616,8 @@ void drawSolution(item *items, solutionPool sp, kiln *k, char *fileName, int num
 // 	for (int i=0 ; i<sp.solutions.size() ; i++) {
 
 // 		int id = sp.solutions[i].id;
-// 		double px = sp.solutions[i].p.x;
-// 		double py = sp.solutions[i].p.y;
+// 		long double px = sp.solutions[i].p.x;
+// 		long double py = sp.solutions[i].p.y;
 
 // 		if (items[id].type == RECTANGLE)
 // 			file << stringEndline() << "\\draw[black, fill=blue] (" << px << "," << py << ") rectangle (" << px + items[id].length << ", " << py + items[id].width << ");";

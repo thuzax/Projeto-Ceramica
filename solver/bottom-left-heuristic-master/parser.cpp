@@ -36,13 +36,13 @@ kiln *initKiln(string filename) {
 
 	file >> numberOfDifferentHeights;
 
-	vector<double> diffKilns;
+	vector<long double> diffKilns;
 
 	for (int i=0; i < numberOfDifferentHeights; i++) {
-		double aux;
+		long double aux;
 		file >> aux;
 		if (aux > 0.0) {
-			newKiln->differentHeights.push_back((double) aux);
+			newKiln->differentHeights.push_back((long double) aux);
 		}
 	}
 
@@ -319,7 +319,7 @@ void printArea(item *items, int numberOfItems) {
 
 }
 
-coord newCoord(double x, double y) {
+coord newCoord(long double x, long double y) {
 	
 	coord c;
 	
@@ -341,11 +341,11 @@ coord newCoord(double x, double y) {
 // Stores in vertices
 void lineToPoints(vector<coord> &vertices, coord a, coord b) {
 
-	double length_x = b.x - a.x;
-	double length_y = b.y - a.y;
+	long double length_x = b.x - a.x;
+	long double length_y = b.y - a.y;
 
-	double inc_x = length_x / (POINTS_PER_LINE -1 );
-	double inc_y = length_y / (POINTS_PER_LINE -1 );
+	long double inc_x = length_x / (POINTS_PER_LINE -1 );
+	long double inc_y = length_y / (POINTS_PER_LINE -1 );
 
 	//exclude first and last one
 	for (int i=1 ; i<(POINTS_PER_LINE -1) ; i++) {
@@ -436,8 +436,8 @@ void calculateNFP(item *items, int numberOfItems) {
 
 				} else if (items[j].type == CIRCLE) {
 
-					double inc, t;
-					inc = 2*PI/(double)POINTS_PER_CIRCLE;
+					long double inc, t;
+					inc = 2*PI/(long double)POINTS_PER_CIRCLE;
 
 					t = 0;
 					for(int k = 0; k<(POINTS_PER_CIRCLE / 4); k++){
@@ -533,8 +533,8 @@ void calculateNFP(item *items, int numberOfItems) {
 
 				} else if (items[j].type == CIRCLE) {
 
-					double inc, t;
-					inc = 2*PI/(double)POINTS_PER_CIRCLE;
+					long double inc, t;
+					inc = 2*PI/(long double)POINTS_PER_CIRCLE;
 
 					items[i].NFP[j].vertices.push_back(newCoord(0, -items[j].radius));
 					lineToPoints(items[i].NFP[j].vertices, newCoord(0, -items[j].radius), newCoord(items[i].side, -items[j].radius));
@@ -604,8 +604,8 @@ void calculateNFP(item *items, int numberOfItems) {
 					//we're using the same idea of the NFP between RECTANGLE and CIRCLE
 					//all we need to do is change the reference point at the end
 
-					double inc, t;
-					inc = 2*PI/(double)POINTS_PER_CIRCLE;
+					long double inc, t;
+					inc = 2*PI/(long double)POINTS_PER_CIRCLE;
 
 					t = 0;
 					for(int k = 0; k<(POINTS_PER_CIRCLE / 4); k++){
@@ -665,8 +665,8 @@ void calculateNFP(item *items, int numberOfItems) {
 					//we're using the same idea of the NFP between TRIANGLE and CIRCLE
 					//all we need to do is rotate the NFP 180º
 
-					double inc, t;
-					inc = 2*PI/(double)POINTS_PER_CIRCLE;
+					long double inc, t;
+					inc = 2*PI/(long double)POINTS_PER_CIRCLE;
 
 					items[i].NFP[j].vertices.push_back(newCoord(0, -items[i].radius));
 					lineToPoints(items[i].NFP[j].vertices, newCoord(0, -items[i].radius), newCoord(items[j].side, -items[i].radius));
@@ -723,7 +723,7 @@ void calculateNFP(item *items, int numberOfItems) {
 					//update the number of vertices of the final NFP between i and j
 					items[i].NFP[j].numberOfVertices = items[i].NFP[j].vertices.size();
 
-					double s = 0.0, c = -1.0;
+					long double s = 0.0, c = -1.0;
 					//sin 180º = 0;
 					//cos 180º = -1;
 
@@ -735,9 +735,9 @@ void calculateNFP(item *items, int numberOfItems) {
 
 				} else if (items[j].type == CIRCLE) {
 
-					double inc, t;
+					long double inc, t;
 					items[i].NFP[j].numberOfVertices = POINTS_PER_CIRCLE;
-					inc = 2*PI/(double)items[i].NFP[j].numberOfVertices;
+					inc = 2*PI/(long double)items[i].NFP[j].numberOfVertices;
 
 					t = 0;
 					for(int k = 0; k<items[i].NFP[j].numberOfVertices; k++){

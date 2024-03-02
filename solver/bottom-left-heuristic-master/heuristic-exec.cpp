@@ -4,13 +4,14 @@ using namespace std;
 
 
 int executeHeuristicBottomLeft(int argc, char** argv) {
-	cout << "Iniciando Resolução do Problema" << stringEndline();
 	declareGlobals();
+	cout << "Iniciando Resolução do Problema" << stringEndline();
 	// Get the input parameters
     char *kilnFile = new char[1024];
     char *itemsFile = new char[1024];
     char *solutionFile = new char[1024];
     
+
     if (!kilnFile || !itemsFile || !solutionFile) {
         cout << "Error: Internal error while allocating memory for the configuration files. " << stringEndline();
 		exit(EXIT_FAILURE);
@@ -120,8 +121,8 @@ int executeHeuristicBottomLeft(int argc, char** argv) {
 	}
 
 
-	destroyGlobals();
 	cout << "OK" << stringEndline();
+	destroyGlobals();
 
 	return 0;
 

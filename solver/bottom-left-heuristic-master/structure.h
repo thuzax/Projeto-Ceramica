@@ -13,30 +13,30 @@ using namespace std;
 
 typedef struct {
 
-    double length;
-    double width;
-    double height;
+    long double length;
+    long double width;
+    long double height;
     
 } layer;
 
 
 typedef struct {
 
-    double length;
-    double width;
-    double height;
+    long double length;
+    long double width;
+    long double height;
 
     vector<layer> layers;
-    vector<double> differentHeights;
-    vector<double> possibleHeights;
+    vector<long double> differentHeights;
+    vector<long double> possibleHeights;
 
 } kiln;
 
 
 typedef struct {
 
-    double x;
-    double y;
+    long double x;
+    long double y;
 
 } coord;
 
@@ -64,17 +64,17 @@ typedef struct {
     char description[100];
     int type;
     int quantity;
-    double height;
+    long double height;
 
     // Circle
-    double radius;
+    long double radius;
     
     // Rectangle
-    double length;
-    double width;
+    long double length;
+    long double width;
     
     // Equilateral triangle
-    double side;
+    long double side;
     
     struct {
         coord lu, rb;
@@ -82,7 +82,7 @@ typedef struct {
     
     vector<polygon> NFP;
     
-    double area;
+    long double area;
 
 } item;
 
@@ -100,7 +100,7 @@ typedef struct {
     vector<solution> solutions;
 
     //stores the length of each layer (i.e., the solution value)
-    vector <double> layerLengths;
+    vector <long double> layerLengths;
 
 } solutionPool;
 

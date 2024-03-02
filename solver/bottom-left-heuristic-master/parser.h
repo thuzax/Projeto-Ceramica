@@ -40,7 +40,7 @@ void printBoundingBox(item *items, int numberOfItems);
 void calculateArea(item *items, int numberOfItems);
 void printArea(item *items, int numberOfItems);
 
-coord newCoord(double x, double y);
+coord newCoord(long double x, long double y);
 
 // Calculate a discrete line between a and b
 // Stores in vertices

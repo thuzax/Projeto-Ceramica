@@ -36,5 +36,9 @@ solution.*
 #lockers
 .~lock.*
 
+#vscode
+.vscode
+.vscode/*
+
 #pdf
 *.pdf

@@ -34,5 +34,4 @@ void destroyGlobals() {
         delete[] str_endline;
         str_endline = NULL;
     }
-
 }

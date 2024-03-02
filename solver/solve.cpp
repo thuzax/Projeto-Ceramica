@@ -59,9 +59,9 @@ fs::path solver_input_path = "solver_input.txt";
 struct Piece {
 	int piece_type;
 	char* description;
-	double height;
-	double width;
-	double length;
+	long double height;
+	long double width;
+	long double length;
 	int amount;
 };
 
@@ -255,7 +255,7 @@ void remove_solver_input_file(const char* solver_input_name) {
 }
 
 // Create a pointer to a piece
-Piece* create_piece(int in_type, string description, double height, double width, double length, int amount) {
+Piece* create_piece(int in_type, string description, long double height, long double width, long double length, int amount) {
 	Piece* piece = new Piece;
 	switch (in_type) {    
 		case SQUARE:
@@ -362,12 +362,12 @@ int main(int argc, char *argv[]) {
 		// Read the height
 		string height_str;
 		file_pieces >> height_str;;
-		double height = stod(height_str);
+		long double height = stod(height_str);
 
 		// Read the width
 		string width_str;
 		file_pieces >> width_str;
-		double width = stod(width_str);
+		long double width = stod(width_str);
 
 		// If the piece is a circle, the input was the diameter
 		// Must convert to radio
@@ -380,7 +380,7 @@ int main(int argc, char *argv[]) {
 		if (piece_type == RECTANGLE) {
 			file_pieces >> length_str;
 		}
-		double length = stod(length_str);
+		long double length = stod(length_str);
 
 		// Reads the amount
 		string amount_str;
