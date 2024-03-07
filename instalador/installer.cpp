@@ -196,7 +196,7 @@ int remove_by_abs_path_command_line_windows(const char* absolute_path) {
         strcat(remove_command, file_path.string().c_str());
         return exec_command_line(remove_command, true);
     }
-    cout << "Arquivo " << absolute_path << "não encontrado" << endl;
+    cout << "Arquivo " << absolute_path << " não encontrado" << endl;
     return 0;
 }
 
@@ -211,7 +211,7 @@ int remove_by_abs_path_command_line(const char* absolute_path) {
             return remove_by_abs_path_command_line_windows(absolute_path);
         }
     }
-    cout << "Arquivo " << absolute_path << "não encontrado" << endl;
+    cout << "Arquivo " << absolute_path << " não encontrado" << endl;
     return 0;
 }
 
@@ -1186,6 +1186,15 @@ void verify_admin() {
         login_as_admin_linux();
     }
     else if (idOS == WINDOWS) {
+        char command[256];
+        strcpy(command, "net session");
+        if (exec_command_line(command) != 0) {
+            wchar_t message_error[128];
+            wcscpy(message_error, L"É necessária a execução como administrador. Abortando instalação.\n");
+            wcscat(message_error, L"Os arquivos e programas intalados serão removidos.");
+            msg_box_error_windows(message_error, L"Permissão Negada!");
+            abort_instalation();
+        }
     }
 }
 
