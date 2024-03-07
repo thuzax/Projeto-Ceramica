@@ -24,6 +24,10 @@ bool pdflatex_already_installed = true;
 bool unzip_already_installed = true;
 bool project_already_existed = true;
 
+
+char used_version_file[] = "light-version-forno.ods";
+char non_used_version_file[] = "forno.ods";
+
 // make filesystem usable with c++17 with 'fs'
 #ifndef __has_include
   static_assert(false, "__has_include not supported");
@@ -432,6 +436,8 @@ void unzip_program_linux() {
         abort_instalation();
     }
 
+    
+
     // Move and rename the directory
     char rename_command[512];
     strcpy(rename_command, "mv");
@@ -446,6 +452,23 @@ void unzip_program_linux() {
         exit(1);
 
     }
+
+    // Rename the ods file
+    fs::path path_to_rename = new_project_path.append(used_version_file);
+    fs::path new_file_name = new_project_path.append("Fornada.ods");
+    strcpy(rename_command, "mv");
+    strcat(rename_command, " ");
+    strcat(rename_command, path_to_rename.string().c_str());
+    strcat(rename_command, " ");
+    strcat(rename_command, new_file_name.string().c_str());
+
+    exec_status = exec_command_line(rename_command);
+    if (exec_status != 0) {
+        cout << "Erro no renomeamento do arquivo." << endl;
+        exit(1);
+
+    }
+
     // Remove temporary directory
     exec_status = remove_by_abs_path_command_line(unzip_local.string().c_str());
     if (exec_status != 0) {
@@ -576,6 +599,15 @@ void unzip_program_windows() {
         abort_instalation();
     }
 
+    // Rename ods file
+    char rename_command[512];
+    strcpy(rename_command, "ren");
+    strcat(rename_command, " ");
+    strcat(rename_command, new_project_path.string().c_str());
+    strcat(rename_command, " ");
+    strcat(rename_command, used_version_file);
+    strcat(rename_command, " ");
+    strcat(rename_command, "Fornada.ods");
 }
 
 // Call OS unzip function
@@ -885,6 +917,13 @@ void clean_project() {
 
     to_remove = installed_dir.string().c_str();
     to_remove.append("instalador");
+    exec_status = remove_by_abs_path_command_line(to_remove.string().c_str());
+    if (exec_status != 0) {
+        cout << "Erro ao tentar remover " << to_remove.string().c_str();
+    }
+
+    to_remove = installed_dir.string().c_str();
+    to_remove.append(non_used_version_file);
     exec_status = remove_by_abs_path_command_line(to_remove.string().c_str());
     if (exec_status != 0) {
         cout << "Erro ao tentar remover " << to_remove.string().c_str();
