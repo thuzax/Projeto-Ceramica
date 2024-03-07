@@ -391,6 +391,7 @@ void install_unzip() {
             cout << "Erro! Abortando instalação." << endl;
             abort_instalation();
         }
+        cout << "Instalação do pacote unzip concluída." << endl;
     }
 }
 
