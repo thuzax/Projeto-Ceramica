@@ -454,8 +454,10 @@ void unzip_program_linux() {
     }
 
     // Rename the ods file
-    fs::path path_to_rename = new_project_path.append(used_version_file);
-    fs::path new_file_name = new_project_path.append("Fornada.ods");
+    fs::path path_to_rename = new_project_path;
+    path_to_rename.append(used_version_file);
+    fs::path new_file_name = new_project_path;
+    new_file_name.append("Fornada.ods");
     strcpy(rename_command, "mv");
     strcat(rename_command, " ");
     strcat(rename_command, path_to_rename.string().c_str());
