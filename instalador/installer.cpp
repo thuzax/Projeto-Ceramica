@@ -1090,12 +1090,12 @@ void ask_install_permission_windows() {
 
 // Create shortcut for the installed sheet on windwos
 void create_desktop_shortcut_windows() {
-    // mklink C:\Users\ahscruz\Desktop\teste.ods "C:\Users\ahscruz\Documents\Projeto-Ceramica\forno.ods"
+    // mklink C:\Users\ahscruz\Desktop\Fornada.ods "C:\Users\ahscruz\Documents\Projeto-Ceramica\Fornada.ods"
     
     // Construct the path to the project main file
     fs::path file_forno_path = install_location_c_string;
     file_forno_path.append("Projeto-Ceramica");
-    file_forno_path.append("forno.ods");
+    file_forno_path.append("Fornada.ods");
     
     char user_path_string[128];
     strcpy(user_path_string, getenv("HOMEDRIVE"));
@@ -1104,7 +1104,7 @@ void create_desktop_shortcut_windows() {
     // Construct path to the shortcut on desktop
     fs::path shortcut_path = user_path_string;
     shortcut_path.append("Desktop");
-    shortcut_path.append("forno.ods");
+    shortcut_path.append("Fornada.ods");
 
     // verify if a shortcut with same name already exists
     if (fs::exists(shortcut_path)) {
@@ -1141,7 +1141,7 @@ void create_desktop_shortcut_windows() {
     if (exec_status != 0) {
         cout << "Erro na ciração do atalho" << endl;
         #if defined(_WIN32) || defined(__WIN64)
-            int answer = msg_box_YN_windows(L"Ocorreu um erro na criação do atalho para o arquivo forno.ods. Deseja continuar a instação?", L"Erro na instalação");
+            int answer = msg_box_YN_windows(L"Ocorreu um erro na criação do atalho para o arquivo Fornada.ods. Deseja continuar a instação?", L"Erro na instalação");
             if (answer != IDYES) {
                 cout << "Abortando instalação." << endl;
                 msg_box_error_windows(L"Abortando instalação. Os arquivos e programas intalados serão removidos.", L"Cancelando instalação");
