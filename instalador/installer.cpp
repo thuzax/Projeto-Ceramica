@@ -1207,7 +1207,9 @@ void verify_admin() {
             wchar_t message_error[128];
             wcscpy(message_error, L"É necessária a execução como administrador. Abortando instalação.\n");
             wcscat(message_error, L"Os arquivos e programas intalados serão removidos.");
-            msg_box_error_windows(message_error, L"Permissão Negada!");
+            #if defined(_WIN32) || defined(__WIN64)
+                msg_box_error_windows(message_error, L"Permissão Negada!");
+            #endif
             abort_instalation();
         }
     }
