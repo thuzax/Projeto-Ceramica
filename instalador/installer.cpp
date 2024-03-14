@@ -604,13 +604,28 @@ void unzip_program_windows() {
 
     // Rename ods file
     char rename_command[512];
+    fs::path path_to_reaname = new_project_path;
+    path_to_reaname.append(used_version_file);
+    fs::path new_path_to_reaname = new_project_path;
+    new_path_to_reaname.append("Fornada.ods");
     strcpy(rename_command, "ren");
-    strcat(rename_command, " ");
-    strcat(rename_command, new_project_path.string().c_str());
-    strcat(rename_command, " ");
-    strcat(rename_command, used_version_file);
-    strcat(rename_command, " ");
+    strcat(rename_command, " \"");
+    strcat(rename_command, path_to_reaname.string().c_str());
+    strcat(rename_command, "\" ");
     strcat(rename_command, "Fornada.ods");
+
+    exec_status = exec_command_line(rename_command);
+    if (exec_status != 0) {
+        cout << "Erro no renomeamento do arquivo" << endl;
+        wchar_t message[128];
+        wcscpy(message, L"Erro no renomeamento do arquivo. Abortando instalação.");
+        wchar_t title[128];
+        wcscpy(title, L"Instalação cancelada.");
+        #if defined(_WIN32) || defined(__WIN64)
+            msg_box_error_windows(message, title);
+        #endif
+        abort_instalation();
+    }
 }
 
 // Call OS unzip function
