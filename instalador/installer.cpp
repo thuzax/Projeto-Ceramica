@@ -9,6 +9,8 @@
 #include <cstring>
 #include <fstream>
 #include <filesystem>
+#include <ctype.h>
+#include <stdio.h>
 
 //  Enumerate OS Names
 enum {WINDOWS, WINDOWS32, WINDOWS64, LINUX, UNIX};
@@ -965,12 +967,29 @@ bool run_test_libreoffice_installed(const char* command) {
         if (isInstalled) {
             continue;
         }
-        char teste[14] = "\0";
-        strncpy(teste, line, 13);
+        char result[256] = "\0";
+        // strncpy(result, line, 13);
 
         cout << line << endl;
+
+        int start = 0;
+        while (not isdigit(result[start])) {
+            start++;
+        }
+
+        int end = start;
+        while(result[end] != '.') {
+            end++;
+        }
+
         
-        if (strcmp(teste, "LibreOffice 7") == 0) {
+        for (int i = start, j = 0; i < end; i++, j++) {
+            result[j] = result[i];
+        }
+        
+        int result_int = atoi(result);
+        
+        if (result_int >= 7) {
             isInstalled = true;
         }
     }
