@@ -988,7 +988,7 @@ bool run_test_libreoffice_installed(const char* command) {
         }
         
         int result_int = atoi(result);
-        
+
         if (result_int >= 7) {
             isInstalled = true;
         }
@@ -1005,29 +1005,29 @@ bool libreoffice7_is_installed_linux() {
 
 // run command test to verify wheter libreoffice is on windows or not
 bool libreoffice7_is_installed_windows() {
-    char command[] = "wmic product where \"Name like '%LibreOffice 7%'\" get Name";
+    char command[] = "wmic product where \"Name like '%LibreOffice %'\" get Name";
     return run_test_libreoffice_installed(command);
 
 }
 
 // check if libreoffice is installed
 void verify_libreoffice_installed() {
-    cout << "Verificando a instalação do LibreOffice 7." << endl;
+    cout << "Verificando a instalação do LibreOffice 7 ou superior." << endl;
     cout << "Digite a senha de administrador se necessário." << endl;
     if (idOS == LINUX){
         if (not libreoffice7_is_installed_linux()) {
-            cout << "LibreOffice 7 é necessário para a execução deste programa." << endl;
+            cout << "LibreOffice 7 ou superior é necessário para a execução deste programa." << endl;
             cout << "Abortando instalação" << endl;
             abort_instalation();
         }
     }
     else if(idOS == WINDOWS) {
-        cout << "Verificando a instalação do LibreOffice 7." << endl;
+        cout << "Verificando a instalação do LibreOffice 7 ou superior." << endl;
         if (not libreoffice7_is_installed_windows()) {
-            cout << "LibreOffice 7 e necessário para a execução deste programa." << endl;
+            cout << "LibreOffice 7 ou superior e necessário para a execução deste programa." << endl;
             cout << "Abortando instalacao" << endl;
             wchar_t message[128];
-            wcscpy(message, L"LibreOffice 7 e necessário para a execução deste programa.");
+            wcscpy(message, L"LibreOffice 7 ou superior e necessário para a execução deste programa.");
             wchar_t title[128];
             wcscpy(title, L"Cancelando instalação");
             #if defined(_WIN32) || defined(__WIN64)
