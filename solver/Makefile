@@ -1,8 +1,33 @@
 # Determine the operating system
 ifdef SystemRoot  # Check if SystemRoot environment variable exists (Windows)
 	OS := Windows
+else ifeq ($(shell test -d /usr/bin && echo true),true) # Check for MSYS environment
+	OS := MSYS
+else ifeq ($(shell test -d /mingw64/bin && echo true),true) # Check for MinGW environment (64-bit)
+	OS := MinGW
+else ifeq ($(shell test -d /mingw32/bin && echo true),true) # Check for MinGW environment (32-bit)
+	OS := MinGW
 else
 	OS := $(shell uname)
+endif
+
+
+
+# Determine the operating system for RM
+ifdef SystemRoot  # Check if SystemRoot environment variable exists (Windows)
+	OSRM := Windows
+else
+	OSRM := $(shell uname)
+endif
+
+$(info OS is $(OS)) # Debug output to print the value of OS
+$(info OS is $(OSRM)) # Debug output to print the value of OS
+
+# Define deletion command based on the operating system
+ifeq ($(OSRM), Windows)
+	RM = del /Q
+else
+	RM = rm -f
 endif
 
 # Compiler
@@ -15,15 +40,20 @@ TARGET = solve
 OBJECTS = solve.o parser.o bottom-left.o globals.o heuristic-exec.o
 
 # Stack size
-STACK_SIZE = 1073741824  # 1GB in bytes
+STACK_SIZE = 1073741824 # 1GB in bytes
 
 # Binary
 solve: $(OBJECTS)
-ifeq ($(OS), Linux)
-	$(CXX) -Wall -Wconversion -Wl,-z,stack-size=$(STACK_SIZE) $^ -o $@
-else ifeq ($(OS), Windows)
-	$(CXX) -Wall -Wconversion -Wl,--stack=$(STACK_SIZE) $^ -o $@
+ifeq ($(OS), Windows)
+	$(CXX) -Wall -Wconversion $^ -o $@ -lstdc++
+else ifeq ($(OS), MinGW)
+	$(CXX) -Wall -Wconversion $^ -o $@ -lstdc++
+else ifeq ($(OS), MSYS)
+	$(CXX) -Wall -Wconversion $^ -o $@ -lstdc++
+else
+	$(CXX) -Wall -Wconversion -Wl,--stack=$(STACK_SIZE) $^ -o $@ -lstdc++
 endif
+
 
 # Pattern rule for object-source dependencies
 %.o: bottom-left-heuristic-master/%.cpp 
@@ -35,16 +65,8 @@ endif
 
 # Cleaning without removing the executable
 clean:
-ifeq ($(OS), Linux)
-	rm -f *.o *~ \#* *.d solution.* *.tex adding_*.* NFP_*.*
-else ifeq ($(OS), Windows)
-	del *.o *~ \#* *.d solution.* *.tex adding_*.* NFP_*.*
-endif
+	$(RM) *.o *~ \#* *.d solution.* *.tex adding_*.* NFP_*.*
 
 # Cleaning with removing the executable
 cleanall: clean
-ifeq ($(OS), Linux)
-	rm -f $(TARGET)
-else ifeq ($(OS), Windows)
-	del $(TARGET).exe
-endif
+	$(RM) $(TARGET) $(TARGET).exe
